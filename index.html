@@ -2,54 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- BADSHAH: FIX - Zoom issue solved and horizontal scroll fixed -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
     <title>Futuristic Tic-Tac-Toe</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
-    <style>
+
+       <style>
         
 :root {
-    /* Core Background */
     --midnight-950: #0a0e1a;
     --midnight-900: #111827;
     --midnight-800: #1f2937;
     --midnight-700: #374151;
     
-    /* Primary Accent (Indigo/Purple) */
     --accent-primary: #6366f1;
     --accent-primary-light: #818cf8;
     --accent-primary-dark: #4f46e5;
     --accent-glow: rgba(99, 102, 241, 0.5);
     --accent-glow-strong: rgba(99, 102, 241, 0.7);
     
-    /* Secondary Accent (Pink/Rose) */
     --accent-secondary: #ec4899;
     --accent-secondary-light: #f472b6;
     --accent-secondary-glow: rgba(236, 72, 153, 0.5);
     
-    /* Gold Accent */
     --accent-gold: #f59e0b;
     --accent-gold-light: #fbbf24;
     
-    /* Text Colors */
     --text-primary: #f9fafb;
     --text-secondary: #d1d5db;
     --text-muted: #9ca3af;
     --text-inverse: #111827;
     
-    /* Surface Colors with Enhanced Glass */
     --surface-primary: rgba(31, 41, 55, 0.85);
     --surface-elevated: rgba(55, 65, 81, 0.7);
     --surface-hover: rgba(75, 85, 99, 0.8);
     --surface-glass: rgba(255, 255, 255, 0.05);
     --surface-glass-hover: rgba(255, 255, 255, 0.08);
     
-    /* Borders */
     --border-subtle: rgba(148, 163, 184, 0.15);
     --border-medium: rgba(148, 163, 184, 0.25);
     --border-strong: rgba(148, 163, 184, 0.4);
@@ -2018,7 +2011,6 @@ h3 {
     transform: none;
 }
 
-/* Mobile: Smaller power-up buttons */
 @media (max-width: 640px) {
     #blocker-powerup-btn-desktop,
     #blocker-powerup-btn-mobile {
@@ -2067,7 +2059,6 @@ h3 {
     transform: none;
 }
 
-/* Mobile: Smaller AI tip buttons */
 @media (max-width: 640px) {
     #ai-tip-btn-desktop,
     #ai-tip-btn,
@@ -2089,7 +2080,6 @@ h3 {
     box-shadow: 0 2px 8px color-mix(in srgb, var(--player-o-color) 50%, transparent);
 }
 
-/* --- SOUND TOGGLE --- */
 .sound-toggle-btn {
     background: var(--surface-elevated);
     backdrop-filter: blur(16px);
@@ -2125,7 +2115,6 @@ h3 {
     box-shadow: 0 4px 16px color-mix(in srgb, var(--player-o-color) 25%, transparent);
 }
 
-/* Mobile: Smaller sound button */
 @media (max-width: 640px) {
     .sound-toggle-btn {
         padding: 12px 24px;
@@ -2133,7 +2122,6 @@ h3 {
     }
 }
 
-/* --- ICON CUSTOMIZATION --- */
 .icon-option,
 .color-option {
     width: 52px;
@@ -2184,7 +2172,6 @@ h3 {
     filter: drop-shadow(0 0 10px var(--accent-primary));
 }
 
-/* Mobile: Smaller icons */
 @media (max-width: 640px) {
     .icon-option,
     .color-option {
@@ -2221,7 +2208,6 @@ h3 {
     box-shadow: 0 4px 12px color-mix(in srgb, var(--player-o-color) 70%, transparent);
 }
 
-/* --- WIN STREAK DISPLAY --- */
 #win-streak-display {
     margin-top: var(--space-md);
     display: flex;
@@ -2251,7 +2237,6 @@ h3 {
     }
 }
 
-/* --- REMATCH STATUS --- */
 #rematch-status {
     font-size: 0.95rem;
     font-weight: 600;
@@ -2270,7 +2255,6 @@ h3 {
     transform: none;
 }
 
-/* --- STAT VALUES --- */
 .stat-value.positive {
     color: var(--accent-primary);
     font-weight: 700;
@@ -2283,7 +2267,6 @@ h3 {
     text-shadow: 0 0 8px color-mix(in srgb, var(--player-o-color) 40%, transparent);
 }
 
-/* --- PREMIUM ANIMATIONS --- */
 @keyframes fadeInScaleUp {
     from {
         opacity: 0;
@@ -2465,7 +2448,6 @@ h3 {
     animation: subtlePulse 1.8s infinite ease-in-out;
 }
 
-/* --- UTILITY CLASSES --- */
 .hidden {
     display: none !important;
 }
@@ -2479,9 +2461,7 @@ h3 {
     pointer-events: none;
 }
 
-/* --- RESPONSIVE FOUNDATION (Mobile-First Complete) --- */
 
-/* Landscape mobile (480px - 767px) */
 @media (min-width: 480px) and (max-width: 767px) {
     .glass-panel {
         padding: 24px;
@@ -2495,7 +2475,6 @@ h3 {
     }
 }
 
-/* Tablet portrait (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
     .glass-panel {
         padding: 28px;
@@ -2517,7 +2496,6 @@ h3 {
     }
 }
 
-/* Tablet landscape (1024px - 1279px) */
 @media (min-width: 1024px) and (max-width: 1279px) {
     #game-board-container {
         width: min(50vw, 480px);
@@ -2525,7 +2503,6 @@ h3 {
     }
 }
 
-/* Ultra-wide (1920px+) */
 @media (min-width: 1920px) {
     html {
         font-size: 18px;
@@ -2544,7 +2521,6 @@ h3 {
     }
 }
 
-/* Print styles */
 @media print {
     .glass-panel,
     .modal-backdrop,
@@ -2554,7 +2530,6 @@ h3 {
     }
 }
 
-/* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -2565,7 +2540,7 @@ h3 {
     }
 }
 
-/* High contrast mode support */
+
 @media (prefers-contrast: high) {
     :root {
         --border-subtle: rgba(255, 255, 255, 0.4);
@@ -2579,7 +2554,7 @@ h3 {
     }
 }
 
-/* Touch device optimizations */
+
 @media (hover: none) and (pointer: coarse) {
     .play-button,
     .control-btn,
@@ -2596,20 +2571,15 @@ h3 {
 }
 
     </style>
-
 </head>
 <body class="overflow-hidden">
-    <!-- DANIYAL: Loading State Overlay (Updated Theme) -->
     <div id="loading-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-95 flex flex-col items-center justify-center z-50">
          <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-amber-500" style="border-color: var(--text-title); border-top-color: transparent;"></div>
          <p class="mt-4 text-amber-400 text-lg font-semibold tracking-wider" style="color: var(--text-title);">Loading Arcade Nexus...</p>
     </div>
-    <!-- BADSHAH: Custom Notification Bar -->
     <div id="notification-bar" role="alert" class="hidden"></div>
     
-    <!-- BADSHAH: Chat Message Overlay (NEW) -->
     <div id="message-overlay" class="hidden"></div>
-    <!-- ======== DANIYAL: NAYI LOGIN SCREEN ======== -->
     <div id="login-screen" class="min-h-screen p-6 flex flex-col items-center justify-center animate-fade-in-scale-up hidden">
         <div class="w-full max-w-sm">
             <h1 class="w-full text-center text-3xl sm:text-4xl font-bold uppercase tracking-widest mb-4" style="font-family: 'Oxanium', monospace; color: var(--text-title);">
@@ -2618,14 +2588,12 @@ h3 {
             <h2 class="w-full text-center text-2xl sm:text-3xl font-bold uppercase tracking-widest mb-12" style="font-family: 'Oxanium', monospace; color: var(--text-title);">
                 TIC-TAC-TOE
             </h2>
-            <!-- PLAY Button Panel -->
             <div class="glass-panel p-6 sm:p-8 rounded-2xl w-full space-y-6 mb-6">
                  <button id="play-btn" class="login-btn guest-login-btn">
                      <i data-lucide="play" class="w-5 h-5"></i>
                      <span>PLAY</span>
                  </button>
             </div>
-            <!-- LOAD DATA Panel (Restored) -->
              <div class="glass-panel p-6 sm:p-8 rounded-2xl w-full space-y-4">
                 <h3 class="text-lg font-semibold text-gray-400 mb-2">Load Data by ID</h3>
                 <input type="text" id="old-game-id-input" class="name-input" placeholder="Paste your saved Game ID">
@@ -2635,63 +2603,46 @@ h3 {
             </div>
         </div>
     </div>
-    <!-- ======== BADSHAH: ARCADE NEXUS SCREEN (UPDATED) ======== -->
     <div id="arcade-nexus-screen" class="min-h-screen p-6 flex flex-col items-center animate-fade-in-scale-up relative hidden">
-        <!-- DANIYAL: Header buttons ke liye container -->
-        <!-- BADSHAH: FIX - Consolidated rewards into top bar -->
         <div class="w-full max-w-lg flex justify-between items-center absolute top-4 px-5 z-20">
-             <!-- 🔴 BADSHAH: Logout button yahan se HATA diya gaya -->
-            
-            <!-- NEW COLLECT REWARD BUTTON (Consolidated from bottom panel) -->
                  <button id="collect-reward-btn-top" class="play-button py-2 px-4 text-sm font-bold rounded-full shadow-lg" disabled>
                  <i data-lucide="gift" class="w-5 h-5 inline-block mr-1"></i>
                  <span>Collect Reward</span>
              </button>
-            <!-- BADSHAH: Global Settings Icon -->
             <button id="global-settings-btn" class="text-gray-500 dark:text-gray-400 transition-colors z-10 p-2 ml-auto">
                 <i data-lucide="settings" class="w-7 h-7"></i>
             </button>
         </div>
-        <!-- Responsive Title -->
         <h1 class="w-full text-center text-3xl sm:text-4xl font-bold uppercase tracking-widest mt-24 mb-4" style="font-family: 'Oxanium', monospace; color: var(--text-title);">
             ARCADE NEXUS
         </h1>
-        <!-- DANIYAL: Welcome Message (Updated to show UID) -->
         <h2 id="welcome-message" class="w-full text-center text-lg sm:text-xl font-medium mb-1" style="color: var(--text-light);">
             Welcome, Guest
         </h2>
-        <!-- BADSHAH: NEW Win Streak Display -->
          <div id="win-streak-display" class="mb-4">
              <i data-lucide="flame" class="w-5 h-5"></i>
              <span>Win Streak: <span id="win-streak-count">0</span></span>
          </div>
-        <!-- DANIYAL: HEARTS BAR -->
         <div id="hearts-bar">
              <i data-lucide="heart" class="w-6 h-6" id="heart-icon"></i>
              <span id="heart-count">20/100</span>
         </div>
-        <!-- BADSHAH: Custom Game Bar (Lucky Spin & Leaderboards) -->
         <div class="w-full max-w-lg flex justify-around items-center gap-4 my-4">
-             <!-- Free Rewards (Retained) -->
              <div class="flex-1 glass-panel p-2 text-center rounded-xl border border-gray-700">
                  <h3 class="text-sm font-semibold text-gray-400">Free Rewards</h3>
                  <p class="text-xs text-amber-400" style="color: var(--text-title);">Collect Now!</p>
              </div>
-             <!-- Lucky Spin (Updated Text) -->
              <div class="flex-1 glass-panel p-2 text-center rounded-xl border border-gray-700">
                  <h3 class="text-sm font-semibold text-gray-400">Lucky Spin</h3>
                  <p class="text-xs text-amber-400" style="color: var(--text-title);">in 23h 58m 59s</p>
              </div>
-             <!-- Leaderboards (Retained) -->
              <div class="flex-1 glass-panel p-2 text-center rounded-xl border border-gray-700">
                  <h3 class="text-sm font-semibold text-gray-400">Leaderboards</h3>
                  <p class="text-xs text-amber-400" style="color: var(--text-title);">Ends in: 3d 10h 33m</p>
              </div>
         </div>
-        <!-- DANIYAL: REWARD PANEL (Now hidden, functionality moved to top button) -->
         <div id="reward-panel" class="hidden"></div>
         <div class="w-full max-w-lg space-y-4">
-            <!-- Game List Item 1: Player vs Player (Updated Text) -->
             <div id="select-ttt" class="game-list-item active">
                 <div class="game-list-preview">
                     <i data-lucide="layout-grid"></i>
@@ -2704,7 +2655,6 @@ h3 {
                     <span>PLAY</span>
                 </button>
             </div>
-            <!-- Game List Item 2: Play with AI (Updated Text) -->
              <div id="select-ai" class="game-list-item">
                 <div class="game-list-preview">
                     <i data-lucide="cpu"></i>
@@ -2717,7 +2667,6 @@ h3 {
                     <span>PLAY</span>
                 </button>
             </div>
-            <!-- Game List Item 3: Play with Friends (Updated Text/FTF mode) -->
             <div id="select-ftf" class="game-list-item">
                 <div class="game-list-preview">
                     <i data-lucide="users"></i>
@@ -2731,10 +2680,8 @@ h3 {
                     <span>SELECT</span>
                 </button>
             </div>
-            <!-- BADSHAH: Removed the other disabled game items as requested. -->
         </div>
     </div>
-    <!-- DANIYAL: FRIEND TO FRIEND MODAL (UPDATED WITH CREATE/JOIN VIEWS) -->
      <div id="ftf-modal" class="modal-backdrop hidden">
         <div id="ftf-content" class="modal-content text-center">
             <button id="ftf-close-btn" class="absolute top-4 right-5 text-gray-500 hover:text-amber-500 transition-colors">
@@ -2743,7 +2690,6 @@ h3 {
             <h2 id="ftf-title" class="text-3xl font-bold mb-6" style="font-family: 'Oxanium', monospace; color: var(--text-title);">
                 PLAY WITH FRIENDS
             </h2>
-            <!-- Default/Selection View -->
             <div id="ftf-selection-view">
                 <div class="flex flex-col space-y-4">
                     <button id="ftf-create-room-select-btn" class="play-button w-full py-3 rounded-xl font-bold text-lg shadow-lg">
@@ -2752,11 +2698,10 @@ h3 {
                     </button>
                     <button id="ftf-join-room-select-btn" class="control-btn w-full justify-center py-3 text-lg">
                         <i data-lucide="log-in" class="w-5 h-5"></i>
-                        <span>JOIN ROOM</span>
+                        <span>JOIN ROOM (-1 Heart)</span>
                     </button>
                 </div>
             </div>
-            <!-- Create Room View -->
             <div id="ftf-create-view" class="hidden space-y-6">
                 <p class="text-sm text-gray-400">Share this code with your friend to start the match.</p>
                 <div class="bg-gray-800 p-4 rounded-xl flex justify-between items-center shadow-inner border border-amber-600">
@@ -2773,8 +2718,7 @@ h3 {
                     CANCEL
                 </button>
             </div>
-             <!-- Join Room View -->
-            <div id="ftf-join-view" class="hidden space-y-4">
+             <div id="ftf-join-view" class="hidden space-y-4">
                 <input type="text" id="join-room-input" class="name-input text-center uppercase tracking-widest" placeholder="ENTER ROOM CODE">
                 <button id="join-room-submit-btn" class="play-button w-full py-3 rounded-xl font-bold text-lg shadow-lg" disabled>
                     SUBMIT
@@ -2785,7 +2729,6 @@ h3 {
             </div>
         </div>
     </div>
-    <!-- ======== BADSHAH: MAIN MENU (Full Screen) ======== -->
     <div id="main-menu-screen" class="min-h-screen max-h-screen overflow-y-auto p-6 flex flex-col items-center pt-24 hidden animate-fade-in-scale-up relative">
          <button id="main-menu-close-btn" class="absolute top-4 left-5 text-gray-500 transition-colors z-10 p-2">
             <i data-lucide="arrow-left" class="w-8 h-8"></i>
@@ -2795,7 +2738,6 @@ h3 {
                 NEW GAME
             </h2>
             <div class="space-y-4">
-                <!-- 🔴 MEGA UPDATE: Name input yahan se HATA diya gaya -->
                 <div>
                     <h3 class="text-lg font-semibold text-gray-400 mb-2">Board Size</h3>
                     <div class="option-group grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -2813,12 +2755,10 @@ h3 {
                 </div>
                 <div id="ai-difficulty-section" class="hidden">
                     <h3 class="text-lg font-semibold text-gray-400 mb-2">AI Difficulty</h3>
-                    <!-- 🔴 BADSHAH: FIX - Grid ko 2x2 kar diya hai taaki 4 options fit ho sakein -->
                     <div class="option-group grid grid-cols-2 gap-3">
                         <div><input type="radio" id="ai-easy" name="ai-difficulty" value="easy"><label for="ai-easy">Easy</label></div>
                         <div><input type="radio" id="ai-medium" name="ai-difficulty" value="medium" checked><label for="ai-medium">Medium</label></div>
                         <div><input type="radio" id="ai-hard" name="ai-difficulty" value="hard"><label for="ai-hard">Hard</label></div>
-                        <!-- 🔴 BADSHAH: NEW - Grandmaster AI Level -->
                         <div><input type="radio" id="ai-grandmaster" name="ai-difficulty" value="grandmaster"><label for="ai-grandmaster">Grandmaster</label></div>
                     </div>
                 </div>
@@ -2829,15 +2769,12 @@ h3 {
                         <div><input type="radio" id="variant-blocker" name="game-variant" value="blocker"><label for="variant-blocker">Blocker</label></div>
                     </div>
                 </div>
-                <!-- BADSHAH: Icon Customization Section -->
                 <div id="icon-customization-section">
                     <h3 id="customization-player-title" class="text-lg font-semibold text-gray-400 mb-2">Icon Customization (Player X)</h3>
                     <div class="grid grid-cols-1 gap-4">
-                        <!-- Icon Selection -->
                         <div class="space-y-2">
                              <h4 class="text-sm font-medium text-gray-500">Icon</h4>
                              <div id="icon-select-container" class="flex gap-3 flex-wrap">
-                                 <!-- Icons will be rendered here by JS -->
                              </div>
                         </div>
                     </div>
@@ -2848,13 +2785,10 @@ h3 {
             </div>
         </div>
     </div>
-    <!-- ======== BADSHAH: GAME SCREEN (New Responsive Grid Layout, Carrom Style) ======== -->
     <div id="game-screen" class="game-screen hidden">
         <div id="game-content-area">
-             <!-- Player Profiles and Status (CARROM STYLE HEADER) -->
             <div class="game-header-new">
                 
-                <!-- Player X Profile (Left) -->
                 <div id="player-x-profile" class="player-profile player-x active-turn">
                     <div class="icon" style="color: var(--player-x-color); text-shadow: var(--player-x-shadow);">
                         <i data-lucide="x" class="w-6 h-6 md:w-7 md:h-7"></i>
@@ -2863,13 +2797,10 @@ h3 {
                         <h3 id="player-x-name" class="name">DANIYAL</h3>
                         <p id="player-x-score" class="score">0</p>
                     </div>
-                    <!-- Timer bars removed for simplicity/carrom style -->
                 </div>
-                <!-- Game Status / AI Thinking (Center) -->
                 <div id="game-status-display">
                     Your Turn
                 </div>
-                <!-- Player O Profile (Right) -->
                 <div id="player-o-profile" class="player-profile player-o">
                     <div class="icon" style="color: var(--player-o-color); text-shadow: var(--player-o-shadow);">
                         <i data-lucide="sparkles" class="w-6 h-6 md:w-7 md:h-7"></i>
@@ -2878,36 +2809,28 @@ h3 {
                         <h3 id="player-o-name" class="name">AI</h3>
                         <p id="player-o-score" class="score">0</p>
                     </div>
-                    <!-- Timer bars removed for simplicity/carrom style -->
                 </div>
             </div>
-            <!-- Game Board (Center) -->
             <div id="game-board-wrapper">
                 <div id="game-board-container" class="board-size-3"></div>
             </div>
-            <!-- CHAT PANEL / CHAT CONTROLS / AI TIP (Right Side on Desktop / Bottom on Mobile) -->
             <div id="chat-panel-area">
                 
-                 <!-- MULTIPLAYER CHAT PANEL -->
                  <div id="multiplayer-chat-panel" class="hidden">
                      <h3 class="text-xl font-bold mb-3" style="color: var(--text-title);">ROOM CHAT</h3>
                      <div id="chat-messages" class="flex-grow overflow-y-auto mb-4">
-                         <!-- Messages will be appended here -->
                          <div class="text-sm text-gray-500 text-center py-2">Start chatting when the game begins</div>
                      </div>
                      <div id="chat-input-container">
-                         <!-- 🔴 YAHAN FIX KIYA GAYA: 150 characters ki limit add kar di hai -->
                          <input type="text" id="chat-input-field" placeholder="Write a message..." maxlength="150">
                          <button id="chat-send-btn" disabled>
                              <i data-lucide="send" class="w-5 h-5"></i>
                          </button>
                      </div>
                  </div>
-                 <!-- 🔴 MEGA UPDATE: AI Tip Button (Desktop) -->
                  <div id="desktop-game-controls" class="hidden lg:flex justify-center items-center gap-4 mt-2">
                     <button id="ai-tip-btn-desktop" class="nav-btn relative" title="Get AI Hint (-5 Hearts)">
                         <i data-lucide="lightbulb" class="w-6 h-6"></i>
-                        <!-- 🔴 MEGA UPDATE: Tip count badge (span) hata diya gaya -->
                     </button>
                     <button id="blocker-powerup-btn-desktop" class="nav-btn text-red-400 hover:text-red-300 hidden">
                         <i data-lucide="shield-ban"></i>
@@ -2916,27 +2839,21 @@ h3 {
             </div>
             
         </div>
-        <!-- FIXED CONTROLS BAR (Mobile Only - Chat Toggle + Settings) -->
-        <div id="fixed-controls-bar" class="p-4"> <!-- Increased padding for better look -->
+        <div id="fixed-controls-bar" class="p-4">
             
             <div class="flex gap-4">
-                <!-- Left: Chat Toggle -->
                 <button id="chat-toggle-btn" class="bottom-nav-btn">
                     <i data-lucide="message-square" class="w-6 h-6"></i>
                 </button>
                 
-                <!-- 🔴 MEGA UPDATE: AI Hint Button (Mobile) -->
                 <button id="ai-tip-btn" class="bottom-nav-btn relative hidden" title="Get AI Hint (-5 Hearts)">
                     <i data-lucide="lightbulb" class="w-6 h-6"></i>
-                    <!-- 🔴 MEGA UPDATE: Tip count badge (span) hata diya gaya -->
                 </button>
-                <!-- Blocker Button (if needed) -->
                 <button id="blocker-powerup-btn-mobile" class="bottom-nav-btn relative hidden">
                      <i data-lucide="shield-ban" class="w-6 h-6"></i>
                 </button>
             </div>
             
-            <!-- Right: Settings -->
             <button id="settings-btn" class="bottom-nav-btn ml-auto">
                 <i data-lucide="settings" class="w-6 h-6"></i>
             </button>
@@ -2944,7 +2861,6 @@ h3 {
         
         <div id="confetti-container"></div>
     </div>
-    <!-- ======== BADSHAH: SETTINGS MODAL (IN-GAME) ======== -->
     <div id="settings-modal" class="modal-backdrop hidden">
         <div class="modal-content text-center">
             <button id="settings-close-btn" class="absolute top-4 right-5 text-gray-500 hover:text-amber-500 transition-colors">
@@ -2954,7 +2870,6 @@ h3 {
                 SETTINGS
             </h2>
             <div class="grid grid-cols-1 gap-4">
-                <!-- BADSHAH: FIX - Restart button visibility logic is now in JS -->
                 <button id="restart-game-btn" class="control-btn py-3 text-lg"><i data-lucide="refresh-cw" class="w-5 h-5"></i>Restart</button>
                 <button id="in-game-sound-toggle-btn" class="sound-toggle-btn py-3 text-lg">
                      <i data-lucide="volume-2" class="w-5 h-5"></i>
@@ -2966,8 +2881,7 @@ h3 {
             </button>
         </div>
     </div>
-     <!-- ======== BADSHAH: GLOBAL SETTINGS MODAL (UPDATED) ======== -->
-    <div id="global-settings-modal" class="modal-backdrop hidden">
+     <div id="global-settings-modal" class="modal-backdrop hidden">
         <div class="modal-content text-center">
             <button id="global-settings-close-btn" class="absolute top-4 right-5 text-gray-500 hover:text-amber-500 transition-colors">
                 <i data-lucide="x" class="w-7 h-7"></i>
@@ -2976,26 +2890,24 @@ h3 {
                 OPTIONS
             </h2>
             <div class="grid grid-cols-1 gap-4">
-                 <!-- 🔴 MEGA UPDATE: Name input yahan MOVE kar diya gaya -->
                  <div>
                     <h3 class="text-lg font-semibold text-gray-400 mb-2">Your Name</h3>
                     <input type="text" id="player-name-input" class="name-input" placeholder="Player 1" maxlength="10">
                  </div>
                 
-                 <!-- Sound Toggle Button -->
                 <button id="sound-toggle-btn" class="sound-toggle-btn py-3 text-lg">
                     <i data-lucide="volume-2" class="w-5 h-5"></i>
                     <span>Sound On</span>
                 </button>
                 
-                <!-- BADSHAH: Yahan naya purchase license button add kiya gaya -->
-                <!-- NOTE: 'href' mein apna Google Form ka link daalein -->
-                <a href="https://forms.gle/YOUR_FORM_LINK_HERE" target="_blank" rel="noopener noreferrer" id="purchase-license-btn" class="control-btn w-full justify-center py-3 text-lg text-amber-400 hover:text-amber-300">
+                <a target="_blank" rel="noopener noreferrer" id="purchase-license-btn" 
+                   class="control-btn w-full justify-center py-3 text-lg text-amber-400 opacity-50 cursor-not-allowed"
+                   title="Link Disabled"
+                >
                     <i data-lucide="briefcase" class="w-5 h-5"></i>
                     <span>Purchase License</span>
                 </a>
                 
-                <!-- 🔴 BADSHAH: Logout button yahan ADD kiya gaya -->
                 <button id="logout-btn" class="control-btn w-full justify-center py-3 text-lg text-red-400 hover:text-red-300">
                     <i data-lucide="log-out" class="w-5 h-5"></i>
                     <span>Logout</span>
@@ -3003,7 +2915,6 @@ h3 {
             </div>
         </div>
     </div>
-    <!-- ======== GAME OVER MODAL (Single Player) ======== -->
     <div id="game-over-modal" class="modal-backdrop hidden">
         <div class="modal-content text-center">
              <h2 id="game-over-message" class="text-3xl font-bold mb-4" style="font-family: 'Oxanium', monospace; color: var(--text-title);">
@@ -3012,7 +2923,6 @@ h3 {
              <div class="text-left mb-6 space-y-2">
                  <div class="stat-item"><span class="stat-label">Time Taken:</span> <span id="stat-time" class="stat-value">0s</span></div>
                  <div class="stat-item"><span class="stat-label">Total Moves:</span> <span id="stat-moves" class="stat-value">0</span></div>
-                 <!-- 🔴 MEGA UPDATE: Hearts stat ko dynamic kar diya gaya -->
                  <div class="stat-item"><span class="stat-label">Hearts Change:</span> <span id="stat-hearts" class="stat-value negative">-1 Heart</span></div>
                  <div class="stat-item"><span class="stat-label">Win Streak:</span> <span id="stat-win-streak" class="stat-value positive">0 Wins</span></div>
              </div>
@@ -3026,7 +2936,6 @@ h3 {
              </div>
          </div>
     </div>
-     <!-- DANIYAL: NEW Multiplayer Result Modal (Enhanced) -->
     <div id="multiplayer-result-modal" class="modal-backdrop hidden">
         <div class="modal-content text-center">
             <button id="multiplayer-result-close-btn" class="absolute top-4 right-5 text-gray-500 hover:text-amber-500 transition-colors">
@@ -3036,7 +2945,6 @@ h3 {
                 MATCH FINISHED
             </h2>
             <div id="multiplayer-score-display" class="flex justify-around items-center mb-6">
-                 <!-- Player X -->
                  <div class="player-result-card player-x">
                      <span class="text-xs text-gray-400">PLAYER X</span>
                      <div class="result-icon"> <i id="result-icon-x" data-lucide="x"></i> </div>
@@ -3044,7 +2952,6 @@ h3 {
                      <p id="result-score-x" class="text-3xl font-bold text-amber-400">0</p>
                  </div>
                  <span class="text-4xl font-extrabold text-gray-500 mx-4">VS</span>
-                 <!-- Player O -->
                  <div class="player-result-card player-o">
                      <span class="text-xs text-gray-400">PLAYER O</span>
                      <div class="result-icon"> <i id="result-icon-o" data-lucide="circle"></i> </div>
@@ -3052,7 +2959,6 @@ h3 {
                      <p id="result-score-o" class="text-3xl font-bold text-red-400">0</p>
                      </div>
                  </div>
-                 <!-- 🔴 MEGA UPDATE: Stats for Multiplayer -->
                  <div class="text-left mb-4 space-y-1 text-sm">
                       <div class="stat-item"><span class="stat-label">Hearts Change:</span> <span id="mp-stat-hearts" class="stat-value negative">0 Hearts</span></div>
                       <div class="stat-item"><span class="stat-label">Win Streak:</span> <span id="mp-stat-win-streak" class="stat-value positive">0 Wins</span></div>
@@ -3068,95 +2974,96 @@ h3 {
                 </div>
             </div>
         </div>
+
         <script type="module">
-            // DANIYAL: Firebase SDK Imports
             import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
             import { getAuth, signInAnonymously, signInWithCustomToken, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-            // BADSHAH: ADDED CHAT IMPORTS (collection, addDoc, query, orderBy, getDocs)
-            import { getFirestore, doc, getDoc, setDoc, updateDoc, onSnapshot, deleteDoc, runTransaction, collection, addDoc, query, orderBy, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+            
+            import { getFirestore, doc, getDoc, setDoc, updateDoc, onSnapshot, deleteDoc, runTransaction, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+            
+            import { getDatabase, ref, onValue, set, onDisconnect, push, remove } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-database.js";
             import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-            // DANIYAL: Global Firebase Instances
+            
             let app;
             let auth;
             let db;
+            let rtdb; 
             let isAuthReady = false;
+            let saveDebounceTimer = null;
+            
             const SCORE_COLLECTION = 'tictactoe_scores';
             const ROOM_COLLECTION = 'rooms';
-            const CHAT_COLLECTION = 'chat'; // BADSHAH: NEW Chat Collection
-            // DANIYAL: Firebase Config Fallback (Using provided structure)
+        
+            
             const FIREBASE_FALLBACK_CONFIG = {
                 apiKey: "AIzaSyBUZ-U_NrrqLs5IHjT3QiJUI9UeYeknDQM",
                 authDomain: "tic-tac-game-92b57.firebaseapp.com",
+                databaseURL: "https://tic-tac-game-92b57-default-rtdb.firebaseio.com/", 
                 projectId: "tic-tac-game-92b57",
                 storageBucket: "tic-tac-game-92b57.appspot.com",
                 messagingSenderId: "426567158009",
                 appId: "1:426567158009:web:c086438883e025ff75f85b" 
             };
-            // BADSHAH: NEW - AI Personality Definitions
+            
             const AI_PERSONALITIES = {
                 easy: { name: 'NOODLER', thinking: 'Noodler is thinking...' },
                 medium: { name: 'ANALYST', thinking: 'Analyst is thinking...' },
                 hard: { name: 'ARCHITECT', thinking: 'Architect is thinking...' },
-                // 🔴 BADSHAH: NEW - Grandmaster AI Personality
                 grandmaster: { name: 'GRANDMASTER', thinking: 'Grandmaster is planning...' }
             };
-            // --- 🔴 MEGA UPDATE: HEARTS SYSTEM CONSTANTS ---
-            const FREE_REWARD_CAP = 100; // <-- BADSHAH: Naam badal diya (MAX_HEARTS se)
-            const STARTING_HEARTS = 20; // <-- Naye user ke liye 20 hearts
-            const REWARD_INTERVAL = 3 * 60 * 60 * 1000; // 3 hours in milliseconds
-            const REWARD_AMOUNT = 3; 
-            const AI_WIN_REWARD = 2; // AI ko harane par
-            const AI_LOSE_COST = -1; // AI se haarne par
-            const FTF_WIN_REWARD = 3; // Dost ko harane par
-            const FTF_CREATE_COST = -1; // Room banane ka cost
-            const AI_TIP_COST = 5; // AI Tip ka cost
-            const WIN_STREAK_BONUS_COUNT = 3; // 3-win streak par bonus
-            const WIN_STREAK_BONUS_AMOUNT = 5; // 5 bonus hearts
             
-            // --- Icon Customization Data ---
+            const FREE_REWARD_CAP = 100;
+            const STARTING_HEARTS = 20;
+            const REWARD_INTERVAL = 3 * 60 * 60 * 1000;
+            const REWARD_AMOUNT = 3; 
+            const AI_WIN_REWARD = 2;
+            const AI_LOSE_COST = -1;
+            const FTF_WIN_REWARD = 2;
+            const FTF_CREATE_COST = -1;
+            const FTF_JOIN_COST = -1;
+            const AI_TIP_COST = 5;
+            const WIN_STREAK_BONUS_COUNT = 3;
+            const WIN_STREAK_BONUS_AMOUNT = 5;
+            
             const ICON_COSTS = {
-                // Icon: [Lucide Icon Name, Cost in Hearts]
                 'x': ['x', 0],
                 'circle': ['circle', 0],
                 'shield': ['shield', 5],
                 'lightning': ['zap', 8],
                 'skull': ['skull', 15],
                 'anchor': ['anchor', 10],
-                'sparkles': ['sparkles', 0], // AI's fixed icon/color
+                'sparkles': ['sparkles', 0],
             };
             const COLOR_MAP = {
-                'cyan': ['var(--player-x-color)', 'var(--player-x-shadow)'], // User's fixed color
-                'purple-neon': ['var(--player-o-color)', 'var(--player-o-shadow)'] // AI/Opponent's fixed color
+                'cyan': ['var(--player-x-color)', 'var(--player-x-shadow)'],
+                'purple-neon': ['var(--player-o-color)', 'var(--player-o-shadow)']
             };
             const COLOR_COSTS = COLOR_MAP;
-            // BADSHAH: ❌ Error #18 FIX: Centralized Minimax Depths for performance
             const MINIMAX_DEPTHS = {
-                3: 5, // 3x3 board: up to depth 5 (Optimal)
-                4: 4, // 4x4 board: up to depth 4 (Performance Limit)
-                5: 3  // 5x5 board: up to depth 3 (Performance Limit)
+                3: 5,
+                4: 4,
+                5: 3
             };
-            // --- Game State Variables ---
             let gameSettings = {};
             let player1Name = "Play";
             let playerXScore = 0;
             let playerOScore = 0;
-            let currentHearts = STARTING_HEARTS; // <-- Default 20 se start
+            let currentHearts = STARTING_HEARTS;
             let nextRewardTimestamp = 0;
             let winStreak = 0; 
-            // DANIYAL: Icon State
             let playerXIcon = 'x';
-            let playerXColor = 'cyan'; // Fixed to cyan
-            let unlockedIcons = ['x', 'circle']; // Only unlockable icons are stored here
-            // DANIYAL: User Profile state
+            let playerXColor = 'cyan';
+            let unlockedIcons = ['x', 'circle'];
             let userProfile = {
                 uid: null,
                 displayName: 'Play',
                 isGuest: true
             };
+            let unsubscribeUserScoresListener = null;
             const humanPlayer = 'X';
             const aiPlayer = 'O';
-            let playerOIcon = 'sparkles'; // AI Fixed Icon
-            let playerOColor = 'purple-neon'; // AI Fixed Color
+            let playerOIcon = 'sparkles';
+            let playerOColor = 'purple-neon';
             let currentPlayer = 'X';
             let boardState = [];
             let isGameActive = true;
@@ -3164,55 +3071,49 @@ h3 {
             let moveHistory = [];
             let gameStartTime;
             let moveCount = 0;
-            let matchPoint = 1; 
             let audioStarted = false; 
             let isMuted = false; 
             let blockerCountX = 1;
             let blockerCountO = 1;
             let isBlockerActive = false;
-            // let aiTipCount = 3; // <-- 🔴 MEGA UPDATE: Isko hata diya gaya
             let turnTimer;
-            const TURN_DURATION = 10;
+            const TURN_DURATION = 5; 
             let rewardTimerInterval; 
-            // BADSHAH: NEW RATE LIMITING STATES (❌ Error #3 FIX)
-            let isMoveOnCooldown = false; // For multiplayer moves
-            const MOVE_COOLDOWN_MS = 300; // Move cooldown
-            let isChatOnCooldown = false; // For chat messages 
-            const CHAT_COOLDOWN_MS = 1500; // Chat cooldown
-            // --- MULTIPLAYER STATE ---
+            let isMoveOnCooldown = false;
+            const MOVE_COOLDOWN_MS = 300;
+            let isChatOnCooldown = false;
+            const CHAT_COOLDOWN_MS = 1500;
+            let isCreatingRoom = false;
             let isMultiplayer = false;
             let currentRoomId = null;
-            let myPlayerMark = null; // 'X' or 'O'
-            let unsubscribeRoomListener = null; // onSnapshot listener handle
-            let unsubscribeChatListener = null; // BADSHAH: NEW Chat listener
+            let myPlayerMark = null;
+            let unsubscribeRoomListener = null;
+            let unsubscribeChatListener = null;
+            let unsubscribeOpponentPresence = null; 
             let opponentName = 'Opponent'; 
             let opponentMark = null; 
             let playerXRematch = false; 
-            let playerOR_ematch = false; 
+            let playerORematch = false; 
             let rematchCountdownInterval = null; 
             let gameStartedNotified = false; 
             let mpPlayerXData = {}; 
             let mpPlayerOData = {}; 
             let notificationTimeout; 
             let lastKnownStateFingerprint = null; 
-            let isChatPanelOpen = false; // BADSHAH: Chat Panel State
-            // BADSHAH: NEW - Multiplier flag to prevent endGame loop (🔴 Issue #2 Fix)
+            let isChatPanelOpen = false;
             let gameEndedNotified = false; 
-            // BADSHAH: NEW CHAT Element References
+            
             const multiplayerChatPanel = document.getElementById('multiplayer-chat-panel');
             const chatInputField = document.getElementById('chat-input-field');
             const chatSendBtn = document.getElementById('chat-send-btn');
             const chatMessagesContainer = document.getElementById('chat-messages');
             const messageOverlay = document.getElementById('message-overlay'); 
-            // BADSHAH: New Mobile Controls Bar Elements
             const chatToggleButton = document.getElementById('chat-toggle-btn');
             const aiTipBtnMobile = document.getElementById('ai-tip-btn');
-            // const aiTipCountElMobile = document.getElementById('ai-tip-count'); // <-- 🔴 MEGA UPDATE: Hata diya
             const blockerPowerupBtnMobile = document.getElementById('blocker-powerup-btn-mobile');
             try {
                 window.addEventListener('DOMContentLoaded', () => {
                     console.log("DOM loaded. Futuristic UI Initializing...");
-                    // --- Elements ---
                     const docHtml = document.documentElement;
                     const loadingOverlay = document.getElementById('loading-overlay');
                     const notificationBar = document.getElementById('notification-bar'); 
@@ -3240,7 +3141,6 @@ h3 {
                     const createRoomSelectBtn = document.getElementById('ftf-create-room-select-btn'); 
                     const joinRoomSelectBtn = document.getElementById('ftf-join-room-select-btn'); 
                     const aiBtn = document.getElementById('ai-btn'); 
-                    // FTF Sub Views
                     const ftfSelectionView = document.getElementById('ftf-selection-view');
                     const ftfCreateView = document.getElementById('ftf-create-view');
                     const ftfJoinView = document.getElementById('ftf-join-view');
@@ -3251,7 +3151,6 @@ h3 {
                     const joinRoomInput = document.getElementById('join-room-input');
                     const joinRoomSubmitBtn = document.getElementById('join-room-submit-btn');
                     const backToSelectionBtn = document.getElementById('back-to-selection-btn');
-                    // MP Result Modal Elements
                     const mpResultTitle = document.getElementById('multiplayer-result-title');
                     const resultCardX = multiplayerResultModal.querySelector('.player-result-card.player-x');
                     const resultCardO = multiplayerResultModal.querySelector('.player-result-card.player-o');
@@ -3274,11 +3173,10 @@ h3 {
                     const startGameBtn = document.getElementById('start-game-btn');
                     const settingsBtn = document.getElementById('settings-btn'); 
                     const settingsCloseBtn = document.getElementById('settings-close-btn'); 
-                    const restartGameBtn = document.getElementById('restart-game-btn');
+
                     const backToMainMenuBtn = document.getElementById('back-to-main-menu-btn'); 
                     const playAgainBtn = document.getElementById('play-again-btn'); 
                     const backToMenuBtn = document.getElementById('back-to-menu-btn'); 
-                    // 🔴 MEGA UPDATE: player-name-input ab global settings modal mein hai
                     const playerNameInput = document.getElementById('player-name-input');
                     const gameModeRadios = document.querySelectorAll('input[name="game-mode"]');
                     const aiDifficultySection = document.getElementById('ai-difficulty-section');
@@ -3298,7 +3196,6 @@ h3 {
                     const blockerPowerupBtn = document.getElementById('blocker-powerup-btn-desktop'); 
                     const confettiContainer = document.getElementById('confetti-container');
                     const aiTipBtn = document.getElementById('ai-tip-btn-desktop'); 
-                    // const aiTipCountEl = document.getElementById('ai-tip-count-desktop'); // <-- 🔴 MEGA UPDATE: Hata diya
                     const customizationPlayerTitle = document.getElementById('customization-player-title'); 
                     const heartCountEl = document.getElementById('heart-count');
                     const rewardPanel = document.getElementById('reward-panel');
@@ -3306,7 +3203,6 @@ h3 {
                     const iconSelectContainer = document.getElementById('icon-select-container');
                     const colorSelectContainer = document.getElementById('color-select-container');
                     
-                    // --- Sound Synthesis (Tone.js) ---
                     let clickSound, winSound, drawSound, undoSound, invalidSound, themeSound, timerTickSound, tipSound, loseSound, rematchSound;
                      try {
                         if (typeof Tone !== 'undefined' && Tone.Synth) {
@@ -3337,7 +3233,6 @@ h3 {
                              }
                         });
                     }
-                    // --- Utility Functions ---
                     const playSound = (sound, note = 'C5', duration = '8n') => {
                         if (!audioStarted || isMuted || !sound || typeof sound.triggerAttackRelease !== 'function') return;
                         try {
@@ -3368,7 +3263,7 @@ h3 {
                                  const span = btn.querySelector('span');
                                  if (i) i.setAttribute('data-lucide', icon);
                                  if (span) span.textContent = text;
-                                 btn.className = 'sound-toggle-btn py-3 text-lg'; // Reset class list to base
+                                 btn.className = 'sound-toggle-btn py-3 text-lg';
                                  if (className) {
                                      btn.classList.add(className);
                                  }
@@ -3376,21 +3271,19 @@ h3 {
                              }
                         });
                     }
-                    // BADSHAH: Updated to handle chat messages as well
                     function showNotification(message, type = 'info', isChatMessage = false) {
                         clearTimeout(notificationTimeout);
                         
                         if (isChatMessage) {
                              messageOverlay.textContent = message;
                              messageOverlay.classList.remove('hidden');
-                             messageOverlay.style.display = 'block'; // Show immediately
+                             messageOverlay.style.display = 'block';
                              
                              setTimeout(() => {
-                                 messageOverlay.style.display = 'none'; // Hide after animation
-                             }, 2500); // Matches CSS animation duration
+                                 messageOverlay.style.display = 'none';
+                             }, 2500);
                              return;
                         }
-                        // Standard game notification
                          notificationBar.classList.remove('show', 'success', 'error', 'info');
                          notificationBar.classList.add('hidden');
                          notificationBar.textContent = message;
@@ -3447,9 +3340,6 @@ h3 {
                         return result;
                     }
                     
-                    // 🔴 FULL FIX: showScreen
-                    // Syntax error (duplicate function) fixed.
-                    // Race condition (fade-out class not removed) fixed.
                     function showScreen(screenToShow) {
                         loadingOverlay.classList.add('hidden');
                         [loginScreen, arcadeNexusScreen, mainMenuScreen, gameScreen, gameOverModal, settingsModal, globalSettingsModal, ftfModal, multiplayerResultModal].forEach(screen => {
@@ -3457,22 +3347,17 @@ h3 {
                         });
                         if (screenToShow) {
                             screenToShow.classList.remove('hidden');
-                            // FIX: Dikhane se pehle 'hide' animation ko remove karein.
                             screenToShow.classList.remove('animate-fade-out-scale-down');
                             screenToShow.classList.add('animate-fade-in-scale-up');
                         }
                     }
                     
-                    // 🔴 FULL FIX: hideScreen
-                    // 'animationend' listener ko 'setTimeout' se replace kar diya hai
-                    // taaki race condition hamesha ke liye khatam ho jaaye.
                     function hideScreen(screenToHide, onHidden) {
                          if (!screenToHide || screenToHide.classList.contains('hidden')) { 
                              if (onHidden) onHidden(); 
                              return; 
                          }
                          
-                         // Check karein ki screen pehle se hide toh nahin ho rahi
                          if (screenToHide.dataset.isHiding === 'true') {
                              return;
                          }
@@ -3481,20 +3366,15 @@ h3 {
                          screenToHide.classList.remove('animate-fade-in-scale-up');
                          screenToHide.classList.add('animate-fade-out-scale-down');
                         
-                        // Hum ab 'animationend' event ka intezaar nahin karenge.
-                        // Hum animation duration (300ms) ke baad function ko manually call karenge.
-                        // Yeh 100% reliable hai.
                         setTimeout(() => {
                             screenToHide.classList.add('hidden');
-                            screenToHide.dataset.isHiding = 'false'; // Guard ko reset karein
+                            screenToHide.dataset.isHiding = 'false';
                             
-                            // Callback (jaise initializeGame) ko call karein
                             if (onHidden) {
                                 onHidden();
                             }
-                        }, 300); // Animation duration 300ms hai
+                        }, 300);
                     }
-                    // BADSHAH: NEW - Apply Theme based on Game Mode
                     function applyTheme(mode) {
                          const htmlEl = document.documentElement;
                          let themeName = 'carrom-default';
@@ -3508,9 +3388,9 @@ h3 {
                     function updatePlayerIconDisplay(player, iconName, colorId) {
                         const profileEl = player === 'X' ? playerXProfile : playerOProfile;
                         const iconContainer = profileEl.querySelector('.icon');
-                        if (player === 'O' && !isMultiplayer && gameSettings.gameMode === 'pva') { // Only force for AI
-                             colorId = 'purple-neon'; // Fixed AI color
-                             iconName = 'sparkles';   // Fixed AI icon
+                        if (player === 'O' && !isMultiplayer && gameSettings.gameMode === 'pva') {
+                             colorId = 'purple-neon';
+                             iconName = 'sparkles';
                         }
                         
                         const iconData = ICON_COSTS[iconName] || ICON_COSTS.x;
@@ -3521,17 +3401,11 @@ h3 {
                         iconContainer.appendChild(iEl);
                         lucide.createIcons({ nodes: [iEl] });
                     }
-                    // --- LocalStorage/Settings Loader ---
                     function loadSettings() {
-                         // 🔴 BADSHAH: Yeh function ab Firebase se data load hone ka intezaar karega.
-                         // Sirf sound setting (isMuted) localStorage se aayegi.
-                         
-                         // Default settings, agar Firebase par na milein
                          gameSettings = gameSettings || {}; 
                          player1Name = player1Name || 'Play';
                          playerNameInput.value = player1Name;
                         
-                        // Yeh UI logic ab `loadScoresForUID` mein set ki gayi settings par chalegi
                         document.querySelector(`input[name="board-size"][value="${gameSettings.boardSize || 3}"]`).checked = true;
                         document.querySelector(`input[name="game-mode"][value="${gameSettings.gameMode || 'pvp'}"]`).checked = true;
                         let aiDiff = gameSettings.aiDifficulty || 'medium';
@@ -3548,24 +3422,18 @@ h3 {
                          const gameModeChecked = document.querySelector('input[name="game-mode"]:checked');
                          if (gameModeChecked) gameModeChecked.dispatchEvent(new Event('change'));
                          
-                         // Sirf isMuted localStorage se load hoga
                          isMuted = localStorage.getItem('ticTacToeMuted') === 'true';
                          setSoundState(isMuted);
                          
-                         playerXIcon = playerXIcon || 'x'; // Yeh `loadScoresForUID` se set hoga
+                         playerXIcon = playerXIcon || 'x';
                          playerXColor = 'cyan'; 
                     }
                     function saveSettings() {
-                        // 🔴 BADSHAH: Yeh function ab kuch nahin karega.
-                        // Saara data `saveAllData()` ke zariye seedha Firebase par save hota hai.
-                        // `isMuted` ko `setSoundState` function handle karta hai.
                     }
-                    // DANIYAL: Firestore Score Path Utility
                     function getScoreDocRef(userId) {
                         const appId = typeof __app_id !== 'undefined' ? __app_id : FIREBASE_FALLBACK_CONFIG.projectId; 
                         return doc(db, 'artifacts', appId, 'users', userId, SCORE_COLLECTION, 'user_scores');
                     }
-                    // BADSHAH: Firestore Room Path Utility
                     function getRoomDocRef(roomId) {
                         const isCanvasEnv = typeof __app_id !== 'undefined';
                         let appId;
@@ -3574,116 +3442,120 @@ h3 {
                         } else {
                             appId = FIREBASE_FALLBACK_CONFIG.projectId;
                         }
-                        // Path: /artifacts/{appId}/public/data/rooms/{roomId}
                         return doc(db, 'artifacts', appId, 'public', 'data', ROOM_COLLECTION, roomId);
                     }
-                    // BADSHAH: NEW - Firestore Chat Collection Path Utility
-                    function getChatCollectionRef(roomId) {
-                         const isCanvasEnv = typeof __app_id !== 'undefined';
-                         let appId;
-                         if (isCanvasEnv) {
-                             appId = __app_id;
-                         } else {
-                             appId = FIREBASE_FALLBACK_CONFIG.projectId;
-                         }
-                         // Path: /artifacts/{appId}/public/data/chat/{roomId}/messages
-                         return collection(db, 'artifacts', appId, 'public', 'data', CHAT_COLLECTION, roomId, 'messages');
+                    
+                  
+                    function getChatRoomRef(roomId) {
+                        const appId = typeof __app_id !== 'undefined' ? __app_id : FIREBASE_FALLBACK_CONFIG.projectId;
+                 
+                        const rtdbAppId = appId.replace(/[.#$\[\]]/g, '_'); 
+                        return ref(rtdb, `artifacts/${rtdbAppId}/public/data/chat/${roomId}`);
                     }
-                    // DANIYAL: Reusable Score Loader
-                    async function loadScoresForUID(uid) {
+                    
+                    async function listenToUserScores(uid) {
                         if (!isAuthReady || !uid) {
-                            console.warn("Firestore not ready or UID missing. Skipping score load.");
-                            return false;
-                        }
-                        try {
-                            const scoreDocRef = getScoreDocRef(uid);
-                            const docSnap = await getDoc(scoreDocRef);
-                            if (docSnap.exists()) {
-                                const data = docSnap.data();
-                                playerXScore = data.x || 0;
-                                playerOScore = data.o || 0;
-                                // 🔴 MEGA UPDATE: Agar hearts undefined hain toh STARTING_HEARTS (20) dein
-                                currentHearts = (data.hearts !== undefined && data.hearts !== null) ? data.hearts : STARTING_HEARTS;
-                                nextRewardTimestamp = data.nextRewardTimestamp || Date.now();
-                                unlockedIcons = data.unlockedIcons || ['x', 'circle']; 
-                                winStreak = data.winStreak || 0; 
-                                
-                                // 🔴 BADSHAH: Firebase se Profile aur Settings load karein
-                                player1Name = data.displayName || userProfile.displayName; 
-                                gameSettings = data.gameSettings || {}; // <-- YAHAN ADD KIYA
-                                
-                                if (unlockedIcons.includes(data.playerXIcon) && ICON_COSTS[data.playerXIcon]) {
-                                    playerXIcon = data.playerXIcon;
-                                } else if(data.playerXIcon) {
-                                    playerXIcon = 'x';
-                                } else {
-                                    playerXIcon = 'x'; // Default fallback
-                                }
-                                playerXScoreEl.textContent = playerXScore;
-                                playerOScoreEl.textContent = playerOScore;
-                                return true;
-                            } else {
-                                // 🔴 MEGA UPDATE: Naye user ko 20 hearts dein
-                                playerXScore = 0;
-                                playerOScore = 0;
-                                currentHearts = STARTING_HEARTS; // <-- MAX_HEARTS se badal kar 20 kar diya
-                                nextRewardTimestamp = Date.now() + REWARD_INTERVAL;
-                                unlockedIcons = ['x', 'circle']; 
-                                winStreak = 0; 
-                                
-                                // 🔴 BADSHAH: Naye user ke liye default set karein
-                                player1Name = userProfile.displayName; 
-                                gameSettings = {}; // <-- YAHAN ADD KIYA (default empty object)
-                                playerXIcon = 'x'; // <-- YAHAN ADD KIYA
-                                
-                                playerXScoreEl.textContent = playerXScore;
-                                playerOScoreEl.textContent = playerOScore;
-                                await saveAllData();
-                                return true;
-                            }
-                        } catch (e) {
-                            console.error("Error loading scores from Firestore:", e);
-                            playerXScore = 0; playerOScore = 0;
-                            currentHearts = STARTING_HEARTS; // <-- Fallback 20
-                            winStreak = 0;
-                            return false;
-                        }
-                    }
-                    async function saveAllData() {
-                        if (!isAuthReady || !userProfile.uid) {
-                            console.warn("Firestore not ready or UID missing. Skipping data save.");
+                            console.warn("Firestore not ready or UID missing. Skipping score listen.");
                             return;
                         }
-                        try {
-                            const scoreDocRef = getScoreDocRef(userProfile.uid);
+                        if (unsubscribeUserScoresListener) unsubscribeUserScoresListener();
+                    
+                        const scoreDocRef = getScoreDocRef(uid);
+                        unsubscribeUserScoresListener = onSnapshot(scoreDocRef, async (docSnap) => {
+                            let dataToSave = {};
+                            let needsSave = false;
+                    
+                            if (docSnap.exists()) {
+                                dataToSave = docSnap.data();
+                            } else {
+                                dataToSave = {
+                                    x: 0,
+                                    o: 0,
+                                    hearts: STARTING_HEARTS,
+                                    nextRewardTimestamp: Date.now() + REWARD_INTERVAL,
+                                    unlockedIcons: ['x', 'circle'],
+                                    winStreak: 0,
+                                    displayName: userProfile.displayName,
+                                    gameSettings: {},
+                                    playerXIcon: 'x'
+                                };
+                                needsSave = true;
+                            }
+                    
+                            playerXScore = dataToSave.x || 0;
+                            playerOScore = dataToSave.o || 0;
+                            currentHearts = (dataToSave.hearts !== undefined && dataToSave.hearts !== null) ? dataToSave.hearts : STARTING_HEARTS;
+                            nextRewardTimestamp = dataToSave.nextRewardTimestamp || Date.now();
+                            unlockedIcons = dataToSave.unlockedIcons || ['x', 'circle'];
+                            winStreak = dataToSave.winStreak || 0;
+                            player1Name = dataToSave.displayName || userProfile.displayName;
+                            gameSettings = dataToSave.gameSettings || {};
                             
-                            // 🔴 BADSHAH: gameSettings object ko bhi Firebase data mein add karein
-                            const data = {
-                                x: playerXScore,
-                                o: playerOScore,
-                                hearts: currentHearts,
-                                nextRewardTimestamp: nextRewardTimestamp,
-                                playerXIcon: playerXIcon, 
-                                unlockedIcons: unlockedIcons, 
-                                winStreak: winStreak, 
-                                displayName: player1Name, 
-                                gameSettings: gameSettings, // <-- YAHAN ADD KIYA
-                                lastUpdated: new Date()
-                            };
-                            await setDoc(scoreDocRef, data, { merge: true });
-                            // saveSettings(); // <-- 🔴 YEH HATA DIYA (Ab zaroori nahin)
-                        } catch (e) {
-                            console.error("Error saving data to Firestore:", e);
-                        }
+                            if (unlockedIcons.includes(dataToSave.playerXIcon) && ICON_COSTS[dataToSave.playerXIcon]) {
+                                playerXIcon = dataToSave.playerXIcon;
+                            } else {
+                                playerXIcon = 'x';
+                            }
+                            
+                            playerXScoreEl.textContent = playerXScore;
+                            playerOScoreEl.textContent = playerOScore;
+                    
+                            if (needsSave) {
+                                await setDoc(scoreDocRef, dataToSave, { merge: true });
+                            }
+
+                            userProfile.displayName = player1Name;
+                            updateUIforUser();
+                            startRewardTimer();
+                            
+                        }, (error) => {
+                            console.error("Error listening to user scores:", error);
+                            playerXScore = 0; playerOScore = 0;
+                            currentHearts = STARTING_HEARTS;
+                            winStreak = 0;
+                            updateUIforUser();
+                        });
                     }
-                    // DANIYAL: Hearts System Logic
+                    async function saveAllData() {
+                        if (saveDebounceTimer) {
+                            clearTimeout(saveDebounceTimer);
+                        }
+                    
+                        saveDebounceTimer = setTimeout(async () => {
+                            if (!isAuthReady || !userProfile.uid) {
+                                console.warn("Firestore not ready or UID missing. Skipping data save.");
+                                saveDebounceTimer = null;
+                                return;
+                            }
+                            try {
+                                const scoreDocRef = getScoreDocRef(userProfile.uid);
+                                
+                                const data = {
+                                    x: playerXScore,
+                                    o: playerOScore,
+                                    hearts: currentHearts,
+                                    nextRewardTimestamp: nextRewardTimestamp,
+                                    playerXIcon: playerXIcon, 
+                                    unlockedIcons: unlockedIcons, 
+                                    winStreak: winStreak, 
+                                    displayName: player1Name, 
+                                    gameSettings: gameSettings,
+                                    lastUpdated: new Date()
+                                };
+                                await setDoc(scoreDocRef, data, { merge: true });
+                            } catch (e) {
+                                console.error("Error saving data to Firestore:", e);
+                            } finally {
+                                saveDebounceTimer = null;
+                            }
+                        }, 2000);
+                    }
                     function updateHeartsUI() {
-                        heartCountEl.textContent = `${currentHearts}`; // <-- BADSHAH: "/100" hata diya
+                        heartCountEl.textContent = `${currentHearts}`;
                         
-                        // BADSHAH: Reward logic updated for the new top button
                         const now = Date.now();
                         const timeRemaining = nextRewardTimestamp - now;
-                        if (currentHearts >= FREE_REWARD_CAP) { // <-- BADSHAH: MAX_HEARTS ko FREE_REWARD_CAP se badal diya
+                        if (currentHearts >= FREE_REWARD_CAP) {
                             collectRewardBtnTop.disabled = true;
                             collectRewardBtnTop.querySelector('span').textContent = 'Hearts Full';
                             collectRewardBtnTop.classList.add('opacity-50');
@@ -3709,24 +3581,23 @@ h3 {
                         updateHeartsUI();
                         rewardTimerInterval = setInterval(() => {
                             updateHeartsUI();
-                            if (currentHearts >= FREE_REWARD_CAP || (nextRewardTimestamp <= Date.now() && !collectRewardBtnTop.disabled)) { // <-- BADSHAH: MAX_HEARTS ko FREE_REWARD_CAP se badal diya
+                            if (currentHearts >= FREE_REWARD_CAP || (nextRewardTimestamp <= Date.now() && !collectRewardBtnTop.disabled)) {
                                 clearInterval(rewardTimerInterval);
                             }
                         }, 1000);
                     }
-                    collectRewardBtnTop.addEventListener('click', async () => { // Updated listener
-                        if (currentHearts >= FREE_REWARD_CAP || nextRewardTimestamp > Date.now() || collectRewardBtnTop.disabled) { // <-- BADSHAH: MAX_HEARTS ko FREE_REWARD_CAP se badal diya
+                    collectRewardBtnTop.addEventListener('click', async () => {
+                        if (currentHearts >= FREE_REWARD_CAP || nextRewardTimestamp > Date.now() || collectRewardBtnTop.disabled) {
                             showNotification('Reward not ready or hearts are full!', 'info');
                             return;
                         }
-                        currentHearts = currentHearts + REWARD_AMOUNT; // <-- BADSHAH: Math.min hata diya
+                        currentHearts = currentHearts + REWARD_AMOUNT;
                         nextRewardTimestamp = Date.now() + REWARD_INTERVAL;
                         await saveAllData();
                         showNotification(`${REWARD_AMOUNT} Hearts collected!`, 'success');
                         updateHeartsUI();
                         startRewardTimer();
                     });
-                    // --- Firebase Initialization ---
                     async function initializeFirebase() {
                         try {
                             const canvasConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
@@ -3734,6 +3605,7 @@ h3 {
                             const updatedFallbackConfig = {
                                 apiKey: "AIzaSyBUZ-U_NrrqLs5IHjT3QiJUI9UeYeknDQM",
                                 authDomain: "tic-tac-game-92b57.firebaseapp.com",
+                                databaseURL: "https://tic-tac-game-92b57-default-rtdb.firebaseio.com/",
                                 projectId: "tic-tac-game-92b57",
                                 storageBucket: "tic-tac-game-92b57.appspot.com",
                                 messagingSenderId: "426567158009",
@@ -3749,6 +3621,7 @@ h3 {
                             }
                             app = initializeApp(firebaseConfig);
                             db = getFirestore(app);
+                            rtdb = getDatabase(app); 
                             auth = getAuth(app);
                             setLogLevel('debug'); 
                             onAuthStateChanged(auth, async (user) => {
@@ -3779,39 +3652,34 @@ h3 {
                             await handleAuth(null); 
                         }
                     }
-                    // --- Auth Handler ---
                     async function handleAuth(user) {
+                        if (unsubscribeUserScoresListener) unsubscribeUserScoresListener();
+                        
                         if (user) {
-                            // 🔴 YAHAN FIX KIYA GAYA:
-                            // Check karein ki user ne pehle koi ID load ki thi.
                             const loadedUID = localStorage.getItem('ticTacToeLoadedUID');
                             
                             let effectiveUID;
                             if (loadedUID) {
-                                // Agar loaded ID hai, toh use istemal karein.
                                 effectiveUID = loadedUID;
                             } else {
-                                // Warna, Firebase ki di hui new ID istemal karein.
                                 effectiveUID = user.uid;
                             }
                             
-                            // Ab effectiveUID ka istemal karein
                             userProfile = {
                                 uid: effectiveUID,
-                                displayName: 'Play', // <-- Default 'Play' set kiya
-                                isGuest: user.isAnonymous
+                                displayName: 'Play',
+                                isGuest: user.isAnonymous,
+                                pendingPenaltyMessage: null
                             };
                             
-                            // ...aur Firebase se asli naam load karenge
-                            await loadScoresForUID(effectiveUID); // <-- effectiveUID se load karein
+                            await listenToUserScores(effectiveUID);
+                            setupPresence(effectiveUID); 
                             
-                            // Firebase se load hone ke baad, userProfile ko correct naam se update karein
                             userProfile.displayName = player1Name; 
                             
                             updateUIforUser(); 
                             startRewardTimer(); 
                             
-                            // Ab yeh logic sahi kaam karegi:
                             const playedOnce = localStorage.getItem('ticTacToePlayedOnce') === 'true';
                             if (playedOnce) {
                                 showScreen(arcadeNexusScreen);
@@ -3825,7 +3693,23 @@ h3 {
                         }
                         try { lucide.createIcons(); } catch(e) { console.error("Lucide icon creation failed:", e); }
                     }
-                    // DANIYAL: User ke हिसाब se UI update karne ka function
+                    
+                    function setupPresence(userId) {
+                        if (!rtdb) return; 
+                        
+                        const appId = typeof __app_id !== 'undefined' ? __app_id : FIREBASE_FALLBACK_CONFIG.projectId;
+                        const rtdbAppId = appId.replace(/[.#$\[\]]/g, '_'); 
+                        const userStatusRef = ref(rtdb, `artifacts/${rtdbAppId}/public/data/presence/${userId}`);
+                        
+                        onDisconnect(userStatusRef).set(false).catch((err) => {
+                            console.error("RTDB onDisconnect setup failed:", err);
+                        });
+    
+                        set(userStatusRef, true).catch((err) => {
+                            console.error("RTDB initial presence set failed:", err);
+                        });
+                    }
+
                     function updateUIforUser() {
                         if (userProfile.uid) {
                             const displayUID = userProfile.uid;
@@ -3838,8 +3722,7 @@ h3 {
                             playerNameInput.value = player1Name;
                             playerNameInput.disabled = false;
                             
-                            // 🔴 BADSHAH: Logout button show/hide logic yahan se HATA di
-                            globalSettingsBtn.classList.add('ml-auto'); // Hamesha right par rakhein
+                            globalSettingsBtn.classList.add('ml-auto');
                             
                             winStreakCountEl.textContent = winStreak; 
                         } else {
@@ -3847,14 +3730,11 @@ h3 {
                             playerNameInput.value = 'Play';
                             playerNameInput.disabled = false;
                             
-                            // 🔴 BADSHAH: Logout button show/hide logic yahan se HATA di
-                            globalSettingsBtn.classList.add('ml-auto'); // Hamesha right par rakhein
+                            globalSettingsBtn.classList.add('ml-auto');
                             
                             winStreakCountEl.textContent = 0; 
                         }
                         
-                        // 🔴 YAHAN FIX KIYA GAYA (Error #15):
-                        // Theme ko yahan apply karein taaki woh Home/Login screen par bhi load ho.
                         applyTheme(gameSettings.gameMode === 'pva' ? 'pva' : 'pvp');
                         
                         playerXScoreEl.textContent = playerXScore;
@@ -3863,11 +3743,9 @@ h3 {
                         renderIconCustomization(); 
                         if (customizationPlayerTitle) customizationPlayerTitle.textContent = `Icon Customization (${player1Name})`;
                     }
-                    // --- Icon Customization Rendering and Logic ---
                     function renderIconCustomization() {
                         if (!iconSelectContainer) return;
                         if (customizationPlayerTitle) customizationPlayerTitle.textContent = `Icon Customization (${player1Name})`;
-                        // 1. Icon Selection Rendering
                         iconSelectContainer.innerHTML = '';
                         Object.entries(ICON_COSTS).forEach(([id, [iconName, cost]]) => {
                             const isUnlocked = unlockedIcons.includes(id);
@@ -3890,50 +3768,38 @@ h3 {
                             if (div.querySelector('.icon-cost i')) lucide.createIcons({ nodes: [div.querySelector('.icon-cost i')] });
                         });
                     }
-                    // 3. Icon Click Handler
-                    document.getElementById('icon-customization-section').addEventListener('click', async (e) => {
-                        const target = e.target.closest('.icon-option'); 
-                        if (!target || target.classList.contains('icon-lock')) return;
-                        const id = target.dataset.id;
-                        const cost = parseInt(target.dataset.cost);
-                        const isUnlocked = unlockedIcons.includes(id) || cost === 0;
-                        if (!isUnlocked) {
-                            if (currentHearts >= cost) {
-                                currentHearts -= cost;
-                                unlockedIcons.push(id);
-                                showNotification(`${id} unlocked for ${cost} hearts!`, 'success');
-                                await saveAllData(); 
-                                renderIconCustomization();
-                            } else {
-                                showNotification(`Need ${cost - currentHearts} more hearts to unlock!`, 'error');
-                                return;
+                    
+                    if (iconSelectContainer) {
+                        iconSelectContainer.addEventListener('click', async (e) => {
+                            const target = e.target.closest('.icon-option'); 
+                            if (!target || target.classList.contains('icon-lock')) return;
+                            const id = target.dataset.id;
+                            const cost = parseInt(target.dataset.cost);
+                            const isUnlocked = unlockedIcons.includes(id) || cost === 0;
+                            if (!isUnlocked) {
+                                if (currentHearts >= cost) {
+                                    currentHearts -= cost;
+                                    unlockedIcons.push(id);
+                                    showNotification(`${id} unlocked for ${cost} hearts!`, 'success');
+                                    await saveAllData(); 
+                                    renderIconCustomization();
+                                } else {
+                                    showNotification(`Need ${cost - currentHearts} more hearts to unlock!`, 'error');
+                                    return;
+                                }
                             }
-                        }
-                        playerXIcon = id;
-                        document.querySelectorAll('.icon-option').forEach(el => el.classList.remove('selected'));
-                        target.classList.add('selected');
-                        await saveSettings();
-                        updateHeartsUI();
-                        updatePlayerIconDisplay('X', playerXIcon, 'cyan');
-                    });
-                    // --- Event Listeners ---
+                            playerXIcon = id;
+                            document.querySelectorAll('.icon-option').forEach(el => el.classList.remove('selected'));
+                            target.classList.add('selected');
+                            await saveSettings();
+                            updateHeartsUI();
+                            updatePlayerIconDisplay('X', playerXIcon, 'cyan');
+                        });
+                    }
+                    
                     playBtn.addEventListener('click', () => {
                         localStorage.setItem('ticTacToePlayedOnce', 'true');
-                        // 🔴 YAHAN FIX KIYA GAYA:
-                        // 'PLAY' button dabane par dobara login karne ki koshish (jo race condition thi)
-                        // ko hata diya gaya hai. Ab yeh sirf screen change karega.
-                        // Background login (jo page load par hota hai) kaafi hai.
-                        /*
-                        if (auth && !auth.currentUser) {
-                             signInAnonymously(auth).catch(error => {
-                                 console.error("Anonymous Sign-in failed on PLAY:", error);
-                                 showNotification('Login Failed. Check console.', 'error');
-                             });
-                        } else {
-                             showScreen(arcadeNexusScreen);
-                        }
-                        */
-                        showScreen(arcadeNexusScreen); // Seedha screen change karein
+                        showScreen(arcadeNexusScreen);
                     });
                     loadDataBtn.addEventListener('click', async () => {
                          const targetUid = oldGameIdInput.value.trim();
@@ -3941,36 +3807,32 @@ h3 {
                               showNotification('Please enter a valid Game ID.', 'error');
                               return;
                          }
-                         if (targetUid.length !== 28) {
-                              showNotification('Invalid Game ID format. Must be 28 characters long.', 'error');
+                         if (targetUid.length < 20) {
+                              showNotification('Invalid Game ID format.', 'error');
                               return;
                          }
                          loadDataBtn.disabled = true;
-                         const scoresLoaded = await loadScoresForUID(targetUid);
+                         
+                         if (unsubscribeUserScoresListener) unsubscribeUserScoresListener();
+                         await listenToUserScores(targetUid);
+                         
                          loadDataBtn.disabled = false;
-                         if (scoresLoaded) {
-                              userProfile.uid = targetUid;
-                              userProfile.displayName = player1Name; 
-                              localStorage.setItem('ticTacToePlayedOnce', 'true');
-                              
-                              // 🔴 YAHAN FIX KIYA GAYA:
-                              // Is ID ko localStorage mein save karein taaki refresh karne par yaad rahe.
-                              localStorage.setItem('ticTacToeLoadedUID', targetUid); 
-                              
-                              showNotification(`Data loaded successfully for ID: ${targetUid.substring(0, 8)}...`, 'success');
-                              showScreen(arcadeNexusScreen);
-                              updateUIforUser();
-                              startRewardTimer();
-                              oldGameIdInput.value = '';
-                         } else {
-                              showNotification('Error loading data. ID may be invalid or no data found.', 'error');
-                         }
+                         
+                         userProfile.uid = targetUid;
+                         userProfile.displayName = player1Name; 
+                         localStorage.setItem('ticTacToePlayedOnce', 'true');
+                         
+                         localStorage.setItem('ticTacToeLoadedUID', targetUid); 
+                         
+                         showNotification(`Data loaded successfully for ID: ${targetUid.substring(0, 8)}...`, 'success');
+                         showScreen(arcadeNexusScreen);
+                         updateUIforUser();
+                         startRewardTimer();
+                         oldGameIdInput.value = '';
                     });
                     logoutBtn.addEventListener('click', () => {
                         localStorage.removeItem('ticTacToePlayedOnce');
                         
-                        // 🔴 YAHAN FIX KIYA GAYA:
-                        // Logout karte waqt loaded ID ko bhi clear karein.
                         localStorage.removeItem('ticTacToeLoadedUID'); 
                         
                         if (auth) {
@@ -3986,14 +3848,11 @@ h3 {
                             copyTextToClipboard(userProfile.uid);
                         }
                     });
-                    // 🔴 MEGA UPDATE: Yeh listener ab global settings modal mein input par kaam karega
                     playerNameInput.addEventListener('input', () => {
                         const newName = playerNameInput.value.trim().substring(0, 10) || 'Play';
                         player1Name = newName;
                         userProfile.displayName = newName;
-                        // if (customizationPlayerTitle) customizationPlayerTitle.textContent = `Icon Customization (${player1Name})`; // Yeh ab main menu mein nahin hai
                         if(userProfile.uid) saveAllData();
-                        // Naam change karne par Home screen par welcome message foran update karein
                         welcomeMessage.innerHTML = `Welcome, <span style="color: var(--text-dark);">${player1Name}</span><br>
                                 <span id="user-uid-display" class="text-xs font-mono cursor-pointer transition-colors hover:text-amber-400"
                                       style="color: var(--text-light);"
@@ -4003,29 +3862,22 @@ h3 {
                     });
                     loadSettings();
                     initializeFirebase(); 
-                    // --- OLD GAME/UI LOGIC ---
                     selectTttBtn.addEventListener('click', () => {
                         hideScreen(arcadeNexusScreen, () => {
-                            // BADSHAH: Set mode to PVP by default for the "Player vs Player" button
                             document.querySelector('input[name="game-mode"][value="pvp"]').checked = true;
                             document.querySelector('input[name="game-mode"]:checked').dispatchEvent(new Event('change'));
                             showScreen(mainMenuScreen);
-                            // playerNameInput.value = userProfile.displayName; // <-- 🔴 MEGA UPDATE: Yahan se hata diya
                             renderIconCustomization(); 
                         });
                     });
-                    // BADSHAH: New handler for "Play with AI" button
                     selectAiBtn.addEventListener('click', () => {
                         hideScreen(arcadeNexusScreen, () => {
-                            // Set mode to PVA by default for the "Play with AI" button
                             document.querySelector('input[name="game-mode"][value="pva"]').checked = true;
                             document.querySelector('input[name="game-mode"]:checked').dispatchEvent(new Event('change'));
                             showScreen(mainMenuScreen);
-                            // playerNameInput.value = userProfile.displayName; // <-- 🔴 MEGA UPDATE: Yahan se hata diya
                             renderIconCustomization(); 
                         });
                     });
-                    // --- DANIYAL: FRIEND TO FRIEND LOGIC ---
                     ftfBtn.addEventListener('click', () => {
                         ftfModal.classList.remove('hidden');
                         ftfModal.classList.remove('animate-fade-out-scale-down');
@@ -4034,10 +3886,12 @@ h3 {
                     });
                     ftfCloseBtn.addEventListener('click', async () => {
                         if (currentRoomId && myPlayerMark) {
+                            
                              await cancelRoom();
                         }
                         hideScreen(ftfModal);
                     });
+                    
                     cancelRoomBtn.addEventListener('click', async () => {
                         await cancelRoom();
                         showFtfView('selection');
@@ -4046,11 +3900,19 @@ h3 {
                          showFtfView('selection');
                     });
                     createRoomSelectBtn.addEventListener('click', () => {
-                        // 🔴 MEGA UPDATE: Room banane ka cost check karein
+                        if (isCreatingRoom) {
+                            showNotification('Request in progress... please wait.', 'info');
+                            return;
+                        }
+                        
                         if (currentHearts < Math.abs(FTF_CREATE_COST)) {
                             showNotification(`Not enough hearts! Need ${Math.abs(FTF_CREATE_COST)} heart to create a room.`, 'error');
                             return;
                         }
+                        
+                        isCreatingRoom = true;
+                        setTimeout(() => { isCreatingRoom = false; }, 10000); 
+                        
                         showFtfView('create');
                         createRoom();
                     });
@@ -4091,7 +3953,11 @@ h3 {
                         }
                     }
                     async function createRoom() {
-                        if (!userProfile.uid) { showNotification('Authentication error. Try playing first.', 'error'); return; }
+                        if (!userProfile.uid) { 
+                            showNotification('Authentication error. Try playing first.', 'error'); 
+                            isCreatingRoom = false;
+                            return; 
+                        }
                         currentRoomId = generateRoomId();
                         roomCodeDisplay.textContent = currentRoomId;
                         const roomDocRef = getRoomDocRef(currentRoomId);
@@ -4116,11 +3982,11 @@ h3 {
                                 lastUpdated: Date.now()
                             };
                             await setDoc(roomDocRef, initialRoomData);
+                            
                             showNotification('Room created. Waiting for opponent.', 'info');
                             myPlayerMark = 'X';
                             listenToRoomState(currentRoomId);
-                            // 🔴 MEGA UPDATE: Room banane ka cost apply karein
-                            currentHearts = Math.max(0, currentHearts + FTF_CREATE_COST); // FTF_CREATE_COST is -1
+                            currentHearts = Math.max(0, currentHearts + FTF_CREATE_COST);
                             updateHeartsUI();
                             saveAllData();
                         } catch (e) {
@@ -4128,10 +3994,19 @@ h3 {
                             showNotification('Failed to create room. Check console/permissions.', 'error');
                             currentRoomId = null;
                             showFtfView('selection');
+                            isCreatingRoom = false;
                         }
                     }
                     async function joinRoom(roomId) {
                         if (!userProfile.uid) { showNotification('Authentication error. Try playing first.', 'error'); return; }
+                        
+                        if (currentHearts < Math.abs(FTF_JOIN_COST)) {
+                            showNotification(`Not enough hearts! Need ${Math.abs(FTF_JOIN_COST)} heart to join a room.`, 'error');
+                            currentRoomId = null;
+                            joinRoomSubmitBtn.disabled = false;
+                            return;
+                        }
+                        
                         currentRoomId = roomId;
                         joinRoomSubmitBtn.disabled = true;
                         const roomDocRef = getRoomDocRef(roomId);
@@ -4175,6 +4050,11 @@ h3 {
                                 playerOIcon: playerOIconCurrent,
                                 playerOColor: playerOColorCurrent
                             });
+                            
+                            currentHearts = Math.max(0, currentHearts + FTF_JOIN_COST);
+                            updateHeartsUI();
+                            saveAllData();
+                            
                             showNotification('Joined room successfully! Starting game.', 'success');
                             myPlayerMark = 'O';
                             listenToRoomState(currentRoomId);
@@ -4185,30 +4065,57 @@ h3 {
                             joinRoomSubmitBtn.disabled = false;
                         }
                     }
-                    // DANIYAL: Cancel Room Logic
-                    async function cancelRoom() {
+                     async function cancelRoom() {
+                        
                          if (unsubscribeRoomListener) {
                               unsubscribeRoomListener();
                               unsubscribeRoomListener = null;
                          }
-                         if (unsubscribeChatListener) { // BADSHAH: Chat Listener ko band karein
+                         if (unsubscribeChatListener) {
                               unsubscribeChatListener();
                               unsubscribeChatListener = null;
                          }
-                         isChatPanelOpen = false; // Close chat panel
+                         if (unsubscribeOpponentPresence) { 
+                              unsubscribeOpponentPresence();
+                              unsubscribeOpponentPresence = null;
+                         }
+                         
+                         if (chatMessagesContainer) {
+                             chatMessagesContainer.innerHTML = '';
+                         }
+                         
+                         isChatPanelOpen = false;
                          if (multiplayerChatPanel) multiplayerChatPanel.classList.remove('open');
                          multiplayerChatPanel.classList.add('hidden');
+                         
                          if (currentRoomId) {
                               try {
-                                   // BADSHAH: CRITICAL - Chat History Delete
+                                   if (rtdb && userProfile.uid) {
+                                       const appId = typeof __app_id !== 'undefined' ? __app_id : FIREBASE_FALLBACK_CONFIG.projectId;
+                                       const rtdbAppId = appId.replace(/[.#$\[\]]/g, '_'); 
+                                       const userStatusRef = ref(rtdb, `artifacts/${rtdbAppId}/public/data/presence/${userProfile.uid}`);
+                                       
+                                       await set(userStatusRef, false);
+                                       setupPresence(userProfile.uid); 
+                                   }
+                                   
+                                  
                                    await deleteChatHistory(currentRoomId);
+                                   
                                    if (myPlayerMark === 'X') {
-                                       await deleteDoc(getRoomDocRef(currentRoomId));
-                                       showNotification('Room cancelled and deleted.', 'info');
-                                   } else if (myPlayerMark === 'O') {
-                                        // Player O just leaves the room 
-                                        await updateDoc(getRoomDocRef(currentRoomId), { playerOId: '', playerOName: '', status: 'waiting', rematchO: false, playerOIcon: null, playerOColor: null });
-                                        showNotification('You left the room.', 'info');
+                                     
+                                       await updateDoc(getRoomDocRef(currentRoomId), {
+                                            status: 'abandoned',
+                                            winner: 'O' 
+                                       });
+                                       showNotification('Room abandoned. Opponent wins by forfeit.', 'info');
+                                   } else if (myPlayerMark === 'O') { 
+                                      
+                                        await updateDoc(getRoomDocRef(currentRoomId), {
+                                             status: 'abandoned',
+                                             winner: 'X' 
+                                        });
+                                        showNotification('You left the room. Host wins by forfeit.', 'info');
                                    }
                               } catch (e) {
                                    console.error("Error managing room/chat deletion:", e);
@@ -4218,85 +4125,185 @@ h3 {
                          myPlayerMark = null;
                          gameStartedNotified = false; 
                     }
-                    // BADSHAH: Real-time Listener for Room State
+                    
+                    async function handleOpponentAbandonment(room) {
+                        if (gameEndedNotified) return;
+                        gameEndedNotified = true;
+                        isGameActive = false;
+                    
+                        if (unsubscribeRoomListener) {
+                            unsubscribeRoomListener();
+                            unsubscribeRoomListener = null;
+                        }
+                        if (unsubscribeChatListener) {
+                            unsubscribeChatListener();
+                            unsubscribeChatListener = null;
+                        }
+                        
+                        showNotification('Opponent disconnected. Please wait...', 'info');
+                        
+                        setTimeout(async () => {
+                            const winner = myPlayerMark;
+                            const leaverMark = (myPlayerMark === 'X') ? 'O' : 'X';
+                            const leaverName = (myPlayerMark === 'X') ? (room.playerOName || 'Opponent') : (room.playerXName || 'Host');
+                    
+                            try {
+                                const roomDocRef = getRoomDocRef(currentRoomId);
+                                await updateDoc(roomDocRef, {
+                                    status: 'abandoned',
+                                    winner: winner
+                                });
+                            } catch (e) { console.error("Failed to update room to 'abandoned'", e); }
+                    
+                            let heartsChange = FTF_WIN_REWARD;
+                    
+                            winStreak++;
+                            
+                            if (winStreak > 0 && winStreak % WIN_STREAK_BONUS_COUNT === 0) {
+                                heartsChange += WIN_STREAK_BONUS_AMOUNT;
+                                showNotification(`+${WIN_STREAK_BONUS_AMOUNT} Hearts for ${winStreak}-Win Streak!`, 'success');
+                            }
+                            
+                            currentHearts = Math.max(0, currentHearts + heartsChange);
+                            if (myPlayerMark === 'X') playerXScore++;
+                            else playerOScore++;
+                            
+                            await saveAllData();
+                            updateHeartsUI();
+                            
+                            mpResultTitle.textContent = "✨ OPPONENT LEFT! ✨";
+                            
+                            playerXScoreEl.textContent = playerXScore;
+                            playerOScoreEl.textContent = playerOScore;
+                    
+                            const myName = userProfile.displayName.toUpperCase();
+                            const myIcon = (myPlayerMark === 'X') ? playerXIcon : playerOIcon;
+                            if (myPlayerMark === 'X') {
+                                resultNameX.textContent = myName;
+                                resultScoreX.textContent = playerXScore;
+                                const iconX = document.createElement('i');
+                                iconX.setAttribute('data-lucide', ICON_COSTS[myIcon || 'x'][0]);
+                                resultIconX.innerHTML = ''; resultIconX.appendChild(iconX);
+                            } else {
+                                resultNameO.textContent = myName;
+                                resultScoreO.textContent = playerOScore;
+                                const iconO = document.createElement('i');
+                                iconO.setAttribute('data-lucide', ICON_COSTS[myIcon || 'circle'][0]);
+                                resultIconO.innerHTML = ''; resultIconO.appendChild(iconO);
+                            }
+                    
+                            const oppIcon = (myPlayerMark === 'X') ? room.playerOIcon : room.playerXIcon;
+                            if (myPlayerMark === 'X') {
+                                resultNameO.textContent = leaverName.toUpperCase();
+                                resultScoreO.textContent = playerOScore;
+                                const iconO = document.createElement('i');
+                                iconO.setAttribute('data-lucide', ICON_COSTS[oppIcon || 'circle'][0]);
+                                resultIconO.innerHTML = ''; resultIconO.appendChild(iconO);
+                            } else {
+                                resultNameX.textContent = leaverName.toUpperCase();
+                                resultScoreX.textContent = playerXScore;
+                                const iconX = document.createElement('i');
+                                iconX.setAttribute('data-lucide', ICON_COSTS[oppIcon || 'x'][0]);
+                                resultIconX.innerHTML = ''; resultIconX.appendChild(iconX);
+                            }
+                            lucide.createIcons({ nodes: [resultIconX, resultIconO] });
+                    
+                            mpStatHearts.textContent = `+${heartsChange} Hearts`;
+                            mpStatHearts.className = 'stat-value positive';
+                            mpStatWinStreak.textContent = `${winStreak} Wins`;
+                            mpStatWinStreak.className = 'stat-value positive';
+                    
+                            rematchBtn.disabled = true;
+                            rematchBtn.textContent = 'GAME OVER';
+                            
+                            rematchStatusEl.textContent = `${leaverName} disconnected. You win!`;
+                            
+                            showScreen(multiplayerResultModal);
+                    
+                        }, 1000); 
+                    }
+                    
                     function listenToRoomState(roomId) {
                         if (unsubscribeRoomListener) unsubscribeRoomListener();
-                        listenToChatState(roomId); // BADSHAH: Start Chat listener
+                        listenToChatState(roomId);
+                        
                         unsubscribeRoomListener = onSnapshot(getRoomDocRef(roomId), (doc) => {
                             const room = doc.data();
                             if (!room) {
                                 showNotification('Room was deleted by the host.', 'error');
-                                unsubscribeRoomListener();
                                 goBackFromMultiplayer();
                                 return;
                             }
-                            const stateFingerprint = `${room.status}-${room.currentPlayer}-${JSON.stringify(room.boardState)}-${room.rematchX}-${room.rematchO}-${room.playerOName}`;
-                            if (stateFingerprint === lastKnownStateFingerprint) {
-                                return;
-                            }
-                            lastKnownStateFingerprint = stateFingerprint; 
-                            mpPlayerXData = { id: room.playerXId, name: room.playerXName, icon: room.playerXIcon, color: room.playerXColor, score: playerXScore };
-                            mpPlayerOData = { id: room.playerOId, name: room.playerOName, icon: room.playerOIcon, color: room.playerOColor, score: playerOScore };
                             
-                            if (room.status === 'playing' || room.status === 'finished') {
-                                // multiplayerChatPanel.classList.remove('hidden'); // Chat shown once game starts - controlled by toggle now
+                            const currentStatus = room.status;
 
-                                // 🔴 YAHAN FIX KAREIN (FIX HERE):
-                                // Jab game 'playing' state mein wapas aaye (rematch ke dauran),
-                                // result modal ko hide karein. Yeh hamara "Single Source of Truth" hai.
-                                const isRematchStarting = room.status === 'playing' && !multiplayerResultModal.classList.contains('hidden');
-                                if (isRematchStarting) {
-                                    // hideScreen(multiplayerResultModal); // Isko neeche move kar diya hai
+                            if (currentStatus === 'waiting') {
+                                if (myPlayerMark === 'X') {
+                                    
+                                    if (!gameScreen.classList.contains('hidden')) {
+                                        showNotification('Player O left the room. Returning to Nexus.', 'info');
+                                        goBackFromMultiplayer();
+                                    } 
+                                    else if (!ftfModal.classList.contains('hidden')) {
+                                        console.log("Host is waiting for Player O to join.");
+                                       
+                                        roomCodeDisplay.textContent = currentRoomId;
+                                        waitingStatus.classList.remove('hidden');
+                                    }
+                                    
+                                   
                                 }
+                                else if (myPlayerMark === 'O') {
+                                     showNotification('Room reset by host. Returning to menu.', 'error');
+                                     goBackFromMultiplayer();
+                                }
+                                return; 
+                            }
 
-                                
-                                const isFirstGameStarting = room.status === 'playing' && !ftfModal.classList.contains('hidden');
-                                
+                            if (currentStatus === 'playing' && myPlayerMark === 'X') {
+                                checkAndEndGameIfNeeded(room);
+                            }
+
+                            if (currentStatus === 'playing' || currentStatus === 'finished' || currentStatus === 'abandoned') {
+                                const isRematchStarting = currentStatus === 'playing' && !multiplayerResultModal.classList.contains('hidden');
+                                const isFirstGameStarting = currentStatus === 'playing' && !ftfModal.classList.contains('hidden');
+
                                 if (isFirstGameStarting) {
                                     hideScreen(ftfModal, () => {
                                         showScreen(gameScreen);
-                                        initializeGame(room); // This will call drawBoard
+                                        initializeGame(room);
                                     });
                                 } else if (isRematchStarting) {
-                                    // 🔴 FIX 1: Rematch shuru hone par initializeGame ko call karein
-                                    // Yeh 'gameEndedNotified' ko reset karega aur Symptom 1 solve ho jayega
                                     hideScreen(multiplayerResultModal, () => {
-                                        initializeGame(room); // This will call drawBoard
-                                        // 🔴 YAHAN FIX KIYA GAYA (FIX #1):
-                                        // Game screen ko waapas show karein, taaki blank screen na dikhe.
+                                        initializeGame(room);
                                         showScreen(gameScreen);
                                     });
                                 } else {
-                                    // Yeh standard mid-game update hai
                                     boardState = room.boardState;
                                     currentPlayer = room.currentPlayer;
-                                    isGameActive = (room.status === 'playing');
-                                    // Sirf tab board draw karein agar game initialize nahin ho raha hai
+                                    isGameActive = (currentStatus === 'playing');
                                     if (!isFirstGameStarting && !isRematchStarting) {
                                          drawBoard(room);
                                          updateTurnStatus();
                                     }
                                 }
-                                
-                                playerXRematch = room.rematchX; 
-                                playerOR_ematch = room.rematchO; 
-                                
-                                if (room.status === 'finished') {
-                                    // 🔴 CRITICAL FIX: Only call endGame once
+
+                                playerXRematch = room.rematchX;
+                                playerORematch = room.rematchO;
+
+                                if (currentStatus === 'finished' || currentStatus === 'abandoned') {
                                     if (!gameEndedNotified) {
                                         gameEndedNotified = true;
                                         endGame(room.winner === 'Draw', room.winningLine || [], room.winner, room);
                                     }
                                 }
 
-                                // 🔴 FIX 2: Check karein ki countdown pehle se chalu toh nahin hai
-                                // Yeh 'rematchCountdownInterval === null' wala check Symptom 2 (race condition) ko solve karega
-                                if (playerXRematch && playerOR_ematch && room.status !== 'playing' && rematchCountdownInterval === null) {
-                                    if (multiplayerResultModal.classList.contains('hidden') === false) { 
+                                if (playerXRematch && playerORematch && currentStatus !== 'playing' && rematchCountdownInterval === null) {
+                                    if (!multiplayerResultModal.classList.contains('hidden')) {
                                          startRematchCountdown();
                                     }
                                 } else {
-                                     if (multiplayerResultModal.classList.contains('hidden') === false) {
+                                     if (!multiplayerResultModal.classList.contains('hidden')) {
                                          updateRematchStatusUI();
                                      }
                                 }
@@ -4307,73 +4314,127 @@ h3 {
                              goBackFromMultiplayer();
                         });
                     }
-                    // BADSHAH: NEW - Live Chat Listener
+                    
+                    function listenToOpponentPresence(opponentId, room) {
+                        if (unsubscribeOpponentPresence) unsubscribeOpponentPresence();
+                        if (!rtdb || !opponentId) {
+                             console.warn("RTDB listener skipped: DB ya opponentId missing.");
+                             return;
+                        }
+                        
+                        const appId = typeof __app_id !== 'undefined' ? __app_id : FIREBASE_FALLBACK_CONFIG.projectId;
+                        const rtdbAppId = appId.replace(/[.#$\[\]]/g, '_'); 
+                        const opponentStatusRef = ref(rtdb, `artifacts/${rtdbAppId}/public/data/presence/${opponentId}`);
+                        
+                        unsubscribeOpponentPresence = onValue(opponentStatusRef, (snapshot) => {
+                            const isOnline = snapshot.val();
+                            
+                            if (isOnline === false || isOnline === null) {
+                                if (gameEndedNotified || !isMultiplayer) return; 
+                                
+                                console.warn(`Opponent (ID: ${opponentId}) disconnected! (RTDB Presence)`);
+                                
+                                setTimeout(async () => {
+                                    if (gameEndedNotified || !currentRoomId) return;
+
+                                    try {
+                                         const roomDocRef = getRoomDocRef(currentRoomId);
+                                         const roomSnap = await getDoc(roomDocRef);
+                                         
+                                         if (roomSnap.exists()) {
+                                            const currentData = roomSnap.data();
+                                            
+                                            if (currentData.status === 'waiting') {
+                                                console.log("Opponent disconnected, but status is 'waiting'. Graceful exit confirmed.");
+                                                return;
+                                            }
+                                            
+                                            if (currentData.status === 'playing' || currentData.status === 'finished') {
+                                                 console.log("Grace period over. Status is not 'waiting'. Handling as abandonment.");
+                                                 handleOpponentAbandonment(currentData);
+                                            }
+                                         }
+                                    } catch (e) {
+                                         console.error("Error during grace period check:", e);
+                                         handleOpponentAbandonment({ status: 'playing' }); 
+                                    }
+
+                                }, 2500); 
+                                
+                              
+                            }
+                        }, (error) => {
+                            console.error("RTDB Presence listener error:", error);
+                        });
+                    }
+
                     function listenToChatState(roomId) {
                          if (unsubscribeChatListener) unsubscribeChatListener();
                          if (!chatMessagesContainer) return;
                          chatMessagesContainer.innerHTML = '';
                          chatSendBtn.disabled = true;
                          chatInputField.disabled = true;
-                         const chatColRef = getChatCollectionRef(roomId);
-                         // ❌ Error #13 NOTE: 'timestamp' field par index (collection group index) banana zaroori hai Firestore console mein.
-                         const q = query(chatColRef, orderBy("timestamp"));
-                         unsubscribeChatListener = onSnapshot(q, (snapshot) => {
+                         
+                         const chatRef = getChatRoomRef(roomId); 
+                         
+                         unsubscribeChatListener = onValue(chatRef, (snapshot) => {
                               chatMessagesContainer.innerHTML = '';
-                              if (snapshot.docs.length === 0) {
+                              if (!snapshot.exists()) {
                                   chatMessagesContainer.innerHTML = `<div class="text-sm text-gray-500 text-center py-2">Chat is currently empty</div>`;
+                              } else {
+                                  snapshot.forEach(childSnapshot => {
+                                      const msg = childSnapshot.val();
+                                      renderChatMessage(msg);
+                                  });
                               }
-                              snapshot.docs.forEach(doc => {
-                                  const msg = doc.data();
-                                  renderChatMessage(msg);
-                              });
                               
-                              // 🔴 YAHAN FIX KIYA GAYA:
-                              // 'Send' button ko enable karne se pehle check karein ki cooldown active toh nahin hai.
-                              // Yeh cooldown ko bypass hone se rokega.
                               if (!isChatOnCooldown) {
                                    chatSendBtn.disabled = false;
                               }
-                              chatInputField.disabled = false; // Typing ko hamesha enable rakhein
+                              chatInputField.disabled = false;
+                              chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
                          }, (error) => {
-                             console.error("Firestore chat listener error:", error);
-                             chatMessagesContainer.innerHTML = `<div class="text-sm text-red-500 text-center py-2">Error loading chat.</div>`;
+                             console.error("RTDB chat listener error:", error);
+                             chatMessagesContainer.innerHTML = `<div class="text-sm text-red-500 text-center py-2">Chat connection error</div>`;
                          });
                     }
-                    // BADSHAH: NEW - Chat Message Renderer
+                    
                     function renderChatMessage(msg) {
                         const isMyMessage = msg.senderId === userProfile.uid;
                         const msgEl = document.createElement('div');
                         msgEl.classList.add('chat-message', isMyMessage ? 'my-message' : 'opponent-message');
                         const senderName = isMyMessage ? 'You' : (msg.senderName || 'Opponent');
                         const time = msg.timestamp ? new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'now';
-                        // Sanitize text
-                        const textEl = document.createElement('p');
                         
-                        // 🔴 YAHAN FIX KIYA GAYA:
-                        // 'whitespace-normal' aur 'break-words' add kiya taaki lamba message
-                        // wrap ho kar neeche ki line par aa jaye aur horizontal scrollbar na dikhe.
+                        const senderEl = document.createElement('p');
+                        senderEl.className = 'chat-sender';
+                        senderEl.textContent = `${senderName}:`;
+                        
+                        const textEl = document.createElement('p');
                         textEl.className = 'chat-text whitespace-normal break-words';
-                        textEl.textContent = msg.text; // Use textContent to prevent XSS
-                        msgEl.innerHTML = `
-                             <p class="chat-sender">${senderName}:</p>
-                             ${textEl.outerHTML}
-                             <span class="chat-time">${time}</span>
-                        `;
+                        textEl.textContent = msg.text;
+                        
+                        const timeEl = document.createElement('span');
+                        timeEl.className = 'chat-time';
+                        timeEl.textContent = time;
+
+                        msgEl.innerHTML = '';
+                        msgEl.appendChild(senderEl);
+                        msgEl.appendChild(textEl);
+                        msgEl.appendChild(timeEl);
+                        
                         chatMessagesContainer.appendChild(msgEl);
                         chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
                         
-                        // BADSHAH: Show message on game screen overlay for 2 seconds (Carrom style)
                         if (gameScreen.classList.contains('hidden') === false) {
                              const messageToShow = `${senderName}: ${msg.text}`;
                              showNotification(messageToShow, 'info', true);
                         }
                     }
                     
-                    // BADSHAH: NEW - Send Chat Message Logic
                     async function sendChatMessage() {
                         if (!isAuthReady || !currentRoomId || chatInputField.disabled) return;
                         
-                        // ❌ Error #3 FIX: Rate Limiting Check
                         if (isChatOnCooldown) {
                              showNotification('Bohot jaldi chat mat karo! (Chat too fast!)', 'info');
                              return;
@@ -4382,54 +4443,52 @@ h3 {
                         const text = chatInputField.value.trim();
                         if (!text) return;
                         
-                        // Set cooldown
                         isChatOnCooldown = true;
                         chatSendBtn.disabled = true;
                         
-                        setTimeout(() => {
+                        let timeoutId = setTimeout(() => {
                             isChatOnCooldown = false;
-                            // Only re-enable if chat input is not otherwise disabled
                             if (!chatInputField.disabled) {
                                 chatSendBtn.disabled = false; 
                             }
                         }, CHAT_COOLDOWN_MS); 
                         
-                        chatInputField.value = '';
                         const message = {
                             senderId: userProfile.uid,
                             senderName: userProfile.displayName,
-                            text: text, // Text is sanitized on render
+                            text: text,
                             timestamp: Date.now()
                         };
+                        
                         try {
-                            const chatColRef = getChatCollectionRef(roomId);
-                            await addDoc(chatColRef, message);
+                            const chatRef = getChatRoomRef(currentRoomId); 
+                            await push(chatRef, message);
+                            chatInputField.value = '';
                         } catch (e) {
-                            console.error("Error sending chat message:", e);
+                            console.error("Error sending RTDB chat message:", e);
                             showNotification('Failed to send message.', 'error');
                             chatInputField.value = text;
+                            
+                            clearTimeout(timeoutId);
+                            isChatOnCooldown = false;
+                            chatSendBtn.disabled = false;
                         } finally {
                             chatInputField.focus();
                         }
                     }
-                    // BADSHAH: NEW - Delete Chat History
+                    
+                  
                     async function deleteChatHistory(roomId) {
-                        if (!db || !roomId) return;
+                        if (!rtdb || !roomId) return;
                         try {
-                             const chatColRef = getChatCollectionRef(roomId);
-                             const snapshot = await getDocs(chatColRef);
-                             
-                             // Use Promise.all to delete all docs in parallel
-                             await Promise.all(snapshot.docs.map(doc => deleteDoc(doc.ref)));
-                             console.log(`Chat history deleted for room: ${roomId}`);
+                             const chatRef = getChatRoomRef(roomId); 
+                             await remove(chatRef); 
+                             console.log(`RTDB Chat history deleted for room: ${roomId}`);
                         } catch (e) {
-                             console.error(`Failed to delete chat history for room ${roomId}:`, e);
+                             console.error(`Failed to delete RTDB chat history for room ${roomId}:`, e);
                         }
                     }
                     
-                    
-                    
-                    // BADSHAH: NEW - Chat Event Listeners
                     chatSendBtn.addEventListener('click', sendChatMessage);
                     chatInputField.addEventListener('keypress', (e) => {
                         if (e.key === 'Enter' && !chatSendBtn.disabled) {
@@ -4437,83 +4496,71 @@ h3 {
                         }
                     });
                     
-                    // BADSHAH: NEW - Chat Panel Toggle Logic
-                    // CHANGES MADE:
-                    // 1) Ensure chat is only available for friend-to-friend (multiplayer) mode.
-                    // 2) On mobile, open the chat as an off-canvas panel sliding in from the right so it doesn't fully overlay/ruin board experience.
-                    // 3) Default is hidden. Click toggles .open class which sets translateX(0).
                     chatToggleButton.addEventListener('click', () => {
-                         // If not in an active FTF session, block chat access and show message.
-                         // This prevents chat in PvP and PVA modes as requested.
                          if (!isMultiplayer && !currentRoomId) {
                               showNotification('Chat is only available in Play with Friends mode.', 'info');
                               return;
                          }
-                         // Toggle state
                          isChatPanelOpen = !isChatPanelOpen;
-                         // Desktop: we simply toggle visibility (existing layout handles this)
                          if (window.innerWidth >= 1024) {
-                             // On desktop we keep the chat in the right column. Use hidden class toggle.
                              multiplayerChatPanel.classList.toggle('hidden', !isChatPanelOpen);
                              if (!multiplayerChatPanel.classList.contains('hidden')) {
-                                 // ensure scrolled to bottom
                                  chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
                              }
                              return;
                          }
-                         // Mobile: use the .open class for off-canvas sliding panel that doesn't cover the whole game.
                          if (isChatPanelOpen) {
                              multiplayerChatPanel.classList.remove('hidden');
-                             // small timeout to ensure transition can run
                              requestAnimationFrame(() => {
                                  multiplayerChatPanel.classList.add('open');
                              });
                              setTimeout(() => {
                                  chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
-                                 // focus input if available
                                  try { chatInputField.focus(); } catch (e) {}
                              }, 220);
                          } else {
-                             // close
                              multiplayerChatPanel.classList.remove('open');
-                             // after transition hide for screen readers / layout
                              setTimeout(() => { if (!multiplayerChatPanel.classList.contains('open')) multiplayerChatPanel.classList.add('hidden'); }, 300);
                          }
                     });
-                    function goBackFromMultiplayer() {
+                    
+                    async function goBackFromMultiplayer() {
+                        
                          if (unsubscribeRoomListener) unsubscribeRoomListener();
                          if (unsubscribeChatListener) unsubscribeChatListener(); 
+                         if (unsubscribeOpponentPresence) { 
+                            unsubscribeOpponentPresence();
+                            unsubscribeOpponentPresence = null;
+                         }
+                         
+                         if (rtdb && userProfile.uid) {
+                             const appId = typeof __app_id !== 'undefined' ? __app_id : FIREBASE_FALLBACK_CONFIG.projectId;
+                             const rtdbAppId = appId.replace(/[.#$\[\]]/g, '_'); 
+                             const userStatusRef = ref(rtdb, `artifacts/${rtdbAppId}/public/data/presence/${userProfile.uid}`);
+                             
+                             await set(userStatusRef, false);
+                             setupPresence(userProfile.uid);
+                         }
+                         
                          clearInterval(rematchCountdownInterval); 
                          clearInterval(rewardTimerInterval); 
                          isMultiplayer = false;
                          currentRoomId = null;
                          myPlayerMark = null;
                          playerXRematch = false;
-                         playerOR_ematch = false;
+                         playerORematch = false;
                          gameStartedNotified = false; 
                          lastKnownStateFingerprint = null; 
-                         
-                         // 🔴 YAHAN FIX KIYA GAYA:
-                         // Yeh line aapki main win streak ko 0 par reset kar rahi thi. Ise hata diya gaya hai.
-                         // winStreak = 0; 
                          
                          isChatPanelOpen = false; 
                          hideScreen(multiplayerResultModal); 
                          showScreen(arcadeNexusScreen);
                          multiplayerChatPanel.classList.add('hidden'); 
-                         
-                         // 🔴 YAHAN FIX KIYA GAYA:
-                         // Yeh lines aapke total score (X aur O) ko 0 par reset kar rahi thi.
-                         // Ise hataane se aapka score aur win streak ab safe rahenge.
-                         // playerXScore = 0; playerOScore = 0;
-                         // saveAllData(); // <-- saveAllData() ko bhi remove kar diya
                     }
                     
-                    // BADSHAH: NEW - Universal Board Visual Reset (Critical Cleanup)
                     function resetBoardVisuals() {
                          gameBoardContainer.querySelectorAll('.game-cell').forEach(cell => {
                              cell.classList.remove('winning-cell', 'ai-tip-highlight', 'cell-bounce-in', 'blocked');
-                             // 🔴 FIX: Player classes ko bhi yahin par remove karein
                              cell.classList.remove('player-x', 'player-o'); 
                              cell.innerHTML = '';
                              cell.dataset.mark = '';
@@ -4521,7 +4568,6 @@ h3 {
                          });
                     }
 
-                    // BADSHAH: Updated Draw Board function for Multiplayer sync
                     function drawBoard(roomData) {
                         const existingCells = gameBoardContainer.querySelectorAll('.game-cell');
                         const requiredCells = roomData.boardSize * roomData.boardSize;
@@ -4536,10 +4582,8 @@ h3 {
                                 gameBoardContainer.appendChild(cell);
                             }
                         }
-                        // --- BADSHAH: PROFILE SWAP LOGIC ---
                         const myMark = myPlayerMark; 
                         const opponentMark = myMark === 'X' ? 'O' : 'X';
-                        // 🔴 FIX: Global 'currentPlayer' ki jagah 'roomData.currentPlayer' istemal karein
                         const isMyTurn = roomData.currentPlayer === myMark;
                         
                         const pXData = (myMark === 'X') ? { ...roomData, name: userProfile.displayName } : roomData;
@@ -4547,12 +4591,10 @@ h3 {
                         
                         const playerXDisplayData = pXData; 
                         const playerODisplayData = pOData; 
-                        // 1. LEFT PROFILE (myPlayerMark)
                         playerXNameEl.textContent = playerXDisplayData.playerXName.toUpperCase(); 
                         updatePlayerIconDisplay('X', playerXDisplayData.playerXIcon, playerXDisplayData.playerXColor); 
                         playerXProfile.classList.toggle('active-turn', isMyTurn);
                         
-                        // 2. RIGHT PROFILE (opponentMark)
                         playerONameEl.textContent = playerODisplayData.playerOName.toUpperCase() || 'OPPONENT'; 
                         updatePlayerIconDisplay('O', playerODisplayData.playerOIcon, playerODisplayData.playerOColor); 
                         playerOProfile.classList.toggle('active-turn', !isMyTurn);
@@ -4560,75 +4602,72 @@ h3 {
                             showNotification(`You are Player ${myMark}. Opponent is Player ${opponentMark}.`, 'info');
                             gameStartedNotified = true; 
                         }
-                        // --- END PROFILE SWAP FIX ---
-                        // 3. Update only changed cells
+                        
+                        const iconsToCreate = [];
+                        
                         gameBoardContainer.querySelectorAll('.game-cell').forEach((cell, index) => {
                             const mark = roomData.boardState[index];
                             const currentMark = cell.dataset.mark || null; 
                             cell.classList.remove('processing', 'ai-tip-highlight');
                             cell.style.opacity = '1';
                             
-                            // 🔴 YAHAN ASLI FIX HAI (THIS IS THE REAL FIX):
-                            // Problem yeh thi ki `!''` (empty string) TRUE hota hai, aur `!null` bhi TRUE hota hai.
-                            // Isse check `(true && true)` ban gaya aur function ne return kar diya.
-                            
-                            // FIX: Check "empty" state (dono null/empty hain)
                             if ((!currentMark || currentMark === '') && !mark) {
-                                // Yeh cell naye game mein empty hai. Ise force-clean karein.
                                 cell.innerHTML = '';
                                 cell.classList.remove('player-x', 'player-o', 'winning-cell', 'cell-bounce-in', 'blocked');
-                                cell.dataset.mark = ''; // Empty string par set karein
+                                cell.dataset.mark = '';
                                 return;
                             }
                             
-                            // Check "same mark" state (dono 'X' ya dono 'O' hain)
                             if (currentMark === mark) {
-                                 // Mark same hai, lekin winning-cell add/remove check karein
                                  if (roomData.winningLine && roomData.winningLine.includes(index)) {
                                       cell.classList.add('winning-cell');
                                  } else {
-                                     cell.classList.remove('winning-cell'); // Fix: Purani winning line remove karein
+                                     cell.classList.remove('winning-cell');
                                  }
                                  return;
                             }
                             
-                            // Agar yahan tak pohnche hain, matlab cell change hua hai (e.g., 'X' se 'null' ya 'null' se 'O')
                             cell.dataset.mark = mark || ''; 
                             cell.innerHTML = ''; 
                             cell.classList.remove('player-x', 'player-o', 'winning-cell', 'cell-bounce-in', 'blocked');
                             if (mark) {
                                  cell.classList.add(`player-${mark.toLowerCase()}`);
                                  
-                                 // Get correct icon from data
                                  const iconId = (mark === 'X') ? (roomData.playerXIcon || 'x') : (roomData.playerOIcon || 'circle');
                                  const iconName = ICON_COSTS[iconId] ? ICON_COSTS[iconId][0] : iconId;
                                  const iconEl = document.createElement('i');
                                  iconEl.setAttribute('data-lucide', iconName);
                                  cell.appendChild(iconEl);
-                                 lucide.createIcons({ nodes: [iconEl] });
+                                 iconsToCreate.push(iconEl);
                                  cell.classList.add('cell-bounce-in'); 
                                  if (roomData.winningLine && roomData.winningLine.includes(index)) {
                                       cell.classList.add('winning-cell');
                                  }
                             }
                         });
-                         // AI Tip and Blocker button should reflect the MP state
-                         aiTipBtn.classList.add('hidden'); // Only show in PVA mode, even in this new layout
+                        
+                        if (iconsToCreate.length > 0) {
+                            lucide.createIcons({ nodes: iconsToCreate });
+                        }
+                        
+                         aiTipBtn.classList.add('hidden');
                          blockerPowerupBtn.classList.add('hidden');
                     }
-                    // --- Core Game Logic ---
                     function initializeGame(room = null) {
-                        gameEndedNotified = false; // 🔴 CRITICAL RESET FIX
+                        gameEndedNotified = false;
                         lastKnownStateFingerprint = null;
                         isChatPanelOpen = false;
-                        // NEW FIX: Call universal reset at the start of initialization
                         resetBoardVisuals(); 
     
-                        // Multiplayer Init
                         if (room) {
                             applyTheme('multiplayer');
                             isMultiplayer = true;
                             boardSize = room.boardSize;
+                            
+                            mpPlayerXData = { id: room.playerXId, name: room.playerXName, icon: room.playerXIcon, color: room.playerXColor };
+                            mpPlayerOData = { id: room.playerOId, name: room.playerOName, icon: room.playerOIcon, color: room.playerOColor };
+                            opponentName = (myPlayerMark === 'X') ? mpPlayerOData.name : mpPlayerXData.name;
+                            
                             playerXIcon = room.playerXIcon;
                             playerXColor = room.playerXColor;
                             playerOIcon = room.playerOIcon;
@@ -4639,7 +4678,9 @@ h3 {
                             playerXScoreEl.textContent = playerXScore;
                             playerOScoreEl.textContent = playerOScore;
                             
-                            // Controls Visibility in MP
+                            const opponentId = (myPlayerMark === 'X') ? mpPlayerOData.id : mpPlayerXData.id;
+                            listenToOpponentPresence(opponentId, room);
+                            
                             aiTipBtn.classList.add('hidden');
                             blockerPowerupBtn.classList.add('hidden');
                             
@@ -4647,20 +4688,14 @@ h3 {
                             aiTipBtnMobile.classList.add('hidden');
                             blockerPowerupBtnMobile.classList.add('hidden');
                             
-                            // 🔴 MEGA UPDATE: AI Tip count UI ko hide karein
-                            // aiTipCountEl.classList.add('hidden');
-                            // aiTipCountElMobile.classList.add('hidden');
-                            
                             gameBoardContainer.className = 'game-board-container';
                             gameBoardContainer.style.gridTemplateColumns = `repeat(${boardSize}, 1fr)`;
                             drawBoard(room);
                             updateTurnStatus();
                             
-                            // Show chat panel on desktop if MP (Mobile hidden by default)
                             if(window.innerWidth >= 1024) multiplayerChatPanel.classList.remove('hidden');
                             return;
                         }
-                        // Single Player / Local PvP Init
                         isMultiplayer = false;
                         
                         const isPVA = gameSettings.gameMode === 'pva';
@@ -4699,33 +4734,22 @@ h3 {
                         }
                         const showBlocker = (gameSettings.gameVariant === 'blocker');
                         
-                        // Controls Visibility in local modes (Feature 2)
                         aiTipBtn.classList.toggle('hidden', !isPVA);
                         aiTipBtnMobile.classList.toggle('hidden', !isPVA);
                         
                         blockerPowerupBtn.classList.toggle('hidden', !showBlocker || !isPVA);
                         blockerPowerupBtnMobile.classList.toggle('hidden', !showBlocker || !isPVA);
                         
-                        // 🔴 MEGA UPDATE: AI Tip count UI ko hide karein
-                        // aiTipCountEl.classList.add('hidden');
-                        // aiTipCountElMobile.classList.add('hidden');
-                        
                         if (isPVA) {
-                            // aiTipCountEl.textContent = aiTipCount; // Desktop // <-- 🔴 MEGA UPDATE: Hata diya
-                            // aiTipCountElMobile.textContent = aiTipCount; // Mobile // <-- 🔴 MEGA UPDATE: Hata diya
                             aiTipBtn.disabled = (currentHearts < AI_TIP_COST);
                             aiTipBtnMobile.disabled = (currentHearts < AI_TIP_COST);
                         }
                         updateTurnStatus();
                         confettiContainer.innerHTML = '';
                     }
-                    // 🔴 BADSHAH: YEH POORA SECTION (100+ LINES) MISSING THA (THIS ENTIRE SECTION WAS MISSING)
-                    // 🔴 BADSHAH: Ab yeh click listener 'handleCellClick' function ko call karega
                     gameBoardContainer.addEventListener('click', handleCellClick);
                     
-                    // 🔴 YAHAN FIX KIYA GAYA (FIX #2): Multiplayer click logic ko update kiya
                     function handleCellClick(event) {
-                        // Board lock check (dono local aur MP ke liye)
                         if (!isGameActive) return;
                         
                         const clickedCell = event.target.closest('.game-cell');
@@ -4733,7 +4757,6 @@ h3 {
                         const clickedIndex = parseInt(clickedCell.dataset.index);
                         if (isNaN(clickedIndex)) return;
                         
-                        // Cell par pehle se mark hai
                         if (clickedCell.dataset.mark || clickedCell.classList.contains('processing')) {
                             playSound(invalidSound, 'C3', '0.1');
                             clickedCell.classList.add('shake');
@@ -4741,29 +4764,21 @@ h3 {
                             return;
                         }
                         
-                        // --- MULTIPLAYER CHECK ---
                         if (isMultiplayer) {
                              if (currentPlayer !== myPlayerMark) {
                                   showNotification("Wait for your opponent's turn.", 'info');
                                   return;
                              }
                              
-                             // 🔴 FIX #2 (Board Lock): Board ko foran lock/disable karein
                              isGameActive = false;
-                             gameBoardContainer.classList.add('ai-thinking'); // Opponent ki turn jaisa effect
+                             gameBoardContainer.classList.add('ai-thinking');
                              
-                             // 🔴 FIX #2 (Optimistic UI):
-                             // UI ko *foran* update karein (server ka intezaar na karein)
                              placeMark(clickedCell, clickedIndex); 
                              
-                             // Ab background mein server ko update karein
                              syncMoveToFirestore(clickedIndex, clickedCell);
                              
-                             // Note: Hum yahan switchPlayer() call nahin karte.
-                             // Server (onSnapshot) hamein batayega ki turn switch hui hai.
                              return;
                         }
-                        // --- Single Player / Local PvP Logic ---
                         if (isBlockerActive) {
                             placeBlock(clickedCell, clickedIndex, currentPlayer);
                             isBlockerActive = false;
@@ -4779,7 +4794,6 @@ h3 {
                         if (window.navigator.vibrate) window.navigator.vibrate(50);
                         if (gameSettings.gameMode === 'pvp') {
                             clearInterval(turnTimer);
-                            resetTimerBars();
                         }
                         placeMark(clickedCell, clickedIndex);
                         if (checkEndCondition()) return;
@@ -4788,74 +4802,66 @@ h3 {
                             aiMove();
                         }
                     }
-                    // 🔴 YEH FUNCTION MISSING THA
                     async function syncMoveToFirestore(index, cell) {
                          if (isMoveOnCooldown) return; 
                          isMoveOnCooldown = true;
                          try {
-                              const roomDocRef = getRoomDocRef(currentRoomId);
-                              await runTransaction(db, async (transaction) => {
-                                   const roomDoc = await transaction.get(roomDocRef);
-                                   if (!roomDoc.exists()) { throw new Error("Room doesn't exist."); }
-                                   
-                                   const roomData = roomDoc.data();
-                                   if (roomData.status !== 'playing') { throw new Error("Game is not active."); }
-                                   if (roomData.currentPlayer !== myPlayerMark) { throw new Error("Not your turn."); }
-                                   if (roomData.boardState[index] !== null) { throw new Error("Cell already taken."); }
-                                   
-                                   const newBoardState = [...roomData.boardState];
-                                   newBoardState[index] = myPlayerMark;
-                                   const newCurrentPlayer = (myPlayerMark === 'X') ? 'O' : 'X';
-                                   
-                                   // Check for win/draw
-                                   const winInfo = checkWin(newBoardState, myPlayerMark);
-                                   const isDraw = checkDraw(newBoardState);
-                                   
-                                   let newStatus = 'playing';
-                                   let winner = null;
-                                   let winningLine = [];
-                                   
-                                   if (winInfo.won) {
-                                       newStatus = 'finished';
-                                       winner = myPlayerMark;
-                                       winningLine = winInfo.line;
-                                   } else if (isDraw) {
-                                       newStatus = 'finished';
-                                       winner = 'Draw';
-                                   }
-                                   
-                                   transaction.update(roomDocRef, {
-                                       boardState: newBoardState,
-                                       currentPlayer: newCurrentPlayer,
-                                       status: newStatus,
-                                       winner: winner,
-                                       winningLine: winningLine,
-                                       lastUpdated: Date.now()
-                                   });
-                              });
+                             let retries = 0;
+                             const maxRetries = 2;
+                             let success = false;
+                     
+                             while (retries <= maxRetries && !success) {
+                                 try {
+                                     await runTransaction(db, async (transaction) => {
+                                          const roomDoc = await transaction.get(getRoomDocRef(currentRoomId));
+                                          if (!roomDoc.exists()) { throw new Error("Room doesn't exist."); }
+                                          
+                                          const roomData = roomDoc.data();
+                                          if (roomData.status !== 'playing') { throw new Error("Game is not active."); }
+                                          if (roomData.currentPlayer !== myPlayerMark) { throw new Error("Not your turn."); }
+                                          if (roomData.boardState[index] !== null) { throw new Error("Cell already taken."); }
+                                          
+                                          const newBoardState = [...roomData.boardState];
+                                          newBoardState[index] = myPlayerMark;
+                                          const newCurrentPlayer = (myPlayerMark === 'X') ? 'O' : 'X';
+                                          
+                                          transaction.update(getRoomDocRef(currentRoomId), {
+                                              boardState: newBoardState,
+                                              currentPlayer: newCurrentPlayer,
+                                              lastUpdated: Date.now()
+                                          });
+                                     });
+                                     success = true;
+                                 } catch (e) {
+                                     if (retries < maxRetries && e.code === 'aborted') {
+                                         retries++;
+                                         showNotification(`Conflict detected. Retrying move (${retries}/${maxRetries})...`, 'info');
+                                         await new Promise(res => setTimeout(res, 600 * retries));
+                                     } else {
+                                         throw e;
+                                     }
+                                 }
+                             }
                          } catch (e) {
                               console.error("Move sync transaction failed:", e.message);
                               showNotification(e.message || "Invalid move. Board desynced.", 'error');
                               cell.classList.remove('processing'); 
                               cell.style.opacity = '1'; 
-                              // Rollback is handled by the onSnapshot listener
                          } finally {
                               setTimeout(() => { isMoveOnCooldown = false; }, MOVE_COOLDOWN_MS);
                          }
                     }
-                    // 🔴 YEH FUNCTION MISSING THA
                     function placeMark(cell, index) {
                         const mark = currentPlayer;
                         boardState[index] = mark;
                         cell.dataset.mark = mark;
                         cell.classList.add(`player-${mark.toLowerCase()}`);
                         
-                        // 🔴 FIX: Multiplayer mein bhi icon sahi se render karein
                         let iconId;
                         if (isMultiplayer) {
-                            iconId = (mark === myPlayerMark) ? playerXIcon : playerOIcon;
+                            iconId = (mark === 'X') ? mpPlayerXData.icon : mpPlayerOData.icon;
                         } else {
-                            iconId = (mark === 'X') ? playerXIcon : (gameSettings.gameMode === 'pva' ? 'sparkles' : 'circle'); // Player O icon
+                            iconId = (mark === 'X') ? playerXIcon : (gameSettings.gameMode === 'pva' ? 'sparkles' : 'circle');
                         }
                         
                         const iconName = ICON_COSTS[iconId] ? ICON_COSTS[iconId][0] : iconId;
@@ -4869,26 +4875,22 @@ h3 {
                         moveCount++;
                         playSound(clickSound, (mark === 'X' ? 'C5' : 'E5'), '0.05');
                     }
-                    // 🔴 YEH FUNCTION MISSING THA
                     function switchPlayer() {
                         currentPlayer = (currentPlayer === 'X') ? 'O' : 'X';
                         updateTurnStatus();
                     }
-                    // 🔴 YEH FUNCTION MISSING THA
                     function updateTurnStatus() {
-                        if (!isGameActive && !isMultiplayer) return; // MP mein 'isGameActive' false ho sakta hai, phir bhi update zaroori hai
+                        if (!isGameActive && !isMultiplayer) return;
                         
                         let isMyTurn, statusText;
                         
                         if (isMultiplayer) {
-                            // 🔴 FIX #2 (Board Lock):
-                            // Board ko unlock karein jab data server se confirm ho jaaye
                             isGameActive = (currentPlayer === myPlayerMark);
                             gameBoardContainer.classList.toggle('ai-thinking', !isGameActive);
                             
                             isMyTurn = (currentPlayer === myPlayerMark);
                             statusText = isMyTurn ? "YOUR TURN" : (opponentName.toUpperCase() + "'S TURN");
-                        } else { // Local game
+                        } else {
                             isMyTurn = (currentPlayer === humanPlayer);
                             if (gameSettings.gameMode === 'pva') {
                                 const personality = AI_PERSONALITIES[gameSettings.aiDifficulty] || AI_PERSONALITIES.medium;
@@ -4902,13 +4904,11 @@ h3 {
                         playerXProfile.classList.toggle('active-turn', currentPlayer === 'X');
                         playerOProfile.classList.toggle('active-turn', currentPlayer === 'O');
                         
-                        // 🔴 MEGA UPDATE: AI Tip Button
                         const isPVA = gameSettings.gameMode === 'pva';
                         const showBlockerPVA = (gameSettings.gameVariant === 'blocker') && isPVA;
                         
-                        // 🔴 YAHAN FIX KIYA GAYA: `showBlockMoverPVA` ka typo `showBlockerPVA` kar diya hai
                         blockerPowerupBtn.classList.toggle('hidden', !showBlockerPVA);
-                        blockerPowerupBtnMobile.classList.toggle('hidden', !showBlockerPVA); // <-- Yahan typo tha
+                        blockerPowerupBtnMobile.classList.toggle('hidden', !showBlockerPVA);
                         
                         aiTipBtn.classList.toggle('hidden', !isPVA);
                         aiTipBtnMobile.classList.toggle('hidden', !isPVA);
@@ -4919,11 +4919,9 @@ h3 {
                             updateBlockerButton();
                         }
                     }
-                    // 🔴 YEH FUNCTION MISSING THA
                     function checkWin(board, player) {
                         const size = boardSize;
                         const flatBoard = board;
-                        // 1. Check Rows
                         for (let r = 0; r < size; r++) {
                             let line = [];
                             let won = true;
@@ -4934,7 +4932,6 @@ h3 {
                             }
                             if (won) return { won: true, line };
                         }
-                        // 2. Check Columns
                         for (let c = 0; c < size; c++) {
                             let line = [];
                             let won = true;
@@ -4945,7 +4942,6 @@ h3 {
                             }
                             if (won) return { won: true, line };
                         }
-                        // 3. Check Diagonal (Top-Left to Bottom-Right)
                         let diag1 = [];
                         let wonDiag1 = true;
                         for (let i = 0; i < size; i++) {
@@ -4954,7 +4950,6 @@ h3 {
                             if (flatBoard[index] !== player) { wonDiag1 = false; break; }
                         }
                         if (wonDiag1) return { won: true, line: diag1 };
-                        // 4. Check Diagonal (Top-Right to Bottom-Left)
                         let diag2 = [];
                         let wonDiag2 = true;
                         for (let i = 0; i < size; i++) {
@@ -4965,14 +4960,52 @@ h3 {
                         if (wonDiag2) return { won: true, line: diag2 };
                         return { won: false, line: [] };
                     }
-                    // 🔴 YEH FUNCTION MISSING THA
+                    
+                    async function checkAndEndGameIfNeeded(room) {
+                        if (!room || room.status !== 'playing' || myPlayerMark !== 'X') return;
+
+                        const winInfoX = checkWin(room.boardState, 'X');
+                        const winInfoO = checkWin(room.boardState, 'O');
+                        const isDraw = checkDraw(room.boardState);
+
+                        let newStatus = 'playing';
+                        let winner = null;
+                        let winningLine = [];
+
+                        if (winInfoX.won) {
+                            newStatus = 'finished';
+                            winner = 'X';
+                            winningLine = winInfoX.line;
+                        } else if (winInfoO.won) {
+                            newStatus = 'finished';
+                            winner = 'O';
+                            winningLine = winInfoO.line;
+                        } else if (isDraw) {
+                            newStatus = 'finished';
+                            winner = 'Draw';
+                        }
+
+                        if (newStatus === 'finished') {
+                            try {
+                                await updateDoc(getRoomDocRef(currentRoomId), {
+                                    status: newStatus,
+                                    winner: winner,
+                                    winningLine: winningLine,
+                                    lastUpdated: Date.now()
+                                });
+                            } catch (e) {
+                                console.error("Error updating game end status:", e);
+                                showNotification('Error ending game.', 'error');
+                            }
+                        }
+                    }
+
                     function checkDraw(board) {
                         const opponentMark = (currentPlayer === 'X') ? 'O' : 'X';
                         return getAvailableMoves(board).length === 0 &&
                                !checkWin(board, currentPlayer).won &&
                                !checkWin(board, opponentMark).won;
                     }
-                    // 🔴 YEH FUNCTION MISSING THA
                     function checkEndCondition() {
                         const opponentMark = (currentPlayer === 'X') ? 'O' : 'X';
                         const winInfo = checkWin(boardState, currentPlayer);
@@ -4986,20 +5019,18 @@ h3 {
                         }
                         return false;
                     }
-                    // 🔴 YEH FUNCTION MISSING THA
                     function highlightWinningCells(line) {
                         line.forEach(index => {
                             const cell = gameBoardContainer.querySelector(`[data-index='${index}']`);
                             if (cell) cell.classList.add('winning-cell');
                         });
                     }
-                    // 🔴 YEH FUNCTION MISSING THA
                     async function endGame(isDraw, winningLine = [], winner = 'Draw', room = null) {
-                        if (gameEndedNotified && !isMultiplayer) return; // Local game mein loop ko rokein
+                        if (gameEndedNotified && !isMultiplayer) return;
                         gameEndedNotified = true;
                         isGameActive = false;
+                        
                         clearInterval(turnTimer);
-                        resetTimerBars();
                         let heartsChange = 0;
                         let heartsChangeSymbol = '';
                         let heartsChangeClass = '';
@@ -5007,66 +5038,62 @@ h3 {
                         
                         if (isDraw) {
                             playSound(drawSound, 'C4', '0.5');
-                            if (!isMultiplayer) { // Local games
-                                winStreak = 0; // Draw par streak reset karein
-                                // AI game mein draw par hearts change nahin hote
+                            if (!isMultiplayer) {
+                                winStreak = 0;
                                 if (gameSettings.gameMode === 'pva') {
                                     heartsChange = 0;
                                     heartsChangeSymbol = '0';
                                     heartsChangeClass = 'neutral';
                                 }
-                            } else { // Multiplayer games
-                                winStreak = 0; // Draw par streak reset
+                            } else {
+                                winStreak = 0;
                                 heartsChange = 0;
                                 heartsChangeSymbol = '0';
                                 heartsChangeClass = 'neutral';
                             }
                             winStreakText = `${winStreak} Wins`;
-                        } else { // Koi jeeta hai
+                        } else {
                             playSound(winSound, ['C5', 'E5', 'G5'], '0.4');
-                            if (!isMultiplayer) { // Local PVA/PVP
+                            if (!isMultiplayer) {
                                 if (winner === humanPlayer) {
                                     playerXScore++;
                                     winStreak++;
                                     if (gameSettings.gameMode === 'pva') {
-                                        heartsChange = AI_WIN_REWARD; // +2 hearts
+                                        heartsChange = AI_WIN_REWARD;
                                     }
                                 } else if (winner === aiPlayer) {
                                     playerOScore++;
-                                    winStreak = 0; // AI jeetne par streak reset
-                                    heartsChange = 0; // Cost pehle hi le liya tha, toh yahan 0
-                                } else { // PVP
+                                    winStreak = 0;
+                                    heartsChange = 0;
+                                } else {
                                     if(winner === 'X') playerXScore++;
                                     if(winner === 'O') playerOScore++;
-                                    winStreak = 0; // Local PVP par streak count nahin hoti
+                                    winStreak = 0;
                                 }
-                            } else { // Multiplayer
+                            } else {
                                 if (winner === myPlayerMark) {
                                     winStreak++;
-                                    heartsChange = FTF_WIN_REWARD; // +3 hearts
+                                    heartsChange = FTF_WIN_REWARD;
                                     if (myPlayerMark === 'X') playerXScore++; else playerOScore++;
                                 } else {
-                                    winStreak = 0; // Streak reset
-                                    heartsChange = 0; // Haarne par koi change nahin
+                                    winStreak = 0;
+                                    heartsChange = 0;
                                     if (myPlayerMark === 'X') playerOScore++; else playerXScore++;
                                 }
                             }
-                            // Win Streak Bonus Check (Sirf agar jeete hain)
                             if (winStreak > 0 && winStreak % WIN_STREAK_BONUS_COUNT === 0) {
                                 heartsChange += WIN_STREAK_BONUS_AMOUNT;
                                 showNotification(`+${WIN_STREAK_BONUS_AMOUNT} Hearts for ${winStreak}-Win Streak!`, 'success');
                             }
-                            // Hearts change text
                             if (heartsChange > 0) {
                                 heartsChangeSymbol = `+${heartsChange}`;
                                 heartsChangeClass = 'positive';
                             } else {
-                                heartsChangeSymbol = `${heartsChange}`; // 0 ya -1 dikhayega
+                                heartsChangeSymbol = `${heartsChange}`;
                                 heartsChangeClass = heartsChange < 0 ? 'negative' : 'neutral';
                             }
                         }
                         
-                        // Heart aur score ko update karein
                         currentHearts = Math.max(0, currentHearts + heartsChange);
                         playerXScoreEl.textContent = playerXScore;
                         playerOScoreEl.textContent = playerOScore;
@@ -5076,42 +5103,50 @@ h3 {
                         updateHeartsUI();
                         
                         highlightWinningCells(winningLine);
+                        
+                        await new Promise(res => setTimeout(res, 1000));
+
                         if (!isMultiplayer) {
                             if (winner === 'X' || (winner === 'O' && gameSettings.gameMode === 'pva')) {
                                 runConfetti();
                             }
-                            // Show Local Game Over Modal
                             const timeTaken = ((new Date() - gameStartTime) / 1000).toFixed(1);
                             gameOverMessage.textContent = isDraw ? "It's a Draw!" : (winner === 'X' ? `${player1Name.toUpperCase()} WINS!` : `${playerONameEl.textContent.toUpperCase()} WINS!`);
                             gameOverMessage.style.color = isDraw ? 'var(--text-light)' : (winner === 'X' ? 'var(--player-x-color)' : 'var(--player-o-color)');
                             statTime.textContent = `${timeTaken}s`;
                             statMoves.textContent = moveCount;
-                            statHearts.textContent = `${heartsChangeSymbol} Hearts`;
-                            statHearts.className = `stat-value ${heartsChangeClass}`;
+                            
+                            if (gameSettings.gameMode === 'pva' && !isDraw) {
+                                statHearts.textContent = (winner === 'X') ? `+${heartsChange} Hearts` : `0 Hearts`;
+                                statHearts.className = `stat-value ${winner === 'X' ? 'positive' : 'neutral'}`;
+                            } else {
+                                statHearts.textContent = `${heartsChangeSymbol} Hearts`;
+                                statHearts.className = `stat-value ${heartsChangeClass}`;
+                            }
+                            
                             statWinStreak.textContent = winStreakText;
                             statWinStreak.className = `stat-value ${winStreak > 0 ? 'positive' : 'neutral'}`;
                             
-                            // 🔴 YAHAN FIX KIYA GAYA:
-                            // Button ko disable(false) par set karein, taaki woh enable ho.
                             playAgainBtn.disabled = false;
                             
                             showScreen(gameOverModal);
                         } else {
-                            // Show Multiplayer Result Modal
-                            showMultiplayerResult(room, heartsChangeSymbol, heartsChangeClass, winStreakText, winStreak > 0);
+                            showMultiplayerResult(room, heartsChangeSymbol, heartsChangeClass, winStreakText, winStreak > 0, room.status === 'abandoned');
                         }
                     }
-                    // 🔴 YEH FUNCTION MISSING THA
-                    function showMultiplayerResult(room, heartsSymbol, heartsClass, streakText, streakPositive) {
+                    function showMultiplayerResult(room, heartsSymbol, heartsClass, streakText, streakPositive, isAbandoned = false) {
                         mpResultTitle.textContent = room.winner === 'Draw' ? "IT'S A DRAW!" : (room.winner === myPlayerMark ? "✨ YOU WON! ✨" : "YOU LOST");
-                        // Player X Card
+                        
+                        if (isAbandoned && room.winner === myPlayerMark) {
+                             mpResultTitle.textContent = "✨ OPPONENT LEFT! ✨";
+                        }
+                        
                         resultNameX.textContent = mpPlayerXData.name.toUpperCase();
                         resultScoreX.textContent = playerXScore;
                         const iconX = document.createElement('i');
                         iconX.setAttribute('data-lucide', ICON_COSTS[mpPlayerXData.icon || 'x'][0]);
                         resultIconX.innerHTML = '';
                         resultIconX.appendChild(iconX);
-                        // Player O Card
                         resultNameO.textContent = mpPlayerOData.name.toUpperCase();
                         resultScoreO.textContent = playerOScore;
                         const iconO = document.createElement('i');
@@ -5119,21 +5154,25 @@ h3 {
                         resultIconO.innerHTML = '';
                         resultIconO.appendChild(iconO);
                         lucide.createIcons({ nodes: [resultIconX, resultIconO] });
-                        // Stats
                         mpStatHearts.textContent = `${heartsSymbol} Hearts`;
                         mpStatHearts.className = `stat-value ${heartsClass}`;
                         mpStatWinStreak.textContent = streakText;
                         mpStatWinStreak.className = `stat-value ${streakPositive ? 'positive' : 'neutral'}`;
                         
-                        playerXRematch = false;
-                        playerOR_ematch = false;
-                        rematchBtn.disabled = false;
-                        rematchBtn.textContent = 'REQUEST REMATCH';
-                        rematchStatusEl.textContent = 'Challenge your opponent to a rematch!';
+                        if (isAbandoned) {
+                             rematchBtn.disabled = true;
+                             rematchBtn.textContent = 'GAME OVER';
+                             rematchStatusEl.textContent = 'Opponent left the match.';
+                        } else {
+                             playerXRematch = false;
+                             playerORematch = false;
+                             rematchBtn.disabled = false;
+                             rematchBtn.textContent = 'REQUEST REMATCH';
+                             rematchStatusEl.textContent = 'Challenge your opponent to a rematch!';
+                        }
                         
                         showScreen(multiplayerResultModal);
                     }
-                    // 🔴 YEH FUNCTION MISSING THA
                     rematchBtn.addEventListener('click', async () => {
                         if (!currentRoomId || !myPlayerMark) return;
                         rematchBtn.disabled = true;
@@ -5152,10 +5191,9 @@ h3 {
                             rematchBtn.disabled = false;
                         }
                     });
-                    // 🔴 YEH FUNCTION MISSING THA
                     function updateRematchStatusUI() {
-                         const myRematch = (myPlayerMark === 'X') ? playerXRematch : playerOR_ematch;
-                         const oppRematch = (myPlayerMark === 'X') ? playerOR_ematch : playerXRematch;
+                         const myRematch = (myPlayerMark === 'X') ? playerXRematch : playerORematch;
+                         const oppRematch = (myPlayerMark === 'X') ? playerORematch : playerXRematch;
                          if (myRematch) {
                               rematchBtn.textContent = 'REMATCH REQUESTED';
                               rematchBtn.disabled = true;
@@ -5169,7 +5207,6 @@ h3 {
                               rematchStatusEl.textContent = 'Awaiting opponent...';
                          }
                     }
-                    // 🔴 YEH FUNCTION MISSING THA
                     function startRematchCountdown() {
                          clearInterval(rematchCountdownInterval);
                          let count = 3;
@@ -5184,13 +5221,12 @@ h3 {
                                    clearInterval(rematchCountdownInterval);
                                    rematchCountdownInterval = null;
                                    rematchStatusEl.textContent = 'Starting...';
-                                   if (myPlayerMark === 'X') { // Only host resets the game
+                                   if (myPlayerMark === 'X') {
                                         await startRematchRound();
                                    }
                               }
                          }, 1000);
                     }
-                    // 🔴 YEH FUNCTION MISSING THA
                     async function startRematchRound() {
                          if (!currentRoomId) return;
                          try {
@@ -5206,14 +5242,9 @@ h3 {
                                    rematchO: false,
                                    lastUpdated: Date.now()
                               });
-                              // 🔴 CRITICAL: Chat history delete
-                              await deleteChatHistory(currentRoomId);
                               
-                              // 🔴 FIX 3: Player X ko 'hideScreen' nahin karna chahiye
-                              // 'listenToRoomState' (Single Source of Truth) ab 'hideScreen' aur 'initializeGame' ko handle karega
-                              // hideScreen(multiplayerResultModal); // <-- YEH LINE HATA DI GAYI HAI
                               
-                              // 🔴 Issue #2 FIX: Reset game ended flag for host
+                              
                               gameEndedNotified = false;
                               
                          } catch (e) {
@@ -5221,9 +5252,6 @@ h3 {
                               showNotification('Failed to start rematch.', 'error');
                          }
                     }
-                    // 🔴 BADSHAH: YEH POORA SECTION (100+ LINES) MISSING THA (THIS ENTIRE SECTION WAS MISSING) - END
-                    // --- AI Logic (Restructured & Humanized Percentages) ---
-                    // 🔴 BADSHAH: NEW - Find all winning moves (for fork detection)
                     function findAllWinningMoves(board, player) {
                         const threats = [];
                         const available = getAvailableMoves(board);
@@ -5243,22 +5271,19 @@ h3 {
                         }
                         return -1;
                     }
-                    // 🔴 BADSHAH: NEW - Find Fork (Trap) Move
                     function findForkMove(board, player) {
                         const available = getAvailableMoves(board);
-                        // Check karein ki board par kam se kam 3 moves baaki hain (fork ke liye zaroori)
                         if (available.length < (board.length - 4)) return -1;
                         for (let index of available) {
-                            board[index] = player; // Move try karein
+                            board[index] = player;
                             const winningMoves = findAllWinningMoves(board, player);
-                            board[index] = null; // Move undo karein
+                            board[index] = null;
                             
                             if (winningMoves.length >= 2) {
-                                // Yeh move ek "fork" (double attack) banata hai
                                 return index;
                             }
                         }
-                        return -1; // Koi fork move nahin mila
+                        return -1;
                     }
                     function placeBlock(cell, index, player) {
                         boardState[index] = 'B';
@@ -5280,7 +5305,6 @@ h3 {
                             blockerButtonMobile.classList.add('hidden');
                             return;
                         }
-                        // Only show in PVA mode (PvP local has no blocker control, MP has no blocker variant)
                         const isPVA = gameSettings.gameMode === 'pva';
                         blockerButton.classList.toggle('hidden', !isPVA);
                         blockerPowerupBtnMobile.classList.toggle('hidden', !isPVA);
@@ -5293,8 +5317,8 @@ h3 {
                     [blockerPowerupBtn, blockerPowerupBtnMobile].forEach(btn => {
                         btn.addEventListener('click', () => {
                             if (!isGameActive || btn.disabled) return;
-                            isBlockLockerActive = !isBlockerActive;
-                            gameBoardContainer.classList.toggle('blocker-active', isBlockerActive);
+                            isBlockerActive = !isBlockerActive;
+                            gameBoardContainer.classList.toggle('blocker-active', isBlockLActive);
                             
                             blockerPowerupBtn.classList.toggle('active', isBlockerActive);
                             blockerPowerupBtnMobile.classList.toggle('active', isBlockerActive);
@@ -5306,7 +5330,6 @@ h3 {
                         });
                     });
                     
-                    // 🔴 MEGA UPDATE: AI Tip Button (Ab hearts istemal karega)
                     [aiTipBtn, aiTipBtnMobile].forEach(tipBtn => {
                         tipBtn.addEventListener('click', async () => {
                             
@@ -5325,10 +5348,10 @@ h3 {
                             
                             currentHearts = Math.max(0, currentHearts - AI_TIP_COST);
                             await saveAllData();
-                            updateHeartsUI(); // Foran UI update karein
+                            updateHeartsUI();
                             
-                            tipBtn.disabled = true; // Is turn ke liye disable karein
-                            if(currentHearts < AI_TIP_COST) { // Check karein ki agle turn ke liye hearts hain
+                            tipBtn.disabled = true;
+                            if(currentHearts < AI_TIP_COST) {
                                 aiTipBtn.disabled = true;
                                 aiTipBtnMobile.disabled = true;
                             }
@@ -5398,51 +5421,41 @@ h3 {
                                          } else { finalMove = calculatedMove; }
                                      } else { finalMove = calculatedMove; }
                                  }
-                                 // 🔴 BADSHAH: HARD AI Blunder Rate ko 15% se 10% kar diya hai
                                  else if (Math.random() < 0.10 && !isAIFirstMove) {
                                       finalMove = findRandomMove(boardState);
                                  }
                                  else { finalMove = calculatedMove; }
-                             // 🔴 BADSHAH: NEW - Grandmaster AI Logic
                              } else if (difficulty === 'grandmaster') {
-                                // 🔴 YAHAN FIX KIYA GAYA (FIX #3): Grandmaster AI ke liye 'First Move Logic' add ki
                                 if (isAIFirstMove && boardSize === 3) {
                                     const centerIndex = Math.floor((boardSize * boardSize) / 2);
                                     if (boardState[centerIndex] === null && Math.random() < 0.70) {
-                                        // 70% chance center se start karega
                                         calculatedMove = centerIndex;
                                     } else {
-                                        // 30% chance corner se start karega
                                         const corners = [0, boardSize - 1, boardSize * (boardSize - 1), boardSize * boardSize - 1];
                                         const availableCorners = corners.filter(index => boardState[index] === null);
                                         if (availableCorners.length > 0) {
                                             calculatedMove = availableCorners[Math.floor(Math.random() * availableCorners.length)];
                                         } else {
-                                            calculatedMove = findBestMove(boardState, false); // Fallback
+                                            calculatedMove = findBestMove(boardState, false);
                                         }
                                     }
                                 } else {
-                                    // 1. Immediate Win
                                     let winMove = findWinningMove(boardState, aiPlayer);
                                     if (winMove !== -1) {
                                         calculatedMove = winMove;
                                     } else {
-                                        // 2. Immediate Block
                                         let blockMove = findWinningMove(boardState, humanPlayer);
                                         if (blockMove !== -1) {
                                             calculatedMove = blockMove;
                                         } else {
-                                            // 3. Find Fork (Trap)
                                             let forkMove = findForkMove(boardState, aiPlayer);
                                             if (forkMove !== -1) {
                                                 calculatedMove = forkMove;
                                             } else {
-                                                // 4. Block Opponent's Fork (Prevent Trap)
                                                 let blockForkMove = findForkMove(boardState, humanPlayer);
                                                 if (blockForkMove !== -1) {
                                                     calculatedMove = blockForkMove;
                                                 } else {
-                                                    // 5. Fallback to Minimax (Best Move)
                                                     calculatedMove = findBestMove(boardState, false);
                                                 }
                                             }
@@ -5450,8 +5463,7 @@ h3 {
                                     }
                                 }
                                 
-                                // 🔴 BADSHAH: GRANDMASTER Blunder Rate: 5% (bohot kam)
-                                if (Math.random() < 0.05 && !isAIFirstMove) { // First move par ghalati na kare
+                                if (Math.random() < 0.05 && !isAIFirstMove) {
                                     finalMove = findRandomMove(boardState);
                                 } else {
                                     finalMove = calculatedMove;
@@ -5495,7 +5507,16 @@ h3 {
                                        }
                                  }
                              } else {
-                                  console.error("AI ERROR: No move decided upon.");
+                                  console.warn("AI (Stall Fix): 'finalMove' was -1. Playing random move.");
+                                  const randomFallback = findRandomMove(boardState);
+                                  if (randomFallback !== -1) {
+                                       const fallbackCell = gameBoardContainer.querySelector(`[data-index='${randomFallback}']`);
+                                       if (fallbackCell && boardState[randomFallback] === null) {
+                                            placeMark(fallbackCell, randomFallback);
+                                       }
+                                  } else {
+                                       console.error("AI ERROR: No move decided upon AND no random moves left.");
+                                  }
                              }
                              gameBoardContainer.classList.remove('ai-thinking');
                              if (!checkEndCondition()) {
@@ -5517,7 +5538,6 @@ h3 {
                         if(winMove !== -1) return winMove;
                         let blockMove = findWinningMove(board, opponent);
                         if(blockMove !== -1) return blockMove;
-                        // FIX: 'availableMoves' ki jagah 'available' istemal karein
                         return available[Math.floor(Math.random() * available.length)];
                     }
                     function findBestMove(board, forHuman) {
@@ -5588,8 +5608,6 @@ h3 {
                         board.forEach((cell, index) => { if (cell === null) moves.push(index); });
                         return moves;
                     }
-                    // --- END OF AI LOGIC ---
-                    // 🔴 YEH FUNCTIONS MISSING THEY
                     function runConfetti() {
                          confettiContainer.innerHTML = '';
                          for (let i = 0; i < 100; i++) {
@@ -5601,10 +5619,6 @@ h3 {
                              confettiContainer.appendChild(confetti);
                          }
                     }
-                    function resetTimerBars() {
-                         // Timer logic... (Agar zaroori ho toh add karein)
-                    }
-                    // --- END OF MISSING FUNCTIONS ---
                     const gameListItems = document.querySelectorAll('.game-list-item');
                     gameListItems.forEach(item => {
                         item.addEventListener('mousemove', (e) => {
@@ -5616,15 +5630,11 @@ h3 {
                             const rotateY = x / (rect.width / 2) * 7; 
                             item.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
                             item.style.transition = "transform 0.1s ease-out";
-                        }); // 🔴 AHIYA FIX KARYU: 'mousemove' listener band karyo
-                    }); // 🔴 AHIYA FIX KARYU: 'forEach' loop band karyo
-                    // --- DANIYAL: In-Game Event Listeners
+                        });
+                    });
                     settingsBtn.addEventListener('click', () => { 
-                        // BADSHAH: FIX - Restart button visibility (Feature 3)
-                        // User Request: Restart button ko hamesha hide karo (PvP, PvAI, aur MP)
-                        restartGameBtn.classList.add('hidden');
+                      
                         
-                        // User Request: Setting button click karne par celebration (confetti) ko roko
                         if (confettiContainer) {
                             confettiContainer.innerHTML = '';
                         }
@@ -5633,19 +5643,17 @@ h3 {
                     });
                     settingsCloseBtn.addEventListener('click', () => { hideScreen(settingsModal, () => showScreen(gameScreen)); });
                     globalSettingsBtn.addEventListener('click', () => { 
-                        // 🔴 MEGA UPDATE: Jab settings modal khule, player ka naam input mein daalein
                         playerNameInput.value = player1Name;
                         showScreen(globalSettingsModal); 
-                        // 🔴 BADSHAH: Naye 'briefcase' aur 'logout' icons ko render karne ke liye Lucide ko call karein
                         const purchaseBtnIcon = document.querySelector('#purchase-license-btn i');
-                        const logoutBtnIcon = document.querySelector('#logout-btn i'); // <-- YEH ADD KIYA
+                        const logoutBtnIcon = document.querySelector('#logout-btn i');
                         
                         const nodesToCreate = [];
                         if (purchaseBtnIcon) nodesToCreate.push(purchaseBtnIcon);
-                        if (logoutBtnIcon) nodesToCreate.push(logoutBtnIcon); // <-- YEH ADD KIYA
+                        if (logoutBtnIcon) nodesToCreate.push(logoutBtnIcon);
                         
                         if (nodesToCreate.length > 0) {
-                            lucide.createIcons({ nodes: nodesToCreate }); // <-- YEH UPDATE KIYA
+                            lucide.createIcons({ nodes: nodesToCreate });
                         }
                     });
                     globalSettingsCloseBtn.addEventListener('click', () => { hideScreen(globalSettingsModal, () => showScreen(arcadeNexusScreen)); }); 
@@ -5657,23 +5665,20 @@ h3 {
                     mainMenuCloseBtn.addEventListener('click', () => { hideScreen(mainMenuScreen, () => showScreen(arcadeNexusScreen)); });
                     startGameBtn.addEventListener('click', () => {
                          
-                         // 🔴 MEGA UPDATE: Heart check ko update kiya
                          gameSettings.gameMode = document.querySelector('input[name="game-mode"]:checked').value;
                          if (gameSettings.gameMode === 'pva' && currentHearts < Math.abs(AI_LOSE_COST)) {
                               showNotification(`Not enough hearts! Need ${Math.abs(AI_LOSE_COST)} heart to play vs AI.`, 'error');
                               return;
                          }
                          
-                         // 🔴 Issue #2 FIX: Reset the game ended flag when starting a new local game
                          gameEndedNotified = false;
                          
                          gameSettings.boardSize = parseInt(document.querySelector('input[name="board-size"]:checked').value);
                          gameSettings.aiDifficulty = document.querySelector('input[name="ai-difficulty"]:checked')?.value || 'medium';
                          gameSettings.gameVariant = document.querySelector('input[name="game-variant"]:checked').value;
                          
-                         // 🔴 MEGA UPDATE: Heart sirf tab consume karein jab PVA ho
                          if(gameSettings.gameMode === 'pva' && !isMultiplayer) {
-                             currentHearts = Math.max(0, currentHearts + AI_LOSE_COST); // AI_LOSE_COST is -1
+                             currentHearts = Math.max(0, currentHearts + AI_LOSE_COST);
                              updateHeartsUI();
                              saveAllData(); 
                          }
@@ -5686,55 +5691,60 @@ h3 {
                             const isPVA = radio.value === 'pva';
                             aiDifficultySection.classList.toggle('hidden', !isPVA);
                             
-                            // Update blocker button visibility immediately
                             const showBlocker = document.querySelector('input[name="game-variant"]:checked').value === 'blocker';
                             blockerPowerupBtn.classList.toggle('hidden', !showBlocker || !isPVA);
                             blockerPowerupBtnMobile.classList.toggle('hidden', !showBlocker || !isPVA);
                             
-                            // No need to toggle aiTipBtn here as it's handled in initializeGame.
                         });
                     });
-                    // DANIYAL: Game Over Modal Buttons
+                    
+                    
                     playAgainBtn.addEventListener('click', () => {
-                         // 🔴 YAHAN FIX KAREIN (FIX HERE):
-                         // Double-click ko rokne ke liye button ko disable karein.
                          if (playAgainBtn.disabled) return;
                          playAgainBtn.disabled = true;
 
-                         // NEW FIX: Now calling the universal reset function
                          hideScreen(gameOverModal, () => { 
                              resetBoardVisuals(); 
                              initializeGame(); 
-                             // 🔴 YAHAN FIX KIYA GAYA:
-                             // Game screen ko waapas show karein, taaki blank screen na dikhe.
                              showScreen(gameScreen);
-                             playAgainBtn.disabled = false; // Kaam hone ke baad re-enable karein
+                             playAgainBtn.disabled = false;
                          });
                     });
-                    // Back to Menu buttons (Both Modals)
+                    
+                    
                     [backToMenuBtn, mpBackToMenuBtn, backToMainMenuBtn].forEach(btn => { 
                         btn.addEventListener('click', () => {
-                             [settingsModal, gameOverModal, multiplayerResultModal].forEach(modal => hideScreen(modal));
-                             if (isMultiplayer) {
-                                  cancelRoom(); 
-                                  goBackFromMultiplayer(); 
+                             
+                         
+                             const actionAfterHiding = () => {
+                                 if (isMultiplayer) {
+                                 
+                                      cancelRoom(); 
+                                      goBackFromMultiplayer(); 
+                                 } else {
+                                      showScreen(arcadeNexusScreen); 
+                                 }
+                             };
+                             
+                             let visibleModal = null;
+                             if (!settingsModal.classList.contains('hidden')) visibleModal = settingsModal;
+                             else if (!gameOverModal.classList.contains('hidden')) visibleModal = gameOverModal;
+                             else if (!multiplayerResultModal.classList.contains('hidden')) visibleModal = multiplayerResultModal;
+
+                            
+                             hideScreen(gameScreen); 
+
+                             if (visibleModal) {
+                                 hideScreen(visibleModal, actionAfterHiding);
                              } else {
-                                  showScreen(arcadeNexusScreen); 
-                                  // 🔴 YAHAN FIX KIYA GAYA:
-                                  // Yeh line aapke total score (X aur O) ko 0 par reset kar rahi thi.
-                                  // Ise hataane se aapka score aur win streak ab safe rahenge.
-                                  // playerXScore = 0; playerOScore = 0; saveAllData(); 
-                                  // 🔴 YAHAN BUG THA: Yeh line aapki win streak ko 0 par reset kar rahi thi.
-                                  // winStreak = 0; saveAllData(); // <-- YEH LINE HATA DI GAYI HAI
+                              
+                                 setTimeout(actionAfterHiding, 300);
                              }
                         });
                     });
-                    restartGameBtn.addEventListener('click', () => {
-                         // 🔴 Issue #2 FIX: Reset game ended flag when manually restarting local game
-                         gameEndedNotified = false;
-                         hideScreen(settingsModal, () => { initializeGame(); });
-                    });
-                }); // End DOMContentLoaded
+                    
+                    
+                });
             } catch (error) {
                 console.error("Critical error during initialization:", error);
                  document.body.innerHTML = `<div style="color: red; padding: 20px;">

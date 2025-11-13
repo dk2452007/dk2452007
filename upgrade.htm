@@ -1,0 +1,2656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#0A0E27">
+    <meta name="description" content="NEXUS - Ultra Premium Gaming Hub - Perfect on Every Screen">
+    <title>NEXUS - Elite Gaming Experience</title>
+    
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nexus: {
+                            50: '#E8F4F8',
+                            100: '#D1E9F1',
+                            200: '#A3D3E3',
+                            300: '#75BDD5',
+                            400: '#47A7C7',
+                            500: '#2C8BA8',
+                            600: '#236F86',
+                            700: '#1A5364',
+                            800: '#113742',
+                            900: '#0A0E27',
+                            950: '#050711'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Orbitron', 'system-ui', 'sans-serif'],
+                        body: ['Inter', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* ================================================================
+           🎮 NEXUS - MEGA ULTRA PREMIUM EDITION
+           PERFECT RESPONSIVE | ALL SCREENS | NEXT-LEVEL MEDIA QUERIES
+           Developer: danyorllc@gmail.com
+        ================================================================ */
+        
+        /* ===============================================
+           CSS VARIABLES - DYNAMIC SCALING SYSTEM
+        =============================================== */
+        :root {
+            /* Fonts */
+            --font-display: 'Orbitron', system-ui, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+            
+            /* Eye-Friendly Colors */
+            --color-primary: #2DD4BF;
+            --color-primary-dark: #14B8A6;
+            --color-secondary: #818CF8;
+            --color-secondary-dark: #6366F1;
+            --color-accent: #FB7185;
+            --color-accent-dark: #F43F5E;
+            --color-success: #34D399;
+            --color-warning: #FBBF24;
+            
+            /* Backgrounds */
+            --bg-primary: #0A0E27;
+            --bg-secondary: #111827;
+            --bg-tertiary: #1F2937;
+            
+            /* Glass */
+            --glass-bg: rgba(255, 255, 255, 0.06);
+            --glass-bg-hover: rgba(255, 255, 255, 0.10);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-border-hover: rgba(255, 255, 255, 0.24);
+            
+            /* Text */
+            --text-primary: rgba(255, 255, 255, 0.98);
+            --text-secondary: rgba(255, 255, 255, 0.87);
+            --text-tertiary: rgba(255, 255, 255, 0.68);
+            --text-disabled: rgba(255, 255, 255, 0.42);
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.12);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.16);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.24);
+            --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.32);
+            
+            /* Glows */
+            --glow-teal: 0 0 20px rgba(45, 212, 191, 0.3);
+            --glow-indigo: 0 0 20px rgba(129, 140, 248, 0.3);
+            --glow-rose: 0 0 20px rgba(251, 113, 133, 0.3);
+            
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* DYNAMIC SPACING SYSTEM - Will scale with screen */
+            --space-unit: 1rem;
+            --space-xs: calc(var(--space-unit) * 0.25);
+            --space-sm: calc(var(--space-unit) * 0.5);
+            --space-md: calc(var(--space-unit) * 1);
+            --space-lg: calc(var(--space-unit) * 1.5);
+            --space-xl: calc(var(--space-unit) * 2);
+            --space-2xl: calc(var(--space-unit) * 3);
+            
+            /* DYNAMIC FONT SYSTEM */
+            --font-base: 1rem;
+            --font-xs: calc(var(--font-base) * 0.75);
+            --font-sm: calc(var(--font-base) * 0.875);
+            --font-md: var(--font-base);
+            --font-lg: calc(var(--font-base) * 1.125);
+            --font-xl: calc(var(--font-base) * 1.25);
+            --font-2xl: calc(var(--font-base) * 1.5);
+            --font-3xl: calc(var(--font-base) * 1.875);
+            
+            /* DYNAMIC RADIUS */
+            --radius-sm: calc(var(--space-unit) * 0.5);
+            --radius-md: calc(var(--space-unit) * 0.75);
+            --radius-lg: calc(var(--space-unit) * 1);
+            --radius-xl: calc(var(--space-unit) * 1.25);
+            --radius-2xl: calc(var(--space-unit) * 1.5);
+            --radius-full: 9999px;
+            
+            /* DYNAMIC CONTAINER */
+            --container-padding: var(--space-md);
+            --container-max-width: 100%;
+        }
+        
+        /* ===============================================
+           BASE RESET
+        =============================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        * {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        *::-webkit-scrollbar {
+            display: none;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-size: 16px; /* Base will change per breakpoint */
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+            line-height: 1.6;
+            font-size: var(--font-md);
+        }
+        
+        /* Reduce Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* ===============================================
+           BACKGROUND SYSTEM
+        =============================================== */
+        .nexus-bg {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: -1;
+            background: linear-gradient(180deg, #0A0E27 0%, #111827 50%, #0A0E27 100%);
+        }
+        
+        .nexus-bg__mesh {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(45, 212, 191, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(129, 140, 248, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(251, 113, 133, 0.06) 0%, transparent 50%);
+            animation: mesh-shift 20s ease-in-out infinite alternate;
+        }
+        
+        @keyframes mesh-shift {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(5deg); }
+        }
+        
+        .nexus-bg__stars {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(1px 1px at 25% 15%, rgba(45, 212, 191, 0.5), transparent),
+                radial-gradient(1px 1px at 75% 35%, rgba(129, 140, 248, 0.5), transparent),
+                radial-gradient(1px 1px at 45% 65%, rgba(251, 113, 133, 0.5), transparent),
+                radial-gradient(1px 1px at 85% 85%, rgba(52, 211, 153, 0.5), transparent);
+            background-size: 200px 200px;
+            animation: twinkle 8s ease-in-out infinite;
+            opacity: 0.4;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        
+        .nexus-bg__orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            pointer-events: none;
+            animation: float-orb 25s ease-in-out infinite;
+            will-change: transform;
+        }
+        
+        @keyframes float-orb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(80px, -80px) scale(1.1); }
+            66% { transform: translate(-80px, 80px) scale(0.9); }
+        }
+        
+        .nexus-bg__orb--1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%);
+            top: -150px;
+            left: -150px;
+        }
+        
+        .nexus-bg__orb--2 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+            top: 40%;
+            right: -150px;
+            animation-delay: 8s;
+        }
+        
+        .nexus-bg__orb--3 {
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+            bottom: -150px;
+            left: 40%;
+            animation-delay: 16s;
+        }
+        
+        /* ===============================================
+           GLASSMORPHISM
+        =============================================== */
+        .nexus-glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nexus-glass:hover {
+            background: var(--glass-bg-hover);
+            border-color: var(--glass-border-hover);
+        }
+        
+        .nexus-glass--shimmer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                120deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.06) 45%,
+                rgba(255, 255, 255, 0.12) 50%,
+                rgba(255, 255, 255, 0.06) 55%,
+                transparent 100%
+            );
+            animation: shimmer 5s ease-in-out infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%) skewX(-15deg); }
+            50% { transform: translateX(100%) skewX(-15deg); }
+        }
+        
+        /* ===============================================
+           BUTTON SYSTEM
+        =============================================== */
+        .nexus-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: var(--space-md) var(--space-lg);
+            border: none;
+            border-radius: var(--radius-lg);
+            font-weight: 700;
+            font-size: var(--font-sm);
+            font-family: var(--font-display);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            overflow: hidden;
+            will-change: transform;
+            box-shadow: var(--shadow-md);
+            white-space: nowrap;
+        }
+        
+        .nexus-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+        
+        .nexus-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .nexus-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .nexus-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+        
+        .nexus-btn:focus-visible {
+            outline: 3px solid var(--color-primary);
+            outline-offset: 3px;
+        }
+        
+        .nexus-btn--teal {
+            background: linear-gradient(135deg, #2DD4BF 0%, #14B8A6 100%);
+            color: #fff;
+            box-shadow: var(--glow-teal), var(--shadow-md);
+        }
+        
+        .nexus-btn--teal:hover {
+            box-shadow: 0 0 30px rgba(45, 212, 191, 0.5), var(--shadow-lg);
+        }
+        
+        .nexus-btn--indigo {
+            background: linear-gradient(135deg, #818CF8 0%, #6366F1 100%);
+            color: #fff;
+            box-shadow: var(--glow-indigo), var(--shadow-md);
+        }
+        
+        .nexus-btn--indigo:hover {
+            box-shadow: 0 0 30px rgba(129, 140, 248, 0.5), var(--shadow-lg);
+        }
+        
+        .nexus-btn--rose {
+            background: linear-gradient(135deg, #FB7185 0%, #F43F5E 100%);
+            color: #fff;
+            box-shadow: var(--glow-rose), var(--shadow-md);
+        }
+     
+        .nexus-btn--rose:hover {
+            box-shadow: 0 0 30px rgba(251, 113, 133, 0.5), var(--shadow-lg);
+        }
+        
+        .nexus-btn--emerald {
+            background: linear-gradient(135deg, #34D399 0%, #10B981 100%);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(52, 211, 153, 0.3), var(--shadow-md);
+        }
+        
+        .nexus-btn--emerald:hover {
+            box-shadow: 0 0 30px rgba(52, 211, 153, 0.5), var(--shadow-lg);
+        }
+        
+        /* ===============================================
+           CARD SYSTEM
+        =============================================== */
+        .nexus-card {
+            position: relative;
+            padding: var(--space-lg);
+            border-radius: var(--radius-xl);
+            transition: all var(--transition-base);
+            cursor: pointer;
+            overflow: hidden;
+            will-change: transform;
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .nexus-card__glow {
+            position: absolute;
+            right: -80px;
+            top: -80px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            opacity: 0;
+            filter: blur(60px);
+            transition: all var(--transition-slow);
+            pointer-events: none;
+        }
+        
+        .nexus-card:hover .nexus-card__glow {
+            opacity: 0.5;
+            transform: scale(1.2);
+        }
+        
+        .nexus-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .nexus-card--teal {
+            background: linear-gradient(135deg, 
+                rgba(45, 212, 191, 0.12) 0%, 
+                rgba(20, 184, 166, 0.08) 100%
+            );
+            border: 1px solid rgba(45, 212, 191, 0.25);
+            box-shadow: var(--glow-teal), var(--shadow-sm);
+        }
+        
+        .nexus-card--teal:hover {
+            border-color: rgba(45, 212, 191, 0.5);
+            box-shadow: 0 0 30px rgba(45, 212, 191, 0.3), var(--shadow-md);
+        }
+        
+        .nexus-card--teal .nexus-card__glow {
+            background: radial-gradient(circle, #2DD4BF 0%, transparent 70%);
+        }
+        
+        .nexus-card--indigo {
+            background: linear-gradient(135deg, 
+                rgba(129, 140, 248, 0.12) 0%, 
+                rgba(99, 102, 241, 0.08) 100%
+            );
+            border: 1px solid rgba(129, 140, 248, 0.25);
+            box-shadow: var(--glow-indigo), var(--shadow-sm);
+        }
+        
+        .nexus-card--indigo:hover {
+            border-color: rgba(129, 140, 248, 0.5);
+            box-shadow: 0 0 30px rgba(129, 140, 248, 0.3), var(--shadow-md);
+        }
+        
+        .nexus-card--indigo .nexus-card__glow {
+            background: radial-gradient(circle, #818CF8 0%, transparent 70%);
+        }
+        
+        .nexus-card--rose {
+            background: linear-gradient(135deg, 
+                rgba(251, 113, 133, 0.12) 0%, 
+                rgba(244, 63, 94, 0.08) 100%
+            );
+            border: 1px solid rgba(251, 113, 133, 0.25);
+            box-shadow: var(--glow-rose), var(--shadow-sm);
+        }
+        
+        .nexus-card--rose:hover {
+            border-color: rgba(251, 113, 133, 0.5);
+            box-shadow: 0 0 30px rgba(251, 113, 133, 0.3), var(--shadow-md);
+        }
+        
+        .nexus-card--rose .nexus-card__glow {
+            background: radial-gradient(circle, #FB7185 0%, transparent 70%);
+        }
+        
+        .nexus-card--emerald {
+            background: linear-gradient(135deg, 
+                rgba(52, 211, 153, 0.12) 0%, 
+                rgba(16, 185, 129, 0.08) 100%
+            );
+            border: 1px solid rgba(52, 211, 153, 0.25);
+            box-shadow: 0 0 20px rgba(52, 211, 153, 0.3), var(--shadow-sm);
+        }
+        
+        .nexus-card--emerald:hover {
+            border-color: rgba(52, 211, 153, 0.5);
+            box-shadow: 0 0 30px rgba(52, 211, 153, 0.3), var(--shadow-md);
+        }
+        
+        .nexus-card--emerald .nexus-card__glow {
+            background: radial-gradient(circle, #34D399 0%, transparent 70%);
+        }
+        
+        /* ===============================================
+           REWARD CARDS
+        =============================================== */
+        .nexus-reward {
+            position: relative;
+            padding: var(--space-md);
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-base);
+            cursor: pointer;
+            will-change: transform;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            min-height: 90px;
+        }
+        
+        .nexus-reward:hover {
+            transform: translateY(-6px) scale(1.03);
+        }
+        
+        .nexus-reward--teal {
+            background: linear-gradient(135deg, 
+                rgba(45, 212, 191, 0.14) 0%, 
+                rgba(20, 184, 166, 0.10) 100%
+            );
+            border: 1px solid rgba(45, 212, 191, 0.35);
+            box-shadow: 0 4px 20px rgba(45, 212, 191, 0.25);
+        }
+        
+        .nexus-reward--teal:hover {
+            border-color: rgba(45, 212, 191, 0.6);
+            box-shadow: 0 8px 30px rgba(45, 212, 191, 0.4);
+        }
+        
+        .nexus-reward--indigo {
+            background: linear-gradient(135deg, 
+                rgba(129, 140, 248, 0.14) 0%, 
+                rgba(99, 102, 241, 0.10) 100%
+            );
+            border: 1px solid rgba(129, 140, 248, 0.35);
+            box-shadow: 0 4px 20px rgba(129, 140, 248, 0.25);
+        }
+        
+        .nexus-reward--indigo:hover {
+            border-color: rgba(129, 140, 248, 0.6);
+            box-shadow: 0 8px 30px rgba(129, 140, 248, 0.4);
+        }
+        
+        .nexus-reward--rose {
+            background: linear-gradient(135deg, 
+                rgba(251, 113, 133, 0.14) 0%, 
+                rgba(244, 63, 94, 0.10) 100%
+            );
+            border: 1px solid rgba(251, 113, 133, 0.35);
+            box-shadow: 0 4px 20px rgba(251, 113, 133, 0.25);
+        }
+        
+        .nexus-reward--rose:hover {
+            border-color: rgba(251, 113, 133, 0.6);
+            box-shadow: 0 8px 30px rgba(251, 113, 133, 0.4);
+        }
+        
+        /* ===============================================
+           BADGE SYSTEM
+        =============================================== */
+        .nexus-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: var(--font-xs);
+            font-weight: 700;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            animation: badge-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes badge-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .nexus-badge--hot {
+            background: linear-gradient(135deg, #FB7185 0%, #F43F5E 100%);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(251, 113, 133, 0.5);
+        }
+        
+        .nexus-badge--new {
+            background: linear-gradient(135deg, #2DD4BF 0%, #14B8A6 100%);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(45, 212, 191, 0.5);
+        }
+        
+        .nexus-badge--pro {
+            background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
+            color: #000;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+        }
+        
+        /* ===============================================
+           ICON ANIMATIONS
+        =============================================== */
+        .nexus-icon--float {
+            animation: icon-float 3s ease-in-out infinite;
+        }
+        
+        @keyframes icon-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        
+        .nexus-icon--pulse {
+            animation: icon-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes icon-pulse {
+            0%, 100% {
+                filter: drop-shadow(0 0 6px rgba(45, 212, 191, 0.4));
+                transform: scale(1);
+            }
+            50% {
+                filter: drop-shadow(0 0 12px rgba(45, 212, 191, 0.8));
+                transform: scale(1.08);
+            }
+        }
+        
+        .nexus-icon--spin {
+            animation: icon-spin 8s linear infinite;
+        }
+        
+        @keyframes icon-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* ===============================================
+           COIN ANIMATION
+        =============================================== */
+        .nexus-coin {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-full);
+            background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+            box-shadow: 0 4px 16px rgba(252, 211, 77, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: var(--space-sm) var(--space-md);
+        }
+        
+        .nexus-coin::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+            animation: coin-shimmer 3s linear infinite;
+        }
+        
+        @keyframes coin-shimmer {
+            0%, 100% { transform: translateX(-100%) skewX(-15deg); }
+            50% { transform: translateX(100%) skewX(-15deg); }
+        }
+        
+        /* ===============================================
+           FIRE ANIMATION
+        =============================================== */
+        .nexus-fire {
+            filter: drop-shadow(0 0 12px #F59E0B);
+            animation: fire-flicker 2.5s ease-in-out infinite;
+        }
+        
+        @keyframes fire-flicker {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            25% { opacity: 0.95; transform: scale(1.05); }
+            50% { opacity: 0.9; transform: scale(1.08); }
+            75% { opacity: 0.95; transform: scale(1.05); }
+        }
+        
+        /* ===============================================
+           NAVIGATION
+        =============================================== */
+        .nexus-nav__item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-base);
+            color: var(--text-tertiary);
+            cursor: pointer;
+        }
+        
+        .nexus-nav__item:hover {
+            background: var(--glass-bg);
+            color: var(--text-primary);
+        }
+        
+        .nexus-nav__item.active {
+            color: var(--color-primary);
+        }
+        
+        .nexus-nav__indicator {
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 50%;
+            height: 3px;
+            border-radius: var(--radius-full);
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            transition: transform var(--transition-base);
+            box-shadow: 0 0 12px var(--color-primary);
+        }
+        
+        .nexus-nav__item.active .nexus-nav__indicator {
+            transform: translateX(-50%) scaleX(1);
+        }
+        
+        .nexus-nav__item:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset:2px;
+        }
+        
+        /* ===============================================
+           TEXT SELECTION
+        =============================================== */
+        ::selection {
+            background: var(--color-primary);
+            color: #fff;
+        }
+        
+        /* ===============================================
+           FOCUS STYLES
+        =============================================== */
+        *:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+        
+        /* ===============================================
+           CONTAINER SYSTEM
+        =============================================== */
+        .nexus-container {
+            width: 100%;
+            margin: 0 auto;
+            padding: var(--container-padding);
+            padding-bottom: calc(var(--space-2xl) * 2);
+            max-width: var(--container-max-width);
+        }
+        
+        .nexus-header {
+            padding: var(--space-md);
+            margin-top: var(--space-md);
+            margin-bottom: var(--space-lg);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .nexus-footer {
+            padding: var(--space-md) 0;
+        }
+        
+        /* ===============================================
+           GRID SYSTEM
+        =============================================== */
+        .nexus-rewards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .nexus-cards {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: var(--space-lg);
+            margin-bottom: var(--space-2xl);
+        }
+        
+        /* ================================================================
+           🎯 ULTRA RESPONSIVE MEDIA QUERIES
+           PERFECT FOR ALL SCREENS - NEXT LEVEL
+        ================================================================ */
+        
+        /* ===============================================
+           TINY PHONES (280px - 320px) - Galaxy Fold, etc
+        =============================================== */
+        @media only screen and (max-width: 320px) {
+            :root {
+                --space-unit: 0.75rem;
+                --font-base: 13px;
+                --container-padding: 0.625rem;
+            }
+            
+            html {
+                font-size: 12px;
+            }
+            
+            .nexus-header {
+                padding: 0.5rem !important;
+                margin-top: 0.625rem !important;
+                margin-bottom: 0.75rem !important;
+                gap: 0.375rem !important;
+            }
+            
+            .nexus-header button,
+            .nexus-header .nexus-glass {
+                padding: 0.375rem !important;
+            }
+            
+            .nexus-header svg {
+                width: 0.875rem !important;
+                height: 0.875rem !important;
+            }
+            
+            .nexus-coin {
+                padding: 0.25rem 0.5rem !important;
+                font-size: 0.6875rem !important;
+            }
+            
+            .nexus-coin svg {
+                width: 0.875rem !important;
+                height: 0.875rem !important;
+            }
+            
+            .nexus-rewards {
+                gap: 0.375rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+            
+            .nexus-reward {
+                padding: 0.5rem 0.25rem !important;
+                min-height: 68px !important;
+                gap: 0.25rem !important;
+            }
+            
+            .nexus-reward svg {
+                width: 1rem !important;
+                height: 1rem !important;
+            }
+            
+            .nexus-reward .bg-white\/10 {
+                padding: 0.25rem !important;
+                border-radius: 6px !important;
+            }
+            
+            .nexus-reward .text-sm {
+                font-size: 0.625rem !important;
+                line-height: 1.1 !important;
+            }
+            
+            .nexus-badge {
+                top: 0.125rem !important;
+                right: 0.125rem !important;
+                padding: 0.0625rem 0.25rem !important;
+                font-size: 0.4375rem !important;
+            }
+            
+            .nexus-card {
+                padding: 0.625rem !important;
+                gap: 0.5rem !important;
+                flex-direction: column !important;
+                text-align: center !important;
+                margin-bottom: 0.625rem !important;
+            }
+            
+            .nexus-card svg {
+                width: 1.25rem !important;
+                height: 1.25rem !important;
+            }
+            
+            .nexus-card .nexus-glass {
+                padding: 0.5rem !important;
+            }
+            
+            .nexus-card .text-lg {
+                font-size: 0.75rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .nexus-card .text-sm {
+                font-size: 0.625rem !important;
+            }
+            
+            .nexus-btn {
+                width: 100% !important;
+                padding: 0.5rem 0.75rem !important;
+                font-size: 0.625rem !important;
+                gap: 0.25rem !important;
+            }
+            
+            .nexus-btn svg {
+                width: 0.75rem !important;
+                height: 0.75rem !important;
+            }
+            
+            .nexus-footer {
+                padding: 0.5rem 0 !important;
+            }
+            
+            .nexus-nav__item {
+                padding: 0.375rem 0.5rem !important;
+                gap: 0.125rem !important;
+            }
+            
+            .nexus-nav__item svg {
+                width: 1rem !important;
+                height: 1rem !important;
+            }
+            
+            .nexus-nav__item span {
+                font-size: 0.5625rem !important;
+            }
+        }
+        
+        /* ===============================================
+           EXTRA SMALL PHONES (321px - 359px)
+        =============================================== */
+        @media only screen and (min-width: 321px) and (max-width: 359px) {
+            :root {
+                --space-unit: 0.8rem;
+                --font-base: 13.5px;
+                --container-padding: 0.75rem;
+            }
+            
+            html {
+                font-size: 13px;
+            }
+            
+            .nexus-header {
+                padding: 0.625rem !important;
+                gap: 0.5rem !important;
+            }
+            
+            .nexus-reward {
+                padding: 0.625rem 0.375rem !important;
+                min-height: 72px !important;
+            }
+            
+            .nexus-card {
+                padding: 0.75rem !important;
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+            
+            .nexus-btn {
+                width: 100% !important;
+                padding: 0.625rem 0.875rem !important;
+                font-size: 0.6875rem !important;
+            }
+        }
+        
+        /* ===============================================
+           SMALL ANDROID (360px - 374px) - Galaxy S8/S9
+        =============================================== */
+        @media only screen and (min-width: 360px) and (max-width: 374px) {
+            :root {
+                --space-unit: 0.875rem;
+                --font-base: 14px;
+                --container-padding: 0.875rem;
+            }
+            
+            html {
+                font-size: 13.5px;
+            }
+            
+            .nexus-header {
+                padding: 0.75rem !important;
+                gap: 0.625rem !important;
+            }
+            
+            .nexus-reward {
+                padding: 0.75rem 0.5rem !important;
+                min-height: 76px !important;
+            }
+            
+            .nexus-card {
+                padding: 0.875rem !important;
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+            
+            .nexus-btn {
+                width: 100% !important;
+                padding: 0.75rem 1rem !important;
+                font-size: 0.75rem !important;
+            }
+        }
+        
+        /* ===============================================
+           IPHONE SE / STANDARD SMALL (375px - 389px)
+        =============================================== */
+        @media only screen and (min-width: 375px) and (max-width: 389px) {
+            :root {
+                --space-unit: 0.9rem;
+                --font-base: 14px;
+                --container-padding: 1rem;
+            }
+            
+            html {
+                font-size: 14px;
+            }
+            
+            .nexus-header {
+                padding: 0.875rem !important;
+                margin-top: 0.875rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .nexus-rewards {
+                gap: 0.625rem !important;
+            }
+            
+            .nexus-reward {
+                padding: 0.875rem 0.625rem !important;
+                min-height: 80px !important;
+            }
+            
+            .nexus-reward svg {
+                width: 1.25rem !important;
+                height: 1.25rem !important;
+            }
+            
+            .nexus-card {
+                padding: 1rem !important;
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+            
+            .nexus-card svg {
+                width: 1.5rem !important;
+                height: 1.5rem !important;
+            }
+            
+            .nexus-btn {
+                width: 100% !important;
+                padding: 0.875rem 1.25rem !important;
+                font-size: 0.8125rem !important;
+            }
+            
+            .nexus-nav__item {
+                padding: 0.625rem 0.75rem !important;
+            }
+            
+            .nexus-nav__item svg {
+                width: 1.25rem !important;
+                height: 1.25rem !important;
+            }
+        }
+        
+        /* ===============================================
+           IPHONE 12/13 (390px - 392px)
+        =============================================== */
+        @media only screen and (min-width: 390px) and (max-width: 392px) {
+            :root {
+                --space-unit: 0.95rem;
+                --font-base: 14.5px;
+            }
+            
+            html {
+                font-size: 14.5px;
+            }
+            
+            .nexus-reward {
+                min-height: 82px !important;
+            }
+            
+            .nexus-card {
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+            
+            .nexus-btn {
+                width: 100% !important;
+            }
+        }
+        
+        /* ===============================================
+           GOOGLE PIXEL (393px - 412px)
+        =============================================== */
+        @media only screen and (min-width: 393px) and (max-width: 412px) {
+            :root {
+                --space-unit: 0.95rem;
+                --font-base: 14.5px;
+            }
+            
+            html {
+                font-size: 14.5px;
+            }
+            
+            .nexus-reward {
+                min-height: 84px !important;
+            }
+            
+            .nexus-card {
+                padding: 1.125rem !important;
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+            
+            .nexus-btn {
+                width: 100% !important;
+            }
+        }
+        
+        /* ===============================================
+           IPHONE PRO (413px - 427px)
+        =============================================== */
+        @media only screen and (min-width: 413px) and (max-width: 427px) {
+            :root {
+                --space-unit: 1rem;
+                --font-base: 15px;
+            }
+            
+            html {
+                font-size: 15px;
+            }
+            
+            .nexus-reward {
+                padding: 1rem 0.75rem !important;
+                min-height: 86px !important;
+            }
+            
+            .nexus-card {
+                padding: 1.25rem !important;
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+            
+            .nexus-btn {
+                width: 100% !important;
+            }
+        }
+        
+        /* ===============================================
+           IPHONE 14 PRO MAX (428px - 479px)
+        =============================================== */
+        @media only screen and (min-width: 428px) and (max-width: 479px) {
+            :root {
+                --space-unit: 1rem;
+                --font-base: 15px;
+            }
+            
+            html {
+                font-size: 15px;
+            }
+            
+            .nexus-reward {
+                min-height: 88px !important;
+            }
+            
+            .nexus-card {
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+            
+            .nexus-btn {
+                width: 100% !important;
+            }
+        }
+        
+        /* ===============================================
+           LARGE PHONES (480px - 539px)
+        =============================================== */
+        @media only screen and (min-width: 480px) and (max-width: 539px) {
+            :root {
+                --space-unit: 1.05rem;
+                --font-base: 15.5px;
+            }
+            
+            html {
+                font-size: 15px;
+            }
+            
+            .nexus-reward {
+                min-height: 92px !important;
+            }
+            
+            .nexus-card {
+                padding: 1.375rem !important;
+                flex-direction: row !important;
+                text-align: left !important;
+            }
+            
+            .nexus-btn {
+                width: auto !important;
+            }
+        }
+        
+        /* ===============================================
+           PHABLETS (540px - 599px)
+        =============================================== */
+        @media only screen and (min-width: 540px) and (max-width: 599px) {
+            :root {
+                --space-unit: 1.1rem;
+                --font-base: 15.5px;
+                --container-max-width: 520px;
+            }
+            
+            html {
+                font-size: 15.5px;
+            }
+            
+            .nexus-reward {
+                min-height: 96px !important;
+            }
+            
+            .nexus-card {
+                padding: 1.5rem !important;
+            }
+        }
+        
+        /* ===============================================
+           SMALL TABLETS (600px - 767px)
+        =============================================== */
+        @media only screen and (min-width: 600px) and (max-width: 767px) {
+            :root {
+                --space-unit: 1.15rem;
+                --font-base: 16px;
+                --container-max-width: 580px;
+            }
+            
+            html {
+                font-size: 16px;
+            }
+            
+            .nexus-header {
+                padding: 1.125rem !important;
+            }
+            
+            .nexus-rewards {
+                gap: 1rem !important;
+            }
+            
+            .nexus-reward {
+                padding: 1.125rem !important;
+                min-height: 100px !important;
+            }
+            
+            .nexus-card {
+                padding: 1.625rem !important;
+            }
+            
+            .nexus-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem !important;
+            }
+        }
+        
+        /* ===============================================
+           IPAD MINI / PORTRAIT (768px - 819px)
+        =============================================== */
+        @media only screen and (min-width: 768px) and (max-width: 819px) {
+            :root {
+                --space-unit: 1.2rem;
+                --font-base: 16px;
+                --container-max-width: 720px;
+            }
+            
+            html {
+                font-size: 16px;
+            }
+            
+            .nexus-header {
+                padding: 1.25rem !important;
+            }
+            
+            .nexus-reward {
+                padding: 1.25rem !important;
+                min-height: 110px !important;
+            }
+            
+            .nexus-reward svg {
+                width: 1.75rem !important;
+                height: 1.75rem !important;
+            }
+            
+            .nexus-card {
+                padding: 1.75rem !important;
+            }
+            
+            .nexus-card svg {
+                width: 2rem !important;
+                height: 2rem !important;
+            }
+            
+            .nexus-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem !important;
+            }
+        }
+        
+        /* ===============================================
+           IPAD AIR (820px - 911px)
+        =============================================== */
+        @media only screen and (min-width: 820px) and (max-width: 911px) {
+            :root {
+                --space-unit: 1.25rem;
+                --font-base: 16px;
+                --container-max-width: 780px;
+            }
+            
+            html {
+                font-size: 16px;
+            }
+            
+            .nexus-header {
+                padding: 1.375rem !important;
+            }
+            
+            .nexus-reward {
+                min-height: 115px !important;
+            }
+            
+            .nexus-card {
+                padding: 1.875rem !important;
+            }
+            
+            .nexus-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* ===============================================
+           SURFACE PRO (912px - 1023px)
+        =============================================== */
+        @media only screen and (min-width: 912px) and (max-width: 1023px) {
+            :root {
+                --space-unit: 1.3rem;
+                --font-base: 16px;
+                --container-max-width: 860px;
+            }
+            
+            html {
+                font-size: 16px;
+            }
+            
+            .nexus-header {
+                padding: 1.5rem !important;
+            }
+            
+            .nexus-reward {
+                padding: 1.375rem !important;
+                min-height: 120px !important;
+            }
+            
+            .nexus-card {
+                padding: 2rem !important;
+            }
+            
+            .nexus-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.75rem !important;
+            }
+        }
+        
+        /* ===============================================
+           IPAD PRO / SMALL LAPTOP (1024px - 1279px)
+        =============================================== */
+        @media only screen and (min-width: 1024px) and (max-width: 1279px) {
+            :root {
+                --space-unit: 1.35rem;
+                --font-base: 16px;
+                --container-max-width: 960px;
+            }
+            
+            html {
+                font-size: 16px;
+            }
+            
+            .nexus-container {
+                padding: 1.5rem;
+            }
+            
+            .nexus-header {
+                padding: 1.625rem !important;
+            }
+            
+            .nexus-reward {
+                padding: 1.5rem !important;
+                min-height: 125px !important;
+            }
+            
+            .nexus-card {
+                padding: 2.125rem !important;
+            }
+            
+            .nexus-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem !important;
+            }
+            
+            .nexus-btn {
+                padding: 1rem 1.75rem !important;
+            }
+        }
+        
+        /* ===============================================
+           HD LAPTOP (1280px - 1365px)
+        =============================================== */
+        @media only screen and (min-width: 1280px) and (max-width: 1365px) {
+            :root {
+                --space-unit: 1.4rem;
+                --font-base: 16px;
+                --container-max-width: 1200px;
+            }
+            
+            .nexus-container {
+                padding: 1.75rem;
+            }
+            
+            .nexus-header {
+                padding: 1.75rem !important;
+            }
+            
+            .nexus-reward {
+                padding: 1.625rem !important;
+                min-height: 130px !important;
+            }
+            
+            .nexus-card {
+                padding: 2.25rem !important;
+            }
+            
+            .nexus-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.25rem !important;
+            }
+        }
+        
+        /* ===============================================
+           FULL HD LAPTOP (1366px - 1439px)
+        =============================================== */
+        @media only screen and (min-width: 1366px) and (max-width: 1439px) {
+            :root {
+                --space-unit: 1.45rem;
+                --container-max-width: 1280px;
+            }
+            
+            .nexus-container {
+                padding: 2rem;
+            }
+            
+            .nexus-reward {
+                min-height: 135px !important;
+            }
+            
+            .nexus-cards {
+                gap: 2.5rem !important;
+            }
+        }
+        
+        /* ===============================================
+           FULL HD+ (1440px - 1919px)
+        =============================================== */
+        @media only screen and (min-width: 1440px) and (max-width: 1919px) {
+            :root {
+                --space-unit: 1.5rem;
+                --container-max-width: 1360px;
+            }
+            
+            .nexus-container {
+                padding: 2.25rem;
+            }
+            
+            .nexus-header {
+                padding: 2rem !important;
+            }
+            
+            .nexus-reward {
+                padding: 1.75rem !important;
+                min-height: 140px !important;
+            }
+            
+            .nexus-card {
+                padding: 2.5rem !important;
+            }
+            
+            .nexus-cards {
+                gap: 2.75rem !important;
+            }
+            
+            .nexus-btn {
+                padding: 1.125rem 2rem !important;
+                font-size: 1rem !important;
+            }
+        }
+        
+        /* ===============================================
+           2K MONITORS (1920px - 2559px)
+        =============================================== */
+        @media only screen and (min-width: 1920px) and (max-width: 2559px) {
+            :root {
+                --space-unit: 1.6rem;
+                --font-base: 18px;
+                --container-max-width: 1600px;
+            }
+            
+            html {
+                font-size: 18px;
+            }
+            
+            .nexus-container {
+                padding: 2.5rem;
+            }
+            
+            .nexus-header {
+                padding: 2.25rem !important;
+            }
+            
+            .nexus-reward {
+                padding: 2rem !important;
+                min-height: 150px !important;
+            }
+            
+            .nexus-reward svg {
+                width: 2.25rem !important;
+                height: 2.25rem !important;
+            }
+            
+            .nexus-card {
+                padding: 2.75rem !important;
+            }
+            
+            .nexus-card svg {
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+            }
+            
+            .nexus-cards {
+                gap: 3rem !important;
+            }
+            
+            .nexus-btn {
+                padding: 1.25rem 2.25rem !important;
+                font-size: 1.125rem !important;
+            }
+            
+            .nexus-nav__item svg {
+                width: 1.75rem !important;
+                height: 1.75rem !important;
+            }
+        }
+        
+        /* ===============================================
+           4K MONITORS (2560px+)
+        =============================================== */
+        @media only screen and (min-width: 2560px) {
+            :root {
+                --space-unit: 1.8rem;
+                --font-base: 20px;
+                --container-max-width: 2000px;
+            }
+            
+            html {
+                font-size: 20px;
+            }
+            
+            .nexus-container {
+                padding: 3rem;
+            }
+            
+            .nexus-header {
+                padding: 2.5rem !important;
+            }
+            
+            .nexus-reward {
+                padding: 2.25rem !important;
+                min-height: 170px !important;
+            }
+            
+            .nexus-reward svg {
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+            }
+            
+            .nexus-card {
+                padding: 3rem !important;
+            }
+            
+            .nexus-card svg {
+                width: 3rem !important;
+                height: 3rem !important;
+            }
+            
+            .nexus-cards {
+                gap: 3.5rem !important;
+            }
+            
+            .nexus-btn {
+                padding: 1.5rem 2.5rem !important;
+                font-size: 1.25rem !important;
+            }
+            
+            .nexus-btn svg {
+                width: 1.25rem !important;
+                height: 1.25rem !important;
+            }
+            
+            .nexus-nav__item svg {
+                width: 2rem !important;
+                height: 2rem !important;
+            }
+            
+            .nexus-nav__item span {
+                font-size: 1.125rem !important;
+            }
+        }
+        
+        /* ===============================================
+           LANDSCAPE MODE - ALL DEVICES
+        =============================================== */
+        @media only screen and (max-height: 500px) and (orientation: landscape) {
+            :root {
+                --space-unit: 0.7rem;
+            }
+            
+            .nexus-header {
+                padding: 0.5rem 1rem !important;
+                margin-top: 0.5rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .nexus-rewards {
+                margin-bottom: 0.625rem !important;
+            }
+            
+            .nexus-reward {
+                min-height: 70px !important;
+                padding: 0.5rem !important;
+            }
+            
+            .nexus-card {
+                padding: 0.75rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .nexus-footer {
+                padding: 0.5rem 0 !important;
+            }
+            
+            .nexus-container {
+                padding-bottom: 3.5rem !important;
+            }
+        }
+        
+        /* ===============================================
+           LANDSCAPE MODE - TABLETS
+        =============================================== */
+        @media only screen and (min-width: 768px) and (max-height: 600px) and (orientation: landscape) {
+            .nexus-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* ===============================================
+           LANDSCAPE MODE - LARGE SCREENS
+        =============================================== */
+        @media only screen and (min-width: 1024px) and (orientation: landscape) {
+            .nexus-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* ===============================================
+           TOUCH OPTIMIZATION
+        =============================================== */
+        @media (hover: none) and (pointer: coarse) {
+            .nexus-btn,
+            .nexus-card,
+            .nexus-reward,
+            .nexus-nav__item,
+            .nexus-header button {
+                min-height: 48px !important;
+                min-width: 48px !important;
+            }
+            
+            .nexus-card:active {
+                transform: scale(0.98) !important;
+            }
+            
+            .nexus-btn:active {
+                transform: scale(0.96) !important;
+            }
+            
+            .nexus-reward:active {
+                transform: scale(0.96) !important;
+            }
+        }
+        
+        /* ===============================================
+           RETINA DISPLAYS
+        =============================================== */
+        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+            body {
+                -webkit-font-smoothing: subpixel-antialiased;
+            }
+            
+            .nexus-glass {
+                backdrop-filter: blur(24px) saturate(200%);
+            }
+        }
+        
+        /* ===============================================
+           PERFORMANCE OPTIMIZATIONS
+        =============================================== */
+        .nexus-card,
+        .nexus-reward,
+        .nexus-btn {
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        
+        /* ===============================================
+           PRINT STYLES
+        =============================================== */
+        @media print {
+            .nexus-bg,
+            .nexus-footer,
+            .nexus-header button {
+                display: none !important;
+            }
+            
+            .nexus-container {
+                padding: 1cm !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background System -->
+    <div class="nexus-bg">
+        <div class="nexus-bg__mesh"></div>
+        <div class="nexus-bg__orb nexus-bg__orb--1"></div>
+        <div class="nexus-bg__orb nexus-bg__orb--2"></div>
+        <div class="nexus-bg__orb nexus-bg__orb--3"></div>
+        <div class="nexus-bg__stars"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="nexus-container">
+        <!-- Header -->
+        <header class="nexus-header nexus-glass nexus-glass--shimmer">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <!-- Profile Button -->
+                <button 
+                    class="nexus-glass nexus-icon--pulse" 
+                    id="profileBtn" 
+                    style="padding: 0.75rem; border-radius: var(--radius-lg); background: rgba(129, 140, 248, 0.12); border-color: rgba(129, 140, 248, 0.3);"
+                    aria-label="Profile">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="profileGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#818CF8"/>
+                                <stop offset="100%" style="stop-color:#C4B5FD"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="url(#profileGrad)"/>
+                        <circle cx="12" cy="7" r="4" stroke="url(#profileGrad)"/>
+                    </svg>
+                </button>
+                
+                <!-- Streak Display -->
+                <div class="nexus-glass" style="border-radius: var(--radius-full); padding: 0.5rem 1rem; background: rgba(251, 191, 36, 0.12); border-color: rgba(251, 191, 36, 0.3); display: flex; align-items: center; gap: 0.5rem;">
+                    <svg class="nexus-fire w-5 h-5" viewBox="0 0 24 24" fill="none">
+                        <defs>
+                            <linearGradient id="fireGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                                <stop offset="0%" style="stop-color:#F59E0B"/>
+                                <stop offset="50%" style="stop-color:#F97316"/>
+                                <stop offset="100%" style="stop-color:#EF4444"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M12 2c1.5 3 3 5.5 3 8.5a3 3 0 1 1-6 0c0-3 1.5-5.5 3-8.5z" fill="url(#fireGrad)"/>
+                    </svg>
+                    <span class="font-bold" style="color: #F59E0B; font-size: 1rem;">0</span>
+                    <span class="font-semibold" style="color: #F59E0B; font-size: 0.875rem;">Streak</span>
+                </div>
+
+                <!-- Coins Display -->
+                <div class="nexus-coin">
+                    <svg class="w-5 h-5 z-10" viewBox="0 0 24 24">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="#D97706" stroke="#78350F" stroke-width="1.5"/>
+                    </svg>
+                    <span class="font-bold text-amber-900 z-10" style="font-size: 1rem;">20</span>
+                </div>
+                
+                <!-- Settings Button -->
+                <button 
+                    class="nexus-glass nexus-icon--spin" 
+                    id="settingsBtn"
+                    style="padding: 0.75rem; border-radius: var(--radius-lg); background: rgba(129, 140, 248, 0.12); border-color: rgba(129, 140, 248, 0.3);"
+                    aria-label="Settings">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="settingsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#818CF8"/>
+                                <stop offset="100%" style="stop-color:#C4B5FD"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="12" cy="12" r="3" stroke="url(#settingsGrad)"/>
+                        <path d="M12 1v6m0 6v6m-5-7H1m6 0h6m6 0h6m-6 0H13" stroke="url(#settingsGrad)"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Profile Modal -->
+        <div class="hidden fixed inset-0 z-50 items-center justify-center p-4" id="profileModal" style="background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(20px);">
+            <div class="nexus-glass relative" style="border-radius: var(--radius-2xl); padding: 2rem; max-width: 28rem; width: 100%; box-shadow: var(--shadow-xl); background: linear-gradient(135deg, rgba(45, 212, 191, 0.08), rgba(129, 140, 248, 0.08)); animation: slideUp 0.4s ease-out;">
+                <button 
+                    class="absolute nexus-glass" 
+                    id="modalClose" 
+                    style="top: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); transition: all var(--transition-base); cursor: pointer;"
+                    aria-label="Close">
+                    &times;
+                </button>
+                
+                <div class="text-center mb-6">
+                    <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center nexus-icon--pulse" style="border-radius: var(--radius-full); background: linear-gradient(135deg, #2DD4BF, #818CF8); border: 2px solid rgba(255, 255, 255, 0.3); box-shadow: var(--shadow-lg);">
+                        <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold" style="font-family: var(--font-display); background: linear-gradient(90deg, #2DD4BF, #818CF8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Player</h2>
+                </div>
+                
+                <div class="nexus-glass mb-6" style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: var(--radius-lg);">
+                    <div class="text-sm mb-2 font-semibold" style="color: var(--text-tertiary);">Game ID (UID)</div>
+                    <div class="text-sm font-bold break-all" style="color: var(--color-primary); font-family: var(--font-display);">136099241523611470B7</div>
+                </div>
+                
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="nexus-glass text-center" style="background: rgba(255, 255, 255, 0.04); padding: 1rem; border-radius: var(--radius-lg);">
+                        <div class="text-2xl font-bold mb-1" style="font-family: var(--font-display); background: linear-gradient(90deg, #FCD34D, #F59E0B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">0</div>
+                        <div class="text-sm font-semibold" style="color: var(--text-tertiary);">Wins</div>
+                    </div>
+                    <div class="nexus-glass text-center" style="background: rgba(255, 255, 255, 0.04); padding: 1rem; border-radius: var(--radius-lg);">
+                        <div class="text-2xl font-bold mb-1" style="font-family: var(--font-display); background: linear-gradient(90deg, #FCD34D, #F59E0B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">0</div>
+                        <div class="text-sm font-semibold" style="color: var(--text-tertiary);">Games</div>
+                    </div>
+                    <div class="nexus-glass text-center" style="background: rgba(255, 255, 255, 0.04); padding: 1rem; border-radius: var(--radius-lg);">
+                        <div class="text-2xl font-bold mb-1" style="font-family: var(--font-display); background: linear-gradient(90deg, #FCD34D, #F59E0B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">0%</div>
+                        <div class="text-sm font-semibold" style="color: var(--text-tertiary);">Win Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rewards Section -->
+        <div class="nexus-rewards">
+            <!-- Free Reward -->
+            <div class="nexus-reward nexus-reward--teal nexus-glass backdrop-blur-xl">
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 0.625rem; border-radius: var(--radius-md);">
+                    <svg class="w-6 h-6 nexus-icon--float" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="giftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2DD4BF"/>
+                                <stop offset="100%" style="stop-color:#14B8A6"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="3" y="8" width="18" height="4" rx="1" stroke="url(#giftGrad)"/>
+                        <path d="M12 8v13m-9-9h18" stroke="url(#giftGrad)"/>
+                    </svg>
+                </div>
+                <div class="text-center">
+                    <div class="text-sm font-bold" style="color: var(--text-primary);">FREE</div>
+                    <div class="text-sm font-semibold" style="color: var(--text-secondary);">Available</div>
+                </div>
+            </div>
+
+            <!-- Lucky Spin -->
+            <div class="nexus-reward nexus-reward--indigo nexus-glass backdrop-blur-xl relative">
+                <span class="nexus-badge nexus-badge--hot absolute" style="top: 0.5rem; right: 0.5rem;">HOT</span>
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 0.625rem; border-radius: var(--radius-md);">
+                    <svg class="w-6 h-6 nexus-icon--pulse" viewBox="0 0 24 24" fill="currentColor">
+                        <defs>
+                            <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#818CF8"/>
+                                <stop offset="100%" style="stop-color:#C4B5FD"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGrad)"/>
+                    </svg>
+                </div>
+                <div class="text-center">
+                    <div class="text-sm font-bold" style="color: var(--text-primary);">LUCKY SPIN</div>
+                    <div class="text-sm font-semibold" style="color: var(--text-secondary);">Spin Now!</div>
+                </div>
+            </div>
+
+            <!-- Top Rewards -->
+            <div class="nexus-reward nexus-reward--rose nexus-glass backdrop-blur-xl">
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 0.625rem; border-radius: var(--radius-md);">
+                    <svg class="w-6 h-6 nexus-icon--float" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="trophyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FB7185"/>
+                                <stop offset="100%" style="stop-color:#F43F5E"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" stroke="url(#trophyGrad)"/>
+                        <circle cx="12" cy="12" r="3" stroke="url(#trophyGrad)"/>
+                    </svg>
+                </div>
+                <div class="text-center">
+                    <div class="text-sm font-bold" style="color: var(--text-primary);">TOP</div>
+                    <div class="text-sm font-semibold" style="color: var(--text-secondary);">Rewards</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Modes -->
+        <div class="nexus-cards">
+            <!-- PVP Mode -->
+            <div class="nexus-card nexus-card--teal nexus-glass backdrop-blur-xl">
+                <div class="nexus-card__glow"></div>
+                <div class="nexus-glass flex-shrink-0" style="padding: 0.875rem; border-radius: var(--radius-lg);">
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="pvpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2DD4BF"/>
+                                <stop offset="100%" style="stop-color:#14B8A6"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="7" width="20" height="14" rx="2" stroke="url(#pvpGrad)"/>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" stroke="url(#pvpGrad)"/>
+                    </svg>
+                </div>
+                <div class="flex-1 z-10">
+                    <div class="text-lg font-bold mb-1" style="font-family: var(--font-display); color: var(--text-primary);">PLAYER VS PLAYER</div>
+                    <div class="text-sm" style="color: var(--text-secondary);">1v1 Battle Mode</div>
+                </div>
+                <button class="nexus-btn nexus-btn--teal z-10 play-btn" data-mode="PVP">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    PLAY
+                </button>
+            </div>
+
+            <!-- AI Mode -->
+            <div class="nexus-card nexus-card--indigo nexus-glass backdrop-blur-xl">
+                <div class="nexus-card__glow"></div>
+                <div class="nexus-glass flex-shrink-0" style="padding: 0.875rem; border-radius: var(--radius-lg);">
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#818CF8"/>
+                                <stop offset="100%" style="stop-color:#6366F1"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="3" width="20" height="14" rx="2" stroke="url(#aiGrad)"/>
+                        <path d="M8 21h8m-4-4v4" stroke="url(#aiGrad)"/>
+                    </svg>
+                </div>
+                <div class="flex-1 z-10">
+                    <div class="text-lg font-bold mb-1" style="font-family: var(--font-display); color: var(--text-primary);">PLAY WITH AI</div>
+                    <div class="text-sm" style="color: var(--text-secondary);">Smart AI Challenge</div>
+                </div>
+                <button class="nexus-btn nexus-btn--indigo z-10 play-btn" data-mode="AI">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    PLAY
+                </button>
+            </div>
+
+            <!-- Friends Mode -->
+            <div class="nexus-card nexus-card--rose nexus-glass backdrop-blur-xl relative">
+                <span class="nexus-badge nexus-badge--new absolute z-20" style="top: 0.75rem; right: 0.75rem;">MULTIPLAYER</span>
+                <div class="nexus-card__glow"></div>
+                <div class="nexus-glass flex-shrink-0" style="padding: 0.875rem; border-radius: var(--radius-lg);">
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="friendsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FB7185"/>
+                                <stop offset="100%" style="stop-color:#F43F5E"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="url(#friendsGrad)"/>
+                        <circle cx="9" cy="7" r="4" stroke="url(#friendsGrad)"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="url(#friendsGrad)"/>
+                    </svg>
+                </div>
+                <div class="flex-1 z-10">
+                    <div class="text-lg font-bold mb-1" style="font-family: var(--font-display); color: var(--text-primary);">PLAY WITH FRIENDS</div>
+                    <div class="text-sm" style="color: var(--text-secondary);">Online Matchmaking</div>
+                </div>
+                <button class="nexus-btn nexus-btn--rose z-10 play-btn" data-mode="Friends">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                    SELECT
+                </button>
+            </div>
+
+            <!-- Grandmaster AI -->
+            <div class="nexus-card nexus-card--emerald nexus-glass backdrop-blur-xl relative">
+                <span class="nexus-badge nexus-badge--pro absolute z-20" style="top: 0.75rem; right: 0.75rem;">EXPERT</span>
+                <div class="nexus-card__glow"></div>
+                <div class="nexus-glass flex-shrink-0" style="padding: 0.875rem; border-radius: var(--radius-lg);">
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="expertGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#34D399"/>
+                                <stop offset="100%" style="stop-color:#10B981"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="url(#expertGrad)"/>
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="url(#expertGrad)"/>
+                    </svg>
+                </div>
+                <div class="flex-1 z-10">
+                    <div class="text-lg font-bold mb-1" style="font-family: var(--font-display); color: var(--text-primary);">GRANDMASTER AI</div>
+                    <div class="text-sm" style="color: var(--text-secondary);">Ultimate Challenge</div>
+                </div>
+                <button class="nexus-btn nexus-btn--emerald z-10 play-btn" data-mode="Grandmaster">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    PLAY
+                </button>
+            </div>
+        </div>
+
+        <!-- Developer Credit -->
+        <div class="text-center nexus-glass" style="border-radius: var(--radius-xl); padding: 1.5rem; border: 1px solid rgba(45, 212, 191, 0.2); box-shadow: var(--shadow-md);">
+            <span class="block text-sm font-semibold mb-2" style="color: var(--text-tertiary);">Developed & Designed by</span>
+            <a href="mailto:danyorllc@gmail.com" class="text-lg font-bold inline-block transition-transform duration-300 hover:scale-105" style="font-family: var(--font-display); background: linear-gradient(90deg, #2DD4BF, #818CF8, #FB7185); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none;">danyorllc@gmail.com</a>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="nexus-footer nexus-glass fixed bottom-0 left-0 right-0 z-40" style="border-top: 1px solid rgba(255, 255, 255, 0.1); box-shadow: var(--shadow-xl); backdrop-filter: blur(24px);">
+        <div class="flex justify-around items-center max-w-7xl mx-auto px-4">
+            <!-- Home -->
+            <button class="nexus-nav__item active" data-nav="home" aria-label="Home">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                </svg>
+                <span class="text-sm font-bold">Home</span>
+                <div class="nexus-nav__indicator"></div>
+            </button>
+            
+            <!-- History -->
+            <button class="nexus-nav__item" data-nav="history" aria-label="History">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v6l4 2"/>
+                </svg>
+                <span class="text-sm font-bold">History</span>
+                <div class="nexus-nav__indicator"></div>
+            </button>
+            
+            <!-- Leaderboard -->
+            <button class="nexus-nav__item" data-nav="leaderboard" aria-label="Leaderboard">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <circle cx="16" cy="7" r="4"/>
+                </svg>
+                <span class="text-sm font-bold">Leaders</span>
+                <div class="nexus-nav__indicator"></div>
+            </button>
+            
+            <!-- Shop -->
+            <button class="nexus-nav__item" data-nav="shop" aria-label="Shop">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"/>
+                    <circle cx="20" cy="21" r="1"/>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                </svg>
+                <span class="text-sm font-bold">Shop</span>
+                <div class="nexus-nav__indicator"></div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- JavaScript -->
+    <script>
+        // ================================================================
+        // 🎮 NEXUS - MEGA ULTRA PREMIUM JAVASCRIPT
+        // Perfect Responsive | Performance Optimized
+        // ================================================================
+        
+        (function() {
+            'use strict';
+            
+            // ===============================================
+            // STATE MANAGEMENT
+            // ===============================================
+            const state = {
+                isModalOpen: false,
+                currentNav: 'home',
+                isLoading: false
+            };
+            
+            // ===============================================
+            // DOM ELEMENTS
+            // ===============================================
+            const elements = {
+                profileBtn: document.getElementById('profileBtn'),
+                settingsBtn: document.getElementById('settingsBtn'),
+                profileModal: document.getElementById('profileModal'),
+                modalClose: document.getElementById('modalClose'),
+                navItems: document.querySelectorAll('.nexus-nav__item'),
+                playButtons: document.querySelectorAll('.play-btn'),
+                cards: document.querySelectorAll('.nexus-card'),
+                rewards: document.querySelectorAll('.nexus-reward')
+            };
+            
+            // ===============================================
+            // INITIALIZATION
+            // ===============================================
+            function init() {
+                console.log('🎮 NEXUS - Mega Ultra Premium Edition Initialized');
+                console.log('📱 Perfect Responsive on ALL Screens');
+                setupEventListeners();
+                animateCards();
+                setupAccessibility();
+                trackPerformance();
+                detectScreen();
+            }
+            
+            // ===============================================
+            // SCREEN DETECTION
+            // ===============================================
+            function detectScreen() {
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+                let screenType = '';
+                
+                if (width <= 320) screenType = 'Tiny Phone';
+                else if (width <= 359) screenType = 'Extra Small Phone';
+                else if (width <= 374) screenType = 'Small Android';
+                else if (width <= 389) screenType = 'iPhone SE';
+                else if (width <= 392) screenType = 'iPhone 12/13';
+                else if (width <= 412) screenType = 'Google Pixel';
+                else if (width <= 427) screenType = 'iPhone Pro';
+                else if (width <= 479) screenType = 'iPhone Pro Max';
+                else if (width <= 539) screenType = 'Large Phone';
+                else if (width <= 599) screenType = 'Phablet';
+                else if (width <= 767) screenType = 'Small Tablet';
+                else if (width <= 819) screenType = 'iPad Mini';
+                else if (width <= 911) screenType = 'iPad Air';
+                else if (width <= 1023) screenType = 'Surface Pro';
+                else if (width <= 1279) screenType = 'iPad Pro / Small Laptop';
+                else if (width <= 1365) screenType = 'HD Laptop';
+                else if (width <= 1439) screenType = 'Full HD Laptop';
+                else if (width <= 1919) screenType = 'Full HD+';
+                else if (width <= 2559) screenType = '2K Monitor';
+                else screenType = '4K Monitor';
+                
+                console.log(`📱 Screen: ${screenType} (${width}x${height}px)`);
+                
+                // Orientation
+                const orientation = width > height ? 'Landscape' : 'Portrait';
+                console.log(`🔄 Orientation: ${orientation}`);
+            }
+            
+            // Re-detect on resize
+            window.addEventListener('resize', () => {
+                clearTimeout(window.resizeTimer);
+                window.resizeTimer = setTimeout(detectScreen, 250);
+            });
+            
+            // ===============================================
+            // EVENT LISTENERS
+            // ===============================================
+            function setupEventListeners() {
+                // Profile Modal
+                if (elements.profileBtn) {
+                    elements.profileBtn.addEventListener('click', openModal);
+                }
+                
+                if (elements.modalClose) {
+                    elements.modalClose.addEventListener('click', closeModal);
+                }
+                
+                if (elements.profileModal) {
+                    elements.profileModal.addEventListener('click', (e) => {
+                        if (e.target === elements.profileModal) {
+                            closeModal();
+                        }
+                    });
+                }
+                
+                // Keyboard shortcuts
+                document.addEventListener('keydown', handleKeyboard);
+                
+                // Navigation
+                elements.navItems.forEach(item => {
+                    item.addEventListener('click', handleNavigation);
+                });
+                
+                // Play Buttons
+                elements.playButtons.forEach(btn => {
+                    btn.addEventListener('click', handlePlayClick);
+                });
+                
+                // Settings Button
+                if (elements.settingsBtn) {
+                    elements.settingsBtn.addEventListener('click', handleSettings);
+                }
+                
+                // Card Interactions
+                elements.cards.forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        playSound('hover');
+                    });
+                });
+                
+                // Reward Interactions
+                elements.rewards.forEach(reward => {
+                    reward.addEventListener('click', handleRewardClick);
+                });
+            }
+            
+            // ===============================================
+            // MODAL FUNCTIONS
+            // ===============================================
+            function openModal() {
+                if (elements.profileModal) {
+                    elements.profileModal.classList.remove('hidden');
+                    elements.profileModal.classList.add('flex');
+                    document.body.style.overflow = 'hidden';
+                    state.isModalOpen = true;
+                    
+                    // Focus trap
+                    const firstFocusable = elements.profileModal.querySelector('button');
+                    if (firstFocusable) firstFocusable.focus();
+                    
+                    playSound('open');
+                    vibrateDevice(10);
+                }
+            }
+            
+            function closeModal() {
+                if (elements.profileModal) {
+                    elements.profileModal.classList.remove('flex');
+                    elements.profileModal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                    state.isModalOpen = false;
+                    
+                    // Return focus
+                    if (elements.profileBtn) elements.profileBtn.focus();
+                    
+                    playSound('close');
+                }
+            }
+            
+            // ===============================================
+            // KEYBOARD HANDLING
+            // ===============================================
+            function handleKeyboard(e) {
+                // Escape key
+                if (e.key === 'Escape' && state.isModalOpen) {
+                    closeModal();
+                }
+                
+                // Tab trap in modal
+                if (e.key === 'Tab' && state.isModalOpen) {
+                    trapFocus(e);
+                }
+            }
+            
+            function trapFocus(e) {
+                const focusableElements = elements.profileModal.querySelectorAll(
+                    'button, a, input, [tabindex]:not([tabindex="-1"])'
+                );
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+                
+                if (e.shiftKey && document.activeElement === firstElement) {
+                    lastElement.focus();
+                    e.preventDefault();
+                } else if (!e.shiftKey && document.activeElement === lastElement) {
+                    firstElement.focus();
+                    e.preventDefault();
+                }
+            }
+            
+            // ===============================================
+            // NAVIGATION
+            // ===============================================
+            function handleNavigation(e) {
+                const button = e.currentTarget;
+                const navType = button.dataset.nav;
+                
+                // Remove active from all
+                elements.navItems.forEach(item => {
+                    item.classList.remove('active');
+                    item.style.color = 'var(--text-tertiary)';
+                });
+                
+                // Add active to clicked
+                button.classList.add('active');
+                button.style.color = 'var(--color-primary)';
+                
+                state.currentNav = navType;
+                playSound('click');
+                vibrateDevice(10);
+                
+                console.log(`📍 Navigated to: ${navType}`);
+            }
+            
+            // ===============================================
+            // PLAY BUTTON HANDLER
+            // ===============================================
+            function handlePlayClick(e) {
+                const button = e.currentTarget;
+                const mode = button.dataset.mode;
+                
+                if (state.isLoading) return;
+                
+                state.isLoading = true;
+                const originalHTML = button.innerHTML;
+                
+                // Loading state
+                button.innerHTML = '<span style="animation: pulse 1s ease-in-out infinite;">LOADING...</span>';
+                button.style.pointerEvents = 'none';
+                button.style.opacity = '0.7';
+                
+                playSound('play');
+                vibrateDevice([50, 100, 50]);
+                
+                // Simulate loading
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.style.pointerEvents = 'auto';
+                    button.style.opacity = '1';
+                    state.isLoading = false;
+                    
+                    console.log(`🎮 Starting game mode: ${mode}`);
+                    
+                    // Show notification
+                    showNotification(`${mode} mode starting...`, 'success');
+                }, 1500);
+            }
+            
+            // ===============================================
+            // REWARD CLICK HANDLER
+            // ===============================================
+            function handleRewardClick(e) {
+                const reward = e.currentTarget;
+                
+                // Scale animation
+                reward.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    reward.style.transform = '';
+                }, 150);
+                
+                playSound('reward');
+                vibrateDevice(30);
+                
+                showNotification('Reward claimed!', 'success');
+                
+                console.log('🎁 Reward clicked');
+            }
+            
+            // ===============================================
+            // SETTINGS HANDLER
+            // ===============================================
+            function handleSettings() {
+                playSound('click');
+                vibrateDevice(10);
+                showNotification('Settings coming soon!', 'info');
+                console.log('⚙️ Settings clicked');
+            }
+            
+            // ===============================================
+            // CARD ANIMATIONS
+            // ===============================================
+            function animateCards() {
+                elements.cards.forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px)';
+                    
+                    setTimeout(() => {
+                        card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 150);
+                });
+            }
+            
+            // ===============================================
+            // ACCESSIBILITY SETUP
+            // ===============================================
+            function setupAccessibility() {
+                // Add keyboard navigation to cards
+                elements.cards.forEach(card => {
+                    card.setAttribute('tabindex', '0');
+                    card.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            const btn = card.querySelector('.nexus-btn');
+                            if (btn) btn.click();
+                        }
+                    });
+                });
+                
+                // Add ARIA labels
+                elements.navItems.forEach(item => {
+                    const navType = item.dataset.nav;
+                    item.setAttribute('aria-label', `Navigate to ${navType}`);
+                });
+                
+                console.log('♿ Accessibility features enabled');
+            }
+            
+            // ===============================================
+            // NOTIFICATION SYSTEM
+            // ===============================================
+            function showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = 'nexus-notification';
+                
+                const colors = {
+                    success: '#34D399',
+                    error: '#FB7185',
+                    info: '#818CF8',
+                    warning: '#FBBF24'
+                };
+                
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 5rem;
+                    right: 1rem;
+                    background: rgba(0, 0, 0, 0.9);
+                    backdrop-filter: blur(20px);
+                    border: 1px solid ${colors[type]};
+                    border-radius: 12px;
+                    padding: 1rem 1.5rem;
+                    color: white;
+                    font-weight: 600;
+                    font-size: 0.875rem;
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px ${colors[type]}40;
+                    z-index: 9999;
+                    animation: slideInRight 0.3s ease-out, fadeOut 0.3s ease-out 2.7s;
+                    max-width: calc(100vw - 2rem);
+                `;
+                
+                notification.textContent = message;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+            
+            // Add notification animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideInRight {
+                    from {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                }
+                
+                @keyframes fadeOut {
+                    from {
+                        opacity: 1;
+                    }
+                    to {
+                        opacity: 0;
+                    }
+                }
+                
+                @keyframes pulse {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0.7; }
+                }
+                
+                @keyframes slideUp {
+                    from {
+                        transform: translateY(30px);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
+                
+                /* Responsive Notifications */
+                @media only screen and (max-width: 480px) {
+                    .nexus-notification {
+                        left: 1rem !important;
+                        right: 1rem !important;
+                        top: 4rem !important;
+                        font-size: 0.8125rem !important;
+                        padding: 0.875rem 1.25rem !important;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // ===============================================
+            // VIBRATION API
+            // ===============================================
+            function vibrateDevice(pattern) {
+                if ('vibrate' in navigator) {
+                    navigator.vibrate(pattern);
+                }
+            }
+            
+            // ===============================================
+            // SOUND EFFECTS (Placeholder)
+            // ===============================================
+            function playSound(type) {
+                // In production, add actual sound files
+                console.log(`🔊 Sound: ${type}`);
+            }
+            
+            // ===============================================
+            // PERFORMANCE TRACKING
+            // ===============================================
+            function trackPerformance() {
+                if (window.performance) {
+                    window.addEventListener('load', () => {
+                        const perfData = window.performance.timing;
+                        const pageLoadTime = perfData.loadEventEnd - perfData.navigationStart;
+                        console.log(`⚡ Page Load Time: ${pageLoadTime}ms`);
+                        
+                        if (pageLoadTime < 1000) {
+                            console.log('✅ Excellent performance!');
+                        } else if (pageLoadTime < 2000) {
+                            console.log('👍 Good performance');
+                        } else {
+                            console.log('⚠️ Performance could be improved');
+                        }
+                        
+                        // Log memory usage if available
+                        if (performance.memory) {
+                            console.log(`💾 Memory Usage: ${Math.round(performance.memory.usedJSHeapSize / 1048576)}MB`);
+                        }
+                    });
+                }
+            }
+            
+           
+            function logBreakpoint() {
+                const width = window.innerWidth;
+                let breakpoint = '';
+                
+                if (width <= 320) breakpoint = 'xs';
+                else if (width <= 480) breakpoint = 'sm';
+                else if (width <= 768) breakpoint = 'md';
+                else if (width <= 1024) breakpoint = 'lg';
+                else if (width <= 1280) breakpoint = 'xl';
+                else breakpoint = '2xl';
+                
+                console.log(`📐 Current Breakpoint: ${breakpoint}`);
+            }
+            
+            // Log on resize
+            window.addEventListener('resize', () => {
+                clearTimeout(window.breakpointTimer);
+                window.breakpointTimer = setTimeout(logBreakpoint, 500);
+            });
+            
+        
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            document.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            document.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleGesture();
+            });
+            
+            function handleGesture() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        console.log('👈 Swipe Left detected');
+                    } else {
+                        console.log('👉 Swipe Right detected');
+                    }
+                }
+            }
+            
+           
+            window.addEventListener('online', () => {
+                showNotification('Connection restored!', 'success');
+                console.log('📡 Online');
+            });
+            
+            window.addEventListener('offline', () => {
+                showNotification('No internet connection', 'warning');
+                console.log('📡 Offline');
+            });
+            
+           
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    console.log('👋 Page hidden');
+                } else {
+                    console.log('👀 Page visible');
+                }
+            });
+            
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+            
+            
+            window.NEXUS = {
+                state,
+                elements,
+                showNotification,
+                detectScreen,
+                logBreakpoint
+            };
+            
+            console.log('🎮 NEXUS Global Object Available: window.NEXUS');
+            
+        })();
+    </script>
+</body>
+</html>
