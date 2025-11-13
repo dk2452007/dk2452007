@@ -1,0 +1,3059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+<title>Futuristic Tic-Tac-Toe</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
+   <style>
+:root {
+--midnight-950: #0a0e1a;
+--midnight-900: #111827;
+--midnight-800: #1f2937;
+--midnight-700: #374151;
+
+--accent-primary: #6366f1;
+--accent-primary-light: #818cf8;
+--accent-primary-dark: #4f46e5;
+--accent-glow: rgba(99, 102, 241, 0.5);
+--accent-glow-strong: rgba(99, 102, 241, 0.7);
+
+--accent-secondary: #ec4899;
+--accent-secondary-light: #f472b6;
+--accent-secondary-glow: rgba(236, 72, 153, 0.5);
+
+--accent-gold: #f59e0b;
+--accent-gold-light: #fbbf24;
+
+--text-primary: #f9fafb;
+--text-secondary: #d1d5db;
+--text-muted: #9ca3af;
+--text-inverse: #111827;
+
+--surface-primary: rgba(31, 41, 55, 0.85);
+--surface-elevated: rgba(55, 65, 81, 0.7);
+--surface-hover: rgba(75, 85, 99, 0.8);
+--surface-glass: rgba(255, 255, 255, 0.05);
+--surface-glass-hover: rgba(255, 255, 255, 0.08);
+
+--border-subtle: rgba(148, 163, 184, 0.15);
+--border-medium: rgba(148, 163, 184, 0.25);
+--border-strong: rgba(148, 163, 184, 0.4);
+--border-glow: rgba(99, 102, 241, 0.3);
+
+/* Enhanced Shadows */
+--shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.12);
+--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+--shadow-md: 0 4px 20px rgba(0, 0, 0, 0.25);
+--shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.35);
+--shadow-xl: 0 12px 60px rgba(0, 0, 0, 0.45);
+--shadow-glow: 0 0 30px var(--accent-glow);
+--shadow-glow-strong: 0 0 50px var(--accent-glow-strong);
+--shadow-inner: inset 0 2px 8px rgba(0, 0, 0, 0.15);
+
+/* Theme Compatibility */
+--bg-color-start: #1e3a8a;
+--bg-color-end: #0a0e1a;
+--text-dark: #f9fafb;
+--text-light: #9ca3af;
+--text-title: #6366f1;
+--menu-panel-bg: rgba(31, 41, 55, 0.85);
+--menu-panel-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+--input-bg: rgba(55, 65, 81, 0.7);
+--input-text: #f9fafb;
+--input-focus-border: #6366f1;
+--btn-glow-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+--btn-glow-bg: #6366f1;
+--btn-glow-text: #ffffff;
+--neon-border-active: #6366f1;
+--neon-shadow-active: 0 0 25px rgba(99, 102, 241, 0.6);
+--neon-border-inactive: #4b5563;
+--neon-shadow-inactive: 0 0 10px rgba(0, 0, 0, 0.3);
+--sound-btn-bg: rgba(75, 85, 99, 0.8);
+--sound-btn-text: #f9fafb;
+--sound-btn-hover: rgba(99, 102, 241, 0.25);
+--option-bg: rgba(55, 65, 81, 0.7);
+--option-text: #d1d5db;
+--glass-border: rgba(148, 163, 184, 0.15);
+--shadow-color: rgba(0, 0, 0, 0.35);
+--icon-color: #9ca3af;
+--icon-color-active: #6366f1;
+
+/* Spacing Scale */
+--space-xs: 4px;
+--space-sm: 8px;
+--space-md: 12px;
+--space-lg: 16px;
+--space-xl: 20px;
+--space-2xl: 24px;
+--space-3xl: 32px;
+--space-4xl: 48px;
+
+/* Border Radius Scale */
+--radius-sm: 8px;
+--radius-md: 12px;
+--radius-lg: 16px;
+--radius-xl: 20px;
+--radius-2xl: 24px;
+--radius-full: 9999px;
+
+/* Transitions */
+--transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+--transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+--transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+--transition-bounce: 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --- PURPLE THEME (AI Mode) --- */
+html[data-theme='purple'] {
+--bg-color-start: #5b21b6;
+--bg-color-end: #1e1b4b;
+--text-dark: #f3e8ff;
+--text-light: #c4b5fd;
+--text-title: #a78bfa;
+--menu-panel-bg: rgba(88, 28, 135, 0.5);
+--input-bg: rgba(107, 33, 168, 0.4);
+--btn-glow-bg: #a78bfa;
+--btn-glow-text: #1e1b4b;
+--neon-border-active: #a78bfa;
+--accent-primary: #a78bfa;
+--accent-primary-light: #c4b5fd;
+--accent-glow: rgba(167, 139, 250, 0.5);
+--player-x-color: #f0abfc;
+--player-x-shadow: 0 0 20px rgba(240, 171, 252, 0.7);
+--player-o-color: #818cf8;
+--player-o-shadow: 0 0 20px rgba(129, 140, 248, 0.7);
+--board-bg: linear-gradient(145deg, rgba(88, 28, 135, 0.4), rgba(30, 27, 75, 0.5));
+--cell-bg: linear-gradient(145deg, rgba(107, 33, 168, 0.5), rgba(88, 28, 135, 0.4));
+--cell-hover: rgba(139, 92, 246, 0.4);
+}
+
+/* --- BLUE THEME (Multiplayer Mode) --- */
+html[data-theme='friend-blue'] {
+--bg-color-start: #1e3a8a;
+--bg-color-end: #0c1e3e;
+--text-dark: #dbeafe;
+--text-light: #93c5fd;
+--text-title: #38bdf8;
+--menu-panel-bg: rgba(30, 58, 138, 0.5);
+--input-bg: rgba(29, 78, 216, 0.4);
+--btn-glow-bg: #38bdf8;
+--btn-glow-text: #0c1e3e;
+--neon-border-active: #38bdf8;
+--accent-primary: #38bdf8;
+--accent-primary-light: #7dd3fc;
+--accent-glow: rgba(56, 189, 248, 0.5);
+--player-x-color: #38bdf8;
+--player-x-shadow: 0 0 20px rgba(56, 189, 248, 0.7);
+--player-o-color: #fbbf24;
+--player-o-shadow: 0 0 20px rgba(251, 191, 36, 0.7);
+--board-bg: linear-gradient(145deg, rgba(30, 58, 138, 0.4), rgba(12, 30, 62, 0.5));
+--cell-bg: linear-gradient(145deg, rgba(29, 78, 216, 0.5), rgba(30, 58, 138, 0.4));
+--cell-hover: rgba(59, 130, 246, 0.4);
+}
+
+/* --- BASE RESETS --- */
+*,
+*::before,
+*::after {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+-webkit-tap-highlight-color: transparent;
+}
+*::-webkit-scrollbar {
+width: 6px;
+height: 6px;
+}
+*::-webkit-scrollbar-track {
+background: var(--midnight-900);
+border-radius: var(--radius-full);
+}
+*::-webkit-scrollbar-thumb {
+background: var(--accent-primary);
+border-radius: var(--radius-full);
+transition: background var(--transition-fast);
+}
+*::-webkit-scrollbar-thumb:hover {
+background: var(--accent-primary-light);
+}
+
+html,
+body {
+overflow-x: hidden !important;
+width: 100%;
+height: 100%;
+}
+
+html {
+font-size: 16px;
+overflow-y: auto;
+scroll-behavior: smooth;
+}
+/* Mobile-first: 14px base for small screens */
+@media (max-width: 374px) {
+html {
+    font-size: 14px;
+}
+}
+/* Tablet: 15px */
+@media (min-width: 768px) {
+html {
+    font-size: 15px;
+}
+}
+/* Desktop: 16px */
+@media (min-width: 1024px) {
+html {
+    font-size: 16px;
+}
+}
+/* Large Desktop: 17px */
+@media (min-width: 1440px) {
+html {
+    font-size: 17px;
+}
+}
+
+/* --- ENHANCED BODY & BACKGROUND --- */
+body {
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+background: 
+    radial-gradient(ellipse at 20% 20%, var(--bg-color-start) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, var(--bg-color-end) 0%, transparent 50%),
+    linear-gradient(135deg, var(--midnight-900) 0%, var(--midnight-950) 100%);
+background-attachment: fixed;
+background-size: 200% 200%;
+min-height: 100vh;
+color: var(--text-primary);
+line-height: 1.6;
+position: relative;
+transition: background var(--transition-slow), color var(--transition-base);
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+text-rendering: optimizeLegibility;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+animation: gradientBG 15s ease infinite;
+}
+/* Ambient particles effect */
+body::before {
+content: '';
+position: fixed;
+inset: 0;
+background-image: 
+    radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+pointer-events: none;
+z-index: 0;
+animation: ambientPulse 8s ease-in-out infinite;
+}
+@keyframes gradientBG {
+0%, 100% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+}
+@keyframes ambientPulse {
+0%, 100% { opacity: 0.6; }
+50% { opacity: 1; }
+}
+
+/* --- PREMIUM TYPOGRAPHY --- */
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Space Grotesk', 'Inter', sans-serif;
+font-weight: 700;
+line-height: 1.2;
+color: var(--text-title);
+letter-spacing: -0.03em;
+transition: color var(--transition-base);
+text-shadow: 0 2px 20px rgba(99, 102, 241, 0.25);
+}
+h1 {
+font-size: clamp(1.75rem, 5vw + 1rem, 3.5rem);
+font-weight: 800;
+}
+h2 {
+font-size: clamp(1.5rem, 4vw + 0.75rem, 2.5rem);
+font-weight: 700;
+}
+h3 {
+font-size: clamp(1.15rem, 3vw + 0.5rem, 1.75rem);
+font-weight: 600;
+}
+#arcade-nexus-screen h1 {
+text-shadow: 0 0 30px color-mix(in srgb, var(--text-title) 50%, transparent),
+             0 4px 20px rgba(0, 0, 0, 0.3);
+animation: titleGlow 3s ease-in-out infinite;
+}
+@keyframes titleGlow {
+0%, 100% { 
+    text-shadow: 0 0 30px color-mix(in srgb, var(--text-title) 50%, transparent),
+                 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+50% { 
+    text-shadow: 0 0 50px color-mix(in srgb, var(--text-title) 70%, transparent),
+                 0 6px 30px rgba(0, 0, 0, 0.4);
+}
+}
+
+/* --- ULTRA GLASS MORPHISM PANELS --- */
+.glass-panel {
+background: var(--menu-panel-bg);
+backdrop-filter: blur(32px) saturate(200%);
+-webkit-backdrop-filter: blur(32px) saturate(200%);
+border: 1px solid var(--border-subtle);
+border-radius: var(--radius-xl);
+box-shadow: var(--shadow-lg),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+transition: all var(--transition-base);
+position: relative;
+overflow: hidden;
+}
+/* Glass shimmer effect */
+.glass-panel::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+transition: left var(--transition-slow);
+}
+.glass-panel:hover::before {
+left: 100%;
+}
+.glass-panel:hover {
+border-color: var(--border-medium);
+box-shadow: var(--shadow-xl), 
+            0 0 0 1px var(--border-glow),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+transform: translateY(-2px);
+}
+#main-menu-screen .glass-panel {
+background: var(--menu-panel-bg);
+backdrop-filter: blur(32px) saturate(200%);
+-webkit-backdrop-filter: blur(32px) saturate(200%);
+box-shadow: var(--menu-panel-shadow),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* --- PREMIUM BUTTONS --- */
+.play-button {
+background: linear-gradient(135deg, var(--btn-glow-bg), var(--accent-primary-light));
+color: var(--btn-glow-text);
+font-weight: 700;
+padding: 16px 40px;
+border-radius: var(--radius-lg);
+border: none;
+cursor: pointer;
+transition: all var(--transition-base);
+box-shadow: var(--btn-glow-shadow),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2),
+            inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+font-size: 1rem;
+letter-spacing: 0.03em;
+position: relative;
+overflow: hidden;
+text-transform: uppercase;
+font-weight: 800;
+}
+/* Button shine effect */
+.play-button::after {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+transform: rotate(45deg);
+transition: all var(--transition-slow);
+}
+.play-button:hover:not(:disabled)::after {
+left: 100%;
+}
+.play-button:hover:not(:disabled) {
+transform: translateY(-3px) scale(1.03);
+box-shadow: var(--shadow-glow-strong),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.play-button:active:not(:disabled) {
+transform: translateY(-1px) scale(1);
+box-shadow: var(--btn-glow-shadow),
+            inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.play-button:disabled {
+background: var(--surface-elevated);
+color: var(--text-muted);
+cursor: not-allowed;
+box-shadow: none;
+opacity: 0.5;
+transform: none;
+}
+/* Mobile: Smaller padding */
+@media (max-width: 640px) {
+.play-button {
+    padding: 14px 32px;
+    font-size: 0.9rem;
+}
+}
+
+.control-btn {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: var(--space-sm);
+background: var(--surface-elevated);
+color: var(--text-secondary);
+padding: 14px 24px;
+border-radius: var(--radius-md);
+font-weight: 600;
+border: 1px solid var(--border-subtle);
+cursor: pointer;
+transition: all var(--transition-base);
+box-shadow: var(--shadow-sm),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+position: relative;
+overflow: hidden;
+}
+.control-btn::before {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, var(--surface-glass), transparent);
+opacity: 0;
+transition: opacity var(--transition-base);
+}
+.control-btn:hover::before {
+opacity: 1;
+}
+.control-btn:hover {
+background: var(--surface-hover);
+border-color: var(--accent-primary);
+color: var(--accent-primary);
+transform: translateY(-2px);
+box-shadow: var(--shadow-md),
+            0 0 20px var(--accent-glow);
+}
+.control-btn:active {
+transform: translateY(0);
+}
+/* Mobile: Adjust padding */
+@media (max-width: 640px) {
+.control-btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+}
+}
+
+.bottom-nav-btn {
+background: var(--surface-elevated);
+color: var(--text-secondary);
+padding: 14px;
+border-radius: var(--radius-full);
+border: 1px solid var(--border-subtle);
+transition: all var(--transition-base);
+box-shadow: var(--shadow-sm);
+cursor: pointer;
+position: relative;
+overflow: hidden;
+width: 48px;
+height: 48px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.bottom-nav-btn::before {
+content: '';
+position: absolute;
+inset: 0;
+border-radius: var(--radius-full);
+background: radial-gradient(circle, var(--accent-glow), transparent);
+opacity: 0;
+transition: opacity var(--transition-base);
+}
+.bottom-nav-btn:hover::before {
+opacity: 0.3;
+}
+.bottom-nav-btn:hover {
+background: var(--surface-hover);
+color: var(--accent-primary);
+border-color: var(--accent-primary);
+box-shadow: var(--shadow-glow);
+transform: scale(1.1) rotate(5deg);
+}
+.bottom-nav-btn:active {
+transform: scale(0.95);
+}
+/* Mobile: Touch-friendly sizing */
+@media (max-width: 640px) {
+.bottom-nav-btn {
+    width: 44px;
+    height: 44px;
+    padding: 12px;
+}
+}
+
+.login-btn,
+.guest-login-btn {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: var(--space-md);
+width: 100%;
+border-radius: var(--radius-lg);
+padding: 16px 28px;
+font-weight: 700;
+font-size: 1rem;
+cursor: pointer;
+transition: all var(--transition-base);
+box-shadow: var(--shadow-md),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+height: 56px;
+background: linear-gradient(135deg, var(--btn-glow-bg), var(--accent-primary-light));
+color: var(--btn-glow-text);
+border: none;
+position: relative;
+overflow: hidden;
+}
+.login-btn::after,
+.guest-login-btn::after {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+transform: translateX(-100%);
+transition: transform var(--transition-slow);
+}
+.login-btn:hover::after,
+.guest-login-btn:hover::after {
+transform: translateX(100%);
+}
+.login-btn:hover,
+.guest-login-btn:hover {
+transform: translateY(-3px);
+box-shadow: var(--shadow-glow-strong),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.login-btn:active,
+.guest-login-btn:active {
+transform: translateY(-1px);
+}
+/* Mobile: Adjust height and padding */
+@media (max-width: 640px) {
+.login-btn,
+.guest-login-btn {
+    height: 52px;
+    padding: 14px 24px;
+    font-size: 0.95rem;
+}
+}
+
+/* --- PREMIUM INPUTS --- */
+.name-input,
+.input-field {
+width: 100%;
+background: var(--input-bg);
+color: var(--input-text);
+border: 1px solid var(--border-medium);
+border-radius: var(--radius-md);
+padding: 16px 18px;
+font-weight: 500;
+font-size: 1rem;
+transition: all var(--transition-base);
+box-shadow: var(--shadow-sm),
+            inset 0 2px 4px rgba(0, 0, 0, 0.1);
+outline: none;
+}
+.name-input:focus,
+.input-field:focus {
+border-color: var(--input-focus-border);
+box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2),
+            var(--shadow-md),
+            inset 0 2px 4px rgba(0, 0, 0, 0.05);
+background: color-mix(in srgb, var(--input-bg) 85%, var(--menu-panel-bg));
+transform: translateY(-1px);
+}
+.name-input::placeholder,
+.input-field::placeholder {
+color: var(--text-muted);
+font-weight: 400;
+}
+/* Mobile: Adjust padding */
+@media (max-width: 640px) {
+.name-input,
+.input-field {
+    padding: 14px 16px;
+    font-size: 0.95rem;
+}
+}
+
+/* --- ENHANCED RADIO OPTION GROUPS --- */
+.option-group input[type="radio"] {
+display: none;
+}
+.option-group label {
+display: block;
+background: var(--surface-elevated);
+color: var(--text-secondary);
+padding: 14px 24px;
+border-radius: var(--radius-md);
+text-align: center;
+font-weight: 600;
+font-size: 0.95rem;
+cursor: pointer;
+border: 2px solid transparent;
+transition: all var(--transition-base);
+box-shadow: var(--shadow-sm),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+position: relative;
+overflow: hidden;
+}
+.option-group label::before {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, var(--surface-glass), transparent);
+opacity: 0;
+transition: opacity var(--transition-base);
+}
+.option-group label:hover::before {
+opacity: 1;
+}
+.option-group label:hover {
+background: var(--surface-hover);
+border-color: var(--border-medium);
+transform: translateY(-2px);
+box-shadow: var(--shadow-md);
+}
+.option-group input[type="radio"]:checked + label {
+background: linear-gradient(135deg, var(--btn-glow-bg), var(--accent-primary-light));
+color: var(--btn-glow-text);
+border-color: transparent;
+box-shadow: var(--btn-glow-shadow),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+transform: translateY(-2px) scale(1.02);
+}
+/* Mobile: Adjust padding */
+@media (max-width: 640px) {
+.option-group label {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+}
+}
+
+/* --- ULTRA GAME BOARD --- */
+#game-board-container {
+display: grid;
+gap: 12px;
+background: var(--board-bg, var(--surface-primary));
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border-radius: var(--radius-xl);
+padding: 16px;
+box-shadow: var(--shadow-xl),
+            inset 0 2px 12px rgba(0, 0, 0, 0.25),
+            inset 0 -2px 0 rgba(255, 255, 255, 0.05);
+width: min(90vw, 440px);
+height: min(90vw, 440px);
+max-width: 440px;
+max-height: 440px;
+transition: all var(--transition-base);
+position: relative;
+border: 1px solid var(--border-subtle);
+}
+/* Board glow effect */
+#game-board-container::before {
+content: '';
+position: absolute;
+inset: -2px;
+border-radius: var(--radius-xl);
+background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+opacity: 0.1;
+z-index: -1;
+filter: blur(20px);
+transition: opacity var(--transition-base);
+}
+#game-board-container:hover::before {
+opacity: 0.2;
+}
+/* Mobile: Smaller board */
+@media (max-width: 640px) {
+#game-board-container {
+    gap: 10px;
+    padding: 14px;
+    width: min(92vw, 380px);
+    height: min(92vw, 380px);
+    max-width: 380px;
+    max-height: 380px;
+}
+}
+/* Extra small mobile */
+@media (max-width: 374px) {
+#game-board-container {
+    gap: 8px;
+    padding: 12px;
+}
+}
+
+.game-cell {
+background: var(--cell-bg, var(--surface-elevated));
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+border-radius: var(--radius-lg);
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: all var(--transition-base);
+box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.25),
+            var(--shadow-sm),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+aspect-ratio: 1 / 1;
+position: relative;
+overflow: hidden;
+border: 1px solid var(--border-subtle);
+}
+/* Cell shimmer effect */
+.game-cell::before {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+transform: translateX(-100%) rotate(45deg);
+transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.game-cell:hover::before {
+transform: translateX(100%) rotate(45deg);
+}
+/* Hover glow ring */
+.game-cell::after {
+content: '';
+position: absolute;
+inset: -2px;
+border-radius: var(--radius-lg);
+background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+opacity: 0;
+z-index: -1;
+filter: blur(8px);
+transition: opacity var(--transition-base);
+}
+.game-cell:hover:not([data-mark])::after {
+opacity: 0.4;
+}
+.game-cell:hover:not([data-mark]) {
+background: var(--cell-hover, var(--surface-hover));
+transform: scale(1.05);
+box-shadow: var(--shadow-md),
+            inset 0 2px 8px rgba(0, 0, 0, 0.2);
+border-color: var(--border-medium);
+}
+.game-cell:active:not([data-mark]) {
+transform: scale(0.98);
+}
+.game-cell i[data-lucide] {
+width: 65%;
+height: 65%;
+transition: all var(--transition-base);
+opacity: 0;
+pointer-events: none;
+filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+.game-cell.player-x i,
+.player-profile.player-x i {
+color: var(--player-x-color);
+text-shadow: var(--player-x-shadow);
+filter: drop-shadow(0 0 12px var(--player-x-color))
+        drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+opacity: 1;
+}
+.game-cell.player-o i,
+.player-profile.player-o i {
+color: var(--player-o-color);
+text-shadow: var(--player-o-shadow);
+filter: drop-shadow(0 0 12px var(--player-o-color))
+        drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+opacity: 1;
+}
+
+/* --- PREMIUM PLAYER PROFILES --- */
+.player-profile {
+background: var(--surface-elevated);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+padding: 12px 16px;
+border-radius: var(--radius-full);
+display: flex;
+align-items: center;
+gap: 12px;
+min-width: 140px;
+border: 2px solid transparent;
+transition: all var(--transition-base);
+box-shadow: var(--shadow-sm),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+position: relative;
+overflow: hidden;
+}
+.player-profile::before {
+content: '';
+position: absolute;
+inset: 0;
+border-radius: var(--radius-full);
+background: linear-gradient(135deg, var(--surface-glass), transparent);
+opacity: 0;
+transition: opacity var(--transition-base);
+}
+.player-profile:hover::before {
+opacity: 1;
+}
+.player-profile.active-turn {
+border-color: var(--accent-primary);
+box-shadow: 0 0 30px var(--accent-glow),
+            var(--shadow-md),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+background: color-mix(in srgb, var(--accent-primary) 15%, var(--surface-elevated));
+animation: activeTurnPulse 2s ease-in-out infinite;
+}
+@keyframes activeTurnPulse {
+0%, 100% {
+    box-shadow: 0 0 30px var(--accent-glow), var(--shadow-md);
+}
+50% {
+    box-shadow: 0 0 45px var(--accent-glow-strong), var(--shadow-lg);
+}
+}
+.player-profile.player-o {
+flex-direction: row-reverse;
+text-align: right;
+}
+.player-profile .icon {
+width: 44px;
+height: 44px;
+border-radius: var(--radius-full);
+background: var(--surface-primary);
+display: flex;
+align-items: center;
+justify-content: center;
+border: 2px solid var(--border-medium);
+flex-shrink: 0;
+box-shadow: var(--shadow-inner),
+            0 2px 8px rgba(0, 0, 0, 0.2);
+transition: all var(--transition-base);
+}
+.player-profile:hover .icon {
+transform: scale(1.1) rotate(5deg);
+box-shadow: var(--shadow-md),
+            0 0 20px var(--accent-glow);
+}
+.player-profile .name {
+font-size: 0.95rem;
+font-weight: 700;
+color: var(--text-primary);
+letter-spacing: 0.02em;
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.player-profile .score {
+font-size: 0.85rem;
+color: var(--text-muted);
+font-weight: 600;
+}
+.player-profile .profile-info {
+display: flex;
+flex-direction: column;
+gap: 2px;
+}
+.player-profile.player-o .profile-info {
+align-items: flex-end;
+}
+/* Mobile: Smaller profiles */
+@media (max-width: 640px) {
+.player-profile {
+    min-width: 130px;
+    padding: 10px 14px;
+    gap: 10px;
+}
+
+.player-profile .icon {
+    width: 40px;
+    height: 40px;
+}
+
+.player-profile .name {
+    font-size: 0.9rem;
+}
+
+.player-profile .score {
+    font-size: 0.8rem;
+}
+}
+/* Extra small mobile */
+@media (max-width: 374px) {
+.player-profile {
+    min-width: 110px;
+    padding: 8px 12px;
+    gap: 8px;
+}
+
+.player-profile .icon {
+    width: 36px;
+    height: 36px;
+}
+
+.player-profile .name {
+    font-size: 0.8rem;
+}
+
+.player-profile .score {
+    font-size: 0.7rem;
+}
+}
+
+/* --- GAME STATUS DISPLAY --- */
+#game-status-display {
+font-family: 'Space Grotesk', 'Inter', sans-serif;
+font-weight: 700;
+color: var(--text-title);
+text-shadow: 0 0 12px color-mix(in srgb, var(--text-title) 50%, transparent),
+             0 2px 8px rgba(0, 0, 0, 0.3);
+text-align: center;
+flex-grow: 1;
+padding: 0 var(--space-md);
+font-size: 1rem;
+min-height: 48px;
+display: flex;
+align-items: center;
+justify-content: center;
+letter-spacing: 0.02em;
+}
+/* Mobile: Adjust sizing */
+@media (max-width: 640px) {
+#game-status-display {
+    font-size: 0.9rem;
+    min-height: 44px;
+    padding: 0 var(--space-sm);
+}
+}
+
+/* --- PREMIUM MODALS --- */
+.modal-backdrop {
+position: fixed;
+inset: 0;
+z-index: 70;
+display: flex;
+align-items: center;
+justify-content: center;
+background: rgba(10, 14, 26, 0.85);
+backdrop-filter: blur(24px) saturate(150%);
+-webkit-backdrop-filter: blur(24px) saturate(150%);
+padding: var(--space-xl);
+animation: fadeIn var(--transition-base);
+}
+@keyframes fadeIn {
+from {
+    opacity: 0;
+}
+to {
+    opacity: 1;
+}
+}
+.modal-content {
+background: var(--menu-panel-bg);
+backdrop-filter: blur(32px) saturate(200%);
+-webkit-backdrop-filter: blur(32px) saturate(200%);
+border: 1px solid var(--border-medium);
+border-radius: var(--radius-2xl);
+padding: var(--space-4xl);
+width: 100%;
+max-width: 520px;
+box-shadow: var(--shadow-xl),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1),
+            0 0 80px rgba(0, 0, 0, 0.5);
+position: relative;
+animation: modalSlideUp var(--transition-base);
+}
+@keyframes modalSlideUp {
+from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+}
+to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+}
+#multiplayer-result-modal .modal-content {
+max-width: 560px;
+}
+#global-settings-modal .modal-content {
+max-width: 420px;
+}
+/* Mobile: Adjust modal */
+@media (max-width: 640px) {
+.modal-backdrop {
+    padding: var(--space-lg);
+}
+
+.modal-content {
+    padding: var(--space-2xl);
+    border-radius: var(--radius-xl);
+}
+}
+/* Extra small mobile */
+@media (max-width: 374px) {
+.modal-backdrop {
+    padding: var(--space-md);
+}
+
+.modal-content {
+    padding: var(--space-xl);
+}
+}
+
+.player-result-card {
+background: var(--surface-elevated);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+border-radius: var(--radius-lg);
+padding: var(--space-2xl);
+border: 2px solid transparent;
+box-shadow: var(--shadow-md),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+opacity: 0;
+transform: scale(0.9);
+color: var(--text-primary);
+position: relative;
+overflow: hidden;
+}
+.player-result-card::before {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, var(--surface-glass), transparent);
+opacity: 0.5;
+}
+.player-result-card.winner {
+border-color: var(--player-x-color);
+box-shadow: 0 0 40px color-mix(in srgb, var(--player-x-color) 60%, transparent),
+            var(--shadow-lg);
+transform: scale(1.05);
+animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+           pulseWinnerBorder 2s infinite ease-in-out 0.6s;
+}
+#game-over-modal .modal-content.winner-x,
+#game-over-modal .modal-content.winner-o {
+border: 2px solid var(--accent-primary);
+box-shadow: 0 0 50px var(--accent-glow-strong),
+            var(--shadow-xl);
+animation: pulseWinnerBorder 2s infinite ease-in-out;
+}
+
+/* --- PREMIUM GAME LIST ITEMS --- */
+.game-list-item {
+background: var(--surface-elevated);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+border: 2px solid var(--border-subtle);
+border-radius: var(--radius-xl);
+padding: var(--space-xl);
+display: flex;
+align-items: center;
+gap: var(--space-lg);
+cursor: pointer;
+transition: all var(--transition-base);
+box-shadow: var(--shadow-sm),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+position: relative;
+overflow: hidden;
+}
+.game-list-item::before {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, var(--surface-glass), transparent);
+opacity: 0;
+transition: opacity var(--transition-base);
+}
+.game-list-item:hover:not(.disabled)::before {
+opacity: 1;
+}
+.game-list-item:hover:not(.disabled) {
+border-color: var(--neon-border-active);
+transform: translateY(-4px) scale(1.02);
+box-shadow: var(--neon-shadow-active),
+            var(--shadow-lg),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.game-list-item:active:not(.disabled) {
+transform: translateY(-2px) scale(1.01);
+}
+.game-list-item.active {
+border-color: var(--neon-border-active);
+background: color-mix(in srgb, var(--accent-primary) 12%, var(--surface-elevated));
+box-shadow: 0 0 30px var(--accent-glow),
+            var(--shadow-md);
+}
+.game-list-item.disabled {
+opacity: 0.4;
+cursor: not-allowed;
+border-color: var(--neon-border-inactive) !important;
+box-shadow: none !important;
+transform: none !important;
+}
+.game-list-preview {
+width: 76px;
+height: 76px;
+border-radius: var(--radius-lg);
+background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-light));
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+box-shadow: 0 8px 24px var(--accent-glow),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+transition: all var(--transition-base);
+position: relative;
+overflow: hidden;
+}
+.game-list-preview::before {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+transform: translateX(-100%);
+transition: transform var(--transition-slow);
+}
+.game-list-item:hover:not(.disabled) .game-list-preview::before {
+transform: translateX(100%);
+}
+.game-list-preview i {
+width: 65%;
+height: 65%;
+color: white;
+filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+.game-list-item.active .game-list-preview,
+.game-list-item:hover:not(.disabled) .game-list-preview {
+box-shadow: 0 12px 32px var(--accent-glow-strong);
+transform: scale(1.05) rotate(5deg);
+}
+/* Mobile: Smaller preview */
+@media (max-width: 640px) {
+.game-list-item {
+    padding: var(--space-lg);
+    gap: var(--space-md);
+}
+
+.game-list-preview {
+    width: 64px;
+    height: 64px;
+}
+}
+/* Extra small mobile */
+@media (max-width: 374px) {
+.game-list-item {
+    padding: var(--space-md);
+    gap: var(--space-sm);
+}
+
+.game-list-preview {
+    width: 56px;
+    height: 56px;
+}
+}
+
+.game-list-title {
+font-family: 'Space Grotesk', 'Inter', sans-serif;
+font-size: 1.2rem;
+font-weight: 700;
+color: var(--text-primary);
+text-transform: uppercase;
+letter-spacing: 0.03em;
+transition: all var(--transition-base);
+text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.game-list-item.active .game-list-title {
+color: var(--neon-border-active);
+text-shadow: 0 0 20px color-mix(in srgb, var(--neon-border-active) 50%, transparent);
+}
+/* Mobile: Smaller title */
+@media (max-width: 640px) {
+.game-list-title {
+    font-size: 1.05rem;
+}
+}
+/* Extra small mobile */
+@media (max-width: 374px) {
+.game-list-title {
+    font-size: 0.95rem;
+}
+}
+
+.game-list-play-btn {
+margin-left: auto;
+background: linear-gradient(135deg, var(--btn-glow-bg), var(--accent-primary-light));
+border: none;
+color: var(--btn-glow-text);
+padding: 12px 26px;
+border-radius: var(--radius-md);
+font-weight: 700;
+font-size: 0.95rem;
+box-shadow: var(--btn-glow-shadow),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+transition: all var(--transition-base);
+display: flex;
+align-items: center;
+gap: var(--space-sm);
+cursor: pointer;
+position: relative;
+overflow: hidden;
+}
+.game-list-play-btn::after {
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+transform: translateX(-100%);
+transition: transform var(--transition-slow);
+}
+.game-list-item:hover:not(.disabled) .game-list-play-btn::after {
+transform: translateX(100%);
+}
+.game-list-item:hover:not(.disabled) .game-list-play-btn {
+transform: scale(1.08) translateY(-2px);
+box-shadow: 0 12px 32px var(--accent-glow-strong);
+}
+.game-list-play-btn:active {
+transform: scale(1.02);
+}
+/* Mobile: Smaller button */
+@media (max-width: 640px) {
+.game-list-play-btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+}
+}
+
+/* --- PREMIUM NOTIFICATIONS --- */
+#notification-bar {
+position: fixed;
+top: var(--space-xl);
+left: 50%;
+transform: translateX(-50%) translateY(-20px);
+z-index: 100;
+padding: 14px 28px;
+border-radius: var(--radius-lg);
+font-weight: 700;
+font-size: 0.95rem;
+box-shadow: var(--shadow-xl),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+opacity: 0;
+transition: all var(--transition-base);
+display: flex;
+align-items: center;
+gap: var(--space-sm);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+max-width: 90vw;
+}
+#notification-bar.show {
+opacity: 1;
+transform: translateX(-50%) translateY(0);
+}
+#notification-bar.success {
+background: linear-gradient(135deg, #10b981, #34d399);
+color: white;
+}
+#notification-bar.error {
+background: linear-gradient(135deg, #ef4444, #f87171);
+color: white;
+}
+#notification-bar.info {
+background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-light));
+color: white;
+}
+/* Mobile: Adjust notification */
+@media (max-width: 640px) {
+#notification-bar {
+    top: var(--space-md);
+    padding: 12px 24px;
+    font-size: 0.85rem;
+}
+}
+#message-overlay {
+position: fixed;
+top: var(--space-xl);
+left: 50%;
+transform: translateX(-50%);
+z-index: 99;
+padding: 12px 24px;
+border-radius: var(--radius-md);
+background: rgba(255, 255, 255, 0.98);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+color: #111;
+font-weight: 700;
+box-shadow: var(--shadow-lg);
+display: none;
+animation: messageShow 3s ease-in-out forwards;
+max-width: 90vw;
+}
+
+/* --- HEARTS DISPLAY --- */
+#hearts-bar {
+display: flex;
+align-items: center;
+gap: var(--space-sm);
+padding: 12px 24px;
+background: var(--surface-elevated);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+border: 2px solid color-mix(in srgb, var(--player-o-color) 35%, transparent);
+border-radius: var(--radius-full);
+box-shadow: 0 8px 24px color-mix(in srgb, var(--player-o-color) 25%, transparent),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+justify-content: center;
+margin-top: var(--space-lg);
+transition: all var(--transition-base);
+}
+#hearts-bar:hover {
+transform: scale(1.05);
+box-shadow: 0 12px 32px color-mix(in srgb, var(--player-o-color) 35%, transparent);
+}
+#heart-count {
+font-family: 'Space Grotesk', 'Inter', sans-serif;
+font-weight: 800;
+font-size: 1.15rem;
+color: var(--player-o-color);
+text-shadow: 0 0 12px color-mix(in srgb, var(--player-o-color) 60%, transparent);
+}
+#heart-icon {
+color: var(--player-o-color);
+filter: drop-shadow(0 0 8px var(--player-o-color));
+animation: heartBeat 1.5s ease-in-out infinite;
+}
+@keyframes heartBeat {
+0%, 100% {
+    transform: scale(1);
+}
+10%, 30% {
+    transform: scale(1.1);
+}
+20%, 40% {
+    transform: scale(1);
+}
+}
+/* Mobile: Smaller hearts bar */
+@media (max-width: 640px) {
+#hearts-bar {
+    padding: 10px 20px;
+    margin-top: var(--space-md);
+}
+
+#heart-count {
+    font-size: 1rem;
+}
+}
+
+#reward-panel {
+margin-top: var(--space-md);
+padding: 12px 24px;
+background: var(--surface-elevated);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+border-radius: var(--radius-full);
+text-align: center;
+box-shadow: var(--shadow-md),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+display: flex;
+align-items: center;
+gap: var(--space-sm);
+transition: all var(--transition-base);
+}
+#reward-panel:hover {
+transform: translateY(-2px);
+box-shadow: var(--shadow-lg);
+}
+#collect-reward-btn-top {
+background: linear-gradient(135deg, var(--btn-glow-bg), var(--accent-primary-light));
+color: var(--btn-glow-text);
+box-shadow: var(--btn-glow-shadow),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+transition: all var(--transition-base);
+}
+#collect-reward-btn-top:hover:not(:disabled) {
+transform: scale(1.08);
+box-shadow: var(--shadow-glow-strong);
+}
+#collect-reward-btn-top:disabled {
+background: var(--surface-elevated);
+color: var(--text-muted);
+cursor: not-allowed;
+box-shadow: none;
+opacity: 0.5;
+}
+
+/* --- PREMIUM CHAT PANEL --- */
+#multiplayer-chat-panel {
+background: var(--menu-panel-bg);
+backdrop-filter: blur(32px) saturate(200%);
+-webkit-backdrop-filter: blur(32px) saturate(200%);
+border: 1px solid var(--border-medium);
+border-radius: var(--radius-xl);
+padding: var(--space-lg);
+display: flex;
+flex-direction: column;
+height: 100%;
+min-height: 280px;
+max-height: 55vh;
+box-shadow: var(--shadow-lg),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+position: relative;
+}
+#multiplayer-chat-panel h3 {
+font-size: 1.05rem;
+margin-bottom: var(--space-md);
+color: var(--text-title);
+text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+padding-bottom: var(--space-sm);
+border-bottom: 1px solid var(--border-subtle);
+}
+#chat-messages {
+display: flex;
+flex-direction: column;
+gap: var(--space-sm);
+flex-grow: 1;
+overflow-y: auto;
+margin-bottom: var(--space-md);
+padding-right: var(--space-xs);
+}
+/* Custom scrollbar for chat */
+#chat-messages::-webkit-scrollbar {
+width: 4px;
+}
+#chat-messages::-webkit-scrollbar-thumb {
+background: var(--accent-primary);
+border-radius: var(--radius-full);
+}
+.chat-message {
+padding: 12px 16px;
+border-radius: var(--radius-md);
+max-width: 85%;
+font-size: 0.85rem;
+line-height: 1.5;
+box-shadow: var(--shadow-sm);
+position: relative;
+animation: messageSlideIn var(--transition-base);
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+}
+@keyframes messageSlideIn {
+from {
+    opacity: 0;
+    transform: translateY(10px);
+}
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+.my-message {
+background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-light));
+color: white;
+align-self: flex-end;
+box-shadow: 0 4px 16px var(--accent-glow),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.opponent-message {
+background: var(--surface-elevated);
+color: var(--text-primary);
+align-self: flex-start;
+border: 1px solid var(--border-medium);
+box-shadow: var(--shadow-sm);
+}
+.chat-sender {
+font-size: 0.7rem;
+font-weight: 700;
+margin-bottom: 4px;
+color: rgba(255, 255, 255, 0.85);
+text-transform: uppercase;
+letter-spacing: 0.05em;
+}
+.opponent-message .chat-sender {
+color: var(--text-muted);
+}
+.chat-time {
+display: block;
+font-size: 0.65rem;
+text-align: right;
+margin-top: 6px;
+color: rgba(255, 255, 255, 0.65);
+font-weight: 600;
+}
+.opponent-message .chat-time {
+color: var(--text-muted);
+}
+#chat-input-container {
+margin-top: var(--space-md);
+display: flex;
+gap: var(--space-sm);
+padding-top: var(--space-md);
+border-top: 1px solid var(--border-subtle);
+}
+#chat-input-field {
+flex-grow: 1;
+background: var(--input-bg);
+color: var(--input-text);
+border: 1px solid var(--border-medium);
+border-radius: var(--radius-md);
+padding: 12px 16px;
+font-weight: 500;
+font-size: 0.9rem;
+transition: all var(--transition-base);
+box-shadow: var(--shadow-xs),
+            inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+#chat-input-field:focus {
+outline: none;
+border-color: var(--input-focus-border);
+box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15),
+            var(--shadow-sm);
+transform: translateY(-1px);
+}
+#chat-input-field::placeholder {
+color: var(--text-muted);
+}
+#chat-send-btn {
+background: linear-gradient(135deg, var(--btn-glow-bg), var(--accent-primary-light));
+color: var(--btn-glow-text);
+border-radius: var(--radius-md);
+padding: 12px 18px;
+font-weight: 700;
+cursor: pointer;
+transition: all var(--transition-base);
+box-shadow: var(--btn-glow-shadow),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+border: none;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+#chat-send-btn:hover:not(:disabled) {
+transform: scale(1.08) translateY(-2px);
+box-shadow: var(--shadow-glow-strong);
+}
+#chat-send-btn:active:not(:disabled) {
+transform: scale(1.02);
+}
+#chat-send-btn:disabled {
+opacity: 0.5;
+cursor: not-allowed;
+box-shadow: none;
+transform: none;
+}
+/* Mobile & Tablet: Slide-in chat panel */
+@media (max-width: 1023px) {
+#multiplayer-chat-panel {
+    position: fixed;
+    bottom: 64px;
+    left: 0;
+    width: min(60vw, 280px);
+    height: 50vh;
+    max-height: 50vh;
+    z-index: 80;
+    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
+    transform: translateX(-100%);
+    transition: transform var(--transition-base);
+    box-shadow: 8px 0 32px rgba(0, 0, 0, 0.6);
+    overflow-y: hidden;
+    padding: var(--space-md);
+}
+#multiplayer-chat-panel.open {
+    transform: translateX(0);
+}
+#chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: var(--space-xs);
+    margin-bottom: var(--space-sm);
+}
+#chat-input-container {
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    gap: 6px;
+    flex-shrink: 0;
+}
+#chat-input-field {
+    font-size: 0.8rem;
+    padding: 10px 12px;
+}
+#chat-send-btn {
+    padding: 10px;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+}
+#multiplayer-chat-panel h3 {
+    font-size: 0.9rem;
+    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-xs);
+}
+}
+/* Extra small mobile chat */
+@media (max-width: 374px) {
+#multiplayer-chat-panel {
+    width: min(70vw, 240px);
+    padding: var(--space-sm);
+}
+
+#chat-send-btn {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+}
+}
+/* Desktop: Normal layout */
+@media (min-width: 1024px) {
+#multiplayer-chat-panel {
+    position: relative;
+    transform: none;
+    border-radius: var(--radius-xl);
+}
+}
+
+/* --- GAME SCREEN RESPONSIVE LAYOUT --- */
+.game-screen {
+position: fixed;
+inset: 0;
+z-index: 60;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+background: var(--bg-color-end);
+padding: var(--space-md);
+transition: background var(--transition-slow);
+overflow-y: auto;
+}
+#game-content-area {
+display: grid;
+width: 100%;
+max-width: 1280px;
+grid-template-areas:
+    "header"
+    "board"
+    "chat-panel-area";
+grid-template-columns: 1fr;
+gap: var(--space-md);
+flex-grow: 1;
+}
+.game-header-new {
+grid-area: header;
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: var(--space-md);
+padding: var(--space-sm) 0;
+}
+#game-board-wrapper {
+grid-area: board;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+flex-grow: 1;
+}
+#chat-panel-area {
+grid-area: chat-panel-area;
+display: flex;
+flex-direction: column;
+gap: var(--space-md);
+}
+/* Tablet: 768px - 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+.game-screen {
+    padding: var(--space-lg);
+}
+
+#game-content-area {
+    gap: var(--space-lg);
+}
+
+.game-header-new {
+    padding: var(--space-md) 0;
+}
+}
+/* Desktop: 1024px+ */
+@media (min-width: 1024px) {
+.game-screen {
+    padding: var(--space-xl);
+}
+
+#game-content-area {
+    grid-template-areas:
+        "header header"
+        "board chat-panel-area";
+    grid-template-columns: minmax(480px, 650px) minmax(320px, 1fr);
+    align-items: start;
+    padding-top: var(--space-2xl);
+    gap: var(--space-3xl);
+}
+#game-board-wrapper {
+    flex-grow: 0;
+    align-self: center;
+    margin-top: var(--space-lg);
+}
+#chat-panel-area {
+    max-height: 82vh;
+    position: sticky;
+    top: var(--space-2xl);
+}
+}
+/* Large Desktop: 1440px+ */
+@media (min-width: 1440px) {
+#game-content-area {
+    grid-template-columns: minmax(520px, 700px) minmax(360px, 1fr);
+    gap: var(--space-4xl);
+}
+}
+/* Mobile: Adjust layout */
+@media (max-width: 1023px) {
+.game-screen {
+    justify-content: flex-start;
+}
+#game-board-wrapper {
+    margin-top: var(--space-sm);
+    padding-bottom: 0;
+}
+}
+
+/* --- FIXED CONTROLS BAR --- */
+#fixed-controls-bar {
+width: 100%;
+max-width: 540px;
+display: flex;
+justify-content: space-between;
+padding: 14px 20px;
+position: fixed;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+z-index: 75;
+background: var(--surface-elevated);
+backdrop-filter: blur(32px) saturate(180%);
+-webkit-backdrop-filter: blur(32px) saturate(180%);
+border-top: 1px solid var(--border-subtle);
+border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+transition: all var(--transition-base);
+box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+/* Mobile: Smaller controls */
+@media (max-width: 640px) {
+#fixed-controls-bar {
+    max-width: 100%;
+    padding: 12px 16px;
+}
+}
+/* Desktop: Normal layout */
+@media (min-width: 1024px) {
+#fixed-controls-bar {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    max-width: none;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-top: none;
+    border-radius: 0;
+    padding: 0;
+    justify-content: flex-end;
+    gap: var(--space-md);
+    box-shadow: none;
+}
+#game-screen #chat-toggle-btn {
+    display: none !important;
+}
+}
+
+/* --- POWER-UP BUTTONS --- */
+#blocker-powerup-btn-desktop,
+#blocker-powerup-btn-mobile {
+color: var(--player-o-color);
+background: var(--surface-elevated);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+padding: 14px 24px;
+border-radius: var(--radius-md);
+box-shadow: var(--shadow-sm),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+transition: all var(--transition-base);
+display: flex;
+align-items: center;
+gap: var(--space-sm);
+border: 1px solid var(--border-subtle);
+cursor: pointer;
+font-weight: 600;
+}
+#blocker-powerup-btn-desktop:hover:not(:disabled),
+#blocker-powerup-btn-mobile:hover:not(:disabled) {
+transform: translateY(-2px) scale(1.05);
+box-shadow: var(--shadow-md),
+            0 0 20px color-mix(in srgb, var(--player-o-color) 30%, transparent);
+border-color: var(--player-o-color);
+}
+#blocker-powerup-btn-desktop.active,
+#blocker-powerup-btn-mobile.active {
+background: var(--player-o-color);
+color: var(--text-inverse);
+box-shadow: 0 0 30px color-mix(in srgb, var(--player-o-color) 60%, transparent),
+            var(--shadow-md);
+border-color: var(--player-o-color);
+animation: activePowerup 1.5s ease-in-out infinite;
+}
+@keyframes activePowerup {
+0%, 100% {
+    box-shadow: 0 0 30px color-mix(in srgb, var(--player-o-color) 60%, transparent);
+}
+50% {
+    box-shadow: 0 0 45px color-mix(in srgb, var(--player-o-color) 80%, transparent);
+}
+}
+#blocker-powerup-btn-desktop:disabled,
+#blocker-powerup-btn-mobile:disabled {
+opacity: 0.4;
+cursor: not-allowed;
+box-shadow: none;
+transform: none;
+}
+@media (max-width: 640px) {
+#blocker-powerup-btn-desktop,
+#blocker-powerup-btn-mobile {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+}
+}
+
+#ai-tip-btn-desktop,
+#ai-tip-btn,
+#ai-tip-btn-mobile {
+background: var(--surface-elevated);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+color: var(--player-x-color);
+padding: 14px 24px;
+border-radius: var(--radius-md);
+box-shadow: var(--shadow-sm),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+transition: all var(--transition-base);
+display: flex;
+align-items: center;
+gap: var(--space-sm);
+border: 1px solid var(--border-subtle);
+cursor: pointer;
+position: relative;
+font-weight: 600;
+}
+#ai-tip-btn-desktop:hover:not(:disabled),
+#ai-tip-btn:hover:not(:disabled),
+#ai-tip-btn-mobile:hover:not(:disabled) {
+background: var(--surface-hover);
+border-color: var(--player-x-color);
+transform: translateY(-2px) scale(1.05);
+box-shadow: 0 0 24px color-mix(in srgb, var(--player-x-color) 40%, transparent),
+            var(--shadow-md);
+}
+#ai-tip-btn-desktop:disabled,
+#ai-tip-btn:disabled,
+#ai-tip-btn-mobile:disabled {
+opacity: 0.4;
+cursor: not-allowed;
+box-shadow: none;
+transform: none;
+}
+@media (max-width: 640px) {
+#ai-tip-btn-desktop,
+#ai-tip-btn,
+#ai-tip-btn-mobile {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+}
+}
+#ai-tip-count-desktop,
+#ai-tip-count,
+#ai-tip-count-mobile {
+background: var(--player-o-color);
+color: white;
+padding: 3px 10px;
+border-radius: var(--radius-full);
+font-size: 0.75rem;
+font-weight: 800;
+box-shadow: 0 2px 8px color-mix(in srgb, var(--player-o-color) 50%, transparent);
+}
+
+.sound-toggle-btn {
+background: var(--surface-elevated);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+color: var(--text-primary);
+border: 1px solid var(--border-medium);
+padding: 14px 28px;
+border-radius: var(--radius-md);
+font-weight: 600;
+cursor: pointer;
+transition: all var(--transition-base);
+display: flex;
+align-items: center;
+gap: var(--space-sm);
+width: 100%;
+justify-content: center;
+box-shadow: var(--shadow-sm),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.sound-toggle-btn:hover {
+background: var(--surface-hover);
+border-color: var(--accent-primary);
+transform: translateY(-2px);
+box-shadow: var(--shadow-md),
+            0 0 20px var(--accent-glow);
+}
+.sound-toggle-btn.muted {
+background: color-mix(in srgb, var(--surface-elevated) 75%, var(--player-o-color));
+color: color-mix(in srgb, var(--text-primary) 75%, var(--player-o-color));
+border-color: var(--player-o-color);
+box-shadow: 0 4px 16px color-mix(in srgb, var(--player-o-color) 25%, transparent);
+}
+@media (max-width: 640px) {
+.sound-toggle-btn {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+}
+}
+
+.icon-option,
+.color-option {
+width: 52px;
+height: 52px;
+border-radius: var(--radius-md);
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+border: 2px solid transparent;
+background: var(--surface-elevated);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+transition: all var(--transition-base);
+position: relative;
+box-shadow: var(--shadow-sm),
+            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.icon-option:hover,
+.color-option:hover {
+border-color: var(--border-medium);
+transform: scale(1.1) rotate(5deg);
+box-shadow: var(--shadow-md),
+            0 0 16px var(--accent-glow);
+}
+.icon-option i,
+.color-option i {
+width: 60%;
+height: 60%;
+color: var(--text-primary);
+filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+transition: all var(--transition-base);
+}
+.icon-option.selected,
+.color-option.selected {
+border-color: var(--accent-primary);
+box-shadow: 0 0 24px var(--accent-glow-strong),
+            var(--shadow-md);
+background: color-mix(in srgb, var(--accent-primary) 20%, var(--surface-elevated));
+transform: scale(1.1);
+}
+.icon-option.selected i,
+.color-option.selected i {
+filter: drop-shadow(0 0 10px var(--accent-primary));
+}
+@media (max-width: 640px) {
+.icon-option,
+.color-option {
+    width: 48px;
+    height: 48px;
+}
+}
+.icon-lock {
+position: absolute;
+inset: 0;
+background: rgba(0, 0, 0, 0.75);
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
+border-radius: var(--radius-md);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 5;
+cursor: not-allowed;
+}
+.icon-cost {
+position: absolute;
+bottom: -10px;
+right: -10px;
+background: var(--player-o-color);
+color: white;
+padding: 4px 10px;
+border-radius: var(--radius-full);
+font-size: 0.65rem;
+font-weight: 800;
+z-index: 10;
+box-shadow: 0 4px 12px color-mix(in srgb, var(--player-o-color) 70%, transparent);
+}
+
+#win-streak-display {
+margin-top: var(--space-md);
+display: flex;
+align-items: center;
+justify-content: center;
+gap: var(--space-sm);
+font-family: 'Space Grotesk', 'Inter', sans-serif;
+font-weight: 700;
+font-size: 1rem;
+color: var(--text-title);
+text-shadow: 0 0 12px color-mix(in srgb, var(--text-title) 50%, transparent),
+             0 2px 8px rgba(0, 0, 0, 0.3);
+}
+#win-streak-icon {
+color: var(--text-title);
+filter: drop-shadow(0 0 8px var(--text-title));
+animation: streakGlow 2s ease-in-out infinite;
+}
+@keyframes streakGlow {
+0%, 100% {
+    filter: drop-shadow(0 0 8px var(--text-title));
+}
+50% {
+    filter: drop-shadow(0 0 16px var(--text-title));
+}
+}
+
+#rematch-status {
+font-size: 0.95rem;
+font-weight: 600;
+color: var(--text-title);
+text-shadow: 0 0 10px color-mix(in srgb, var(--text-title) 40%, transparent);
+min-height: 28px;
+transition: all var(--transition-base);
+}
+#rematch-btn.requested {
+background: var(--surface-elevated);
+color: var(--text-muted);
+box-shadow: none;
+cursor: default;
+opacity: 0.7;
+transform: none;
+}
+.stat-value.positive {
+color: var(--accent-primary);
+font-weight: 700;
+text-shadow: 0 0 8px color-mix(in srgb, var(--accent-primary) 40%, transparent);
+}
+.stat-value.negative {
+color: var(--player-o-color);
+font-weight: 700;
+text-shadow: 0 0 8px color-mix(in srgb, var(--player-o-color) 40%, transparent);
+}
+
+@keyframes fadeInScaleUp {
+from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+}
+to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+}
+@keyframes fadeOutScaleDown {
+from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+to {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+}
+}
+@keyframes bounceIn {
+0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+}
+50% {
+    transform: scale(1.15) rotate(5deg);
+    opacity: 1;
+}
+70% {
+    transform: scale(0.95) rotate(-3deg);
+}
+85% {
+    transform: scale(1.05) rotate(2deg);
+}
+100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+}
+}
+@keyframes pulseWin {
+0%, 100% {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-light));
+    box-shadow: 0 0 30px var(--accent-glow);
+    transform: scale(1);
+}
+50% {
+    box-shadow: 0 0 50px var(--accent-glow-strong);
+    transform: scale(1.08);
+}
+}
+@keyframes pulseWinnerBorder {
+0%, 100% {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 30px var(--accent-glow);
+}
+50% {
+    border-color: var(--accent-primary-light);
+    box-shadow: 0 0 50px var(--accent-glow-strong);
+}
+}
+@keyframes shake {
+0%, 100% {
+    transform: translateX(0) rotate(0deg);
+}
+20% {
+    transform: translateX(-8px) rotate(-2deg);
+}
+40% {
+    transform: translateX(8px) rotate(2deg);
+}
+60% {
+    transform: translateX(-8px) rotate(-1deg);
+}
+80% {
+    transform: translateX(8px) rotate(1deg);
+}
+}
+@keyframes pulseTip {
+0% {
+    background: var(--cell-hover);
+    box-shadow: 0 0 25px var(--player-x-color),
+                inset 0 0 15px var(--player-x-color);
+    border-color: var(--player-x-color);
+}
+50% {
+    background: var(--cell-bg);
+    box-shadow: 0 0 15px var(--player-x-color),
+                inset 0 0 8px var(--player-x-color);
+    border-color: var(--border-subtle);
+}
+100% {
+    background: var(--cell-hover);
+    box-shadow: 0 0 25px var(--player-x-color),
+                inset 0 0 15px var(--player-x-color);
+    border-color: var(--player-x-color);
+}
+}
+@keyframes subtlePulse {
+0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+}
+50% {
+    transform: scale(1.03);
+    opacity: 0.85;
+}
+}
+@keyframes messageShow {
+0% {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.9);
+}
+10% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+90% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+100% {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.9);
+}
+}
+@keyframes scaleIn {
+to {
+    opacity: 1;
+    transform: scale(1);
+}
+}
+
+/* Animation Classes */
+.animate-fade-in-scale-up {
+animation: fadeInScaleUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.animate-fade-out-scale-down {
+animation: fadeOutScaleDown 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.cell-bounce-in {
+animation: bounceIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.winning-cell {
+animation: pulseWin 1.2s ease-in-out infinite;
+}
+.winning-cell i,
+.winning-cell svg {
+color: white !important;
+text-shadow: 0 0 20px rgba(255, 255, 255, 0.9) !important;
+filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.9)) !important;
+opacity: 1 !important;
+}
+.shake {
+animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+.ai-tip-highlight {
+animation: pulseTip 0.4s ease-in-out 1 forwards;
+}
+.ai-thinking-status {
+color: var(--text-title);
+text-shadow: 0 0 12px color-mix(in srgb, var(--text-title) 50%, transparent);
+animation: subtlePulse 1.8s infinite ease-in-out;
+}
+.hidden {
+display: none !important;
+}
+.opacity-50 {
+opacity: 0.5;
+}
+.blur {
+filter: blur(4px);
+pointer-events: none;
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+.glass-panel {
+    padding: 24px;
+}
+
+#game-board-container {
+    width: min(85vw, 400px);
+    height: min(85vw, 400px);
+    max-width: 400px;
+    max-height: 400px;
+}
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+.glass-panel {
+    padding: 28px;
+    border-radius: 22px;
+}
+
+#game-board-container {
+    width: min(70vw, 480px);
+    height: min(70vw, 480px);
+    max-width: 480px;
+    max-height: 480px;
+    gap: 14px;
+    padding: 18px;
+}
+
+.player-profile {
+    min-width: 150px;
+    padding: 14px 18px;
+}
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+#game-board-container {
+    width: min(50vw, 480px);
+    height: min(50vw, 480px);
+}
+}
+@media (min-width: 1920px) {
+html {
+    font-size: 18px;
+}
+
+#game-content-area {
+    max-width: 1600px;
+    grid-template-columns: minmax(580px, 800px) minmax(420px, 1fr);
+}
+
+#game-board-container {
+    width: min(40vw, 560px);
+    height: min(40vw, 560px);
+    max-width: 560px;
+    max-height: 560px;
+}
+}
+@media print {
+.glass-panel,
+.modal-backdrop,
+#notification-bar,
+#fixed-controls-bar {
+    display: none;
+}
+}
+@media (prefers-reduced-motion: reduce) {
+*,
+*::before,
+*::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+}
+}
+@media (prefers-contrast: high) {
+:root {
+    --border-subtle: rgba(255, 255, 255, 0.4);
+    --border-medium: rgba(255, 255, 255, 0.6);
+    --text-muted: #d1d5db;
+}
+
+.glass-panel,
+.modal-content {
+    border-width: 2px;
+}
+}
+@media (hover: none) and (pointer: coarse) {
+.play-button,
+.control-btn,
+.game-cell,
+.bottom-nav-btn {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+.game-cell:active:not([data-mark]) {
+    background: var(--cell-hover);
+    transform: scale(0.95);
+}
+}
+</style>
+</head>
+<body class="overflow-hidden">
+<div id="loading-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-95 flex flex-col items-center justify-center z-50">
+     <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-amber-500" style="border-color: var(--text-title); border-top-color: transparent;"></div>
+     <p class="mt-4 text-amber-400 text-lg font-semibold tracking-wider" style="color: var(--text-title);">Loading Arcade Nexus...</p>
+</div>
+<div id="notification-bar" role="alert" class="hidden"></div>
+
+<div id="message-overlay" class="hidden"></div>
+<div id="login-screen" class="min-h-screen p-6 flex flex-col items-center justify-center animate-fade-in-scale-up hidden">
+    <div class="w-full max-w-sm">
+        <h1 class="w-full text-center text-3xl sm:text-4xl font-bold uppercase tracking-widest mb-4" style="font-family: 'Oxanium', monospace; color: var(--text-title);">
+            FUTURISTIC
+        </h1>
+        <h2 class="w-full text-center text-2xl sm:text-3xl font-bold uppercase tracking-widest mb-12" style="font-family: 'Oxanium', monospace; color: var(--text-title);">
+            TIC-TAC-TOE
+        </h2>
+        <div class="glass-panel p-6 sm:p-8 rounded-2xl w-full space-y-6 mb-6">
+             <button id="play-btn" class="login-btn guest-login-btn">
+                 <i data-lucide="play" class="w-5 h-5"></i>
+                 <span>PLAY</span>
+             </button>
+        </div>
+         <div class="glass-panel p-6 sm:p-8 rounded-2xl w-full space-y-4">
+            <h3 class="text-lg font-semibold text-gray-400 mb-2">Load Data by ID</h3>
+            <input type="text" id="old-game-id-input" class="name-input" placeholder="Paste your saved Game ID">
+            <button id="load-data-btn" class="play-button w-full py-3 rounded-xl font-bold text-lg shadow-lg">
+                LOAD DATA
+            </button>
+        </div>
+    </div>
+</div>
+<!-- 
+========================================================================
+== OLD ARCADE NEXUS SCREEN IS REMOVED ==
+========================================================================
+
+<div id="arcade-nexus-screen" class="min-h-screen p-6 flex flex-col items-center animate-fade-in-scale-up relative hidden">
+    ... (OLD HTML REMOVED) ...
+</div>
+
+========================================================================
+== NEW NEXUS UI SCREEN IS ADDED BELOW ==
+========================================================================
+-->
+
+<div id="arcade-nexus-screen" class="hidden">
+    <!-- Background System -->
+    <div class="nexus-bg">
+        <div class="nexus-bg__mesh"></div>
+        <div class="nexus-bg__orb nexus-bg__orb--1"></div>
+        <div class="nexus-bg__orb nexus-bg__orb--2"></div>
+        <div class="nexus-bg__orb nexus-bg__orb--3"></div>
+        <div class="nexus-bg__stars"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="nexus-container">
+        <!-- Header -->
+        <header class="nexus-header nexus-glass nexus-glass--shimmer">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <!-- Profile Button -->
+                <button
+                    class="nexus-glass nexus-icon--pulse"
+                    id="profileBtn"
+                    style="padding: 0.75rem; border-radius: var(--radius-lg); background: rgba(129, 140, 248, 0.12); border-color: rgba(129, 140, 248, 0.3);"
+                    aria-label="Profile">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="profileGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#818CF8"/>
+                                <stop offset="100%" style="stop-color:#C4B5FD"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="url(#profileGrad)"/>
+                        <circle cx="12" cy="7" r="4" stroke="url(#profileGrad)"/>
+                    </svg>
+                </button>
+                
+                <!-- Streak Display -->
+                <div class="nexus-glass" style="border-radius: var(--radius-full); padding: 0.5rem 1rem; background: rgba(251, 191, 36, 0.12); border-color: rgba(251, 191, 36, 0.3); display: flex; align-items: center; gap: 0.5rem;">
+                    <svg class="nexus-fire w-5 h-5" viewBox="0 0 24 24" fill="none">
+                        <defs>
+                            <linearGradient id="fireGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                                <stop offset="0%" style="stop-color:#F59E0B"/>
+                                <stop offset="50%" style="stop-color:#F97316"/>
+                                <stop offset="100%" style="stop-color:#EF4444"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M12 2c1.5 3 3 5.5 3 8.5a3 3 0 1 1-6 0c0-3 1.5-5.5 3-8.5z" fill="url(#fireGrad)"/>
+                    </svg>
+                    <span id="win-streak-count-new" class="font-bold" style="color: #F59E0B; font-size: 1rem;">0</span> <!-- ID ADDED -->
+                    <span class="font-semibold" style="color: #F59E0B; font-size: 0.875rem;">Streak</span>
+                </div>
+
+                <!-- Coins Display -->
+                <div class="nexus-coin">
+                    <svg class="w-5 h-5 z-10" viewBox="0 0 24 24">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="#D97706" stroke="#78350F" stroke-width="1.5"/>
+                    </svg>
+                    <span id="heart-count-new" class="font-bold text-amber-900 z-10" style="font-size: 1rem;">20</span> <!-- ID ADDED -->
+                </div>
+                
+                <!-- Settings Button -->
+                <button
+                    class="nexus-glass nexus-icon--spin"
+                    id="settingsBtn"
+                    style="padding: 0.75rem; border-radius: var(--radius-lg); background: rgba(129, 140, 248, 0.12); border-color: rgba(129, 140, 248, 0.3);"
+                    aria-label="Settings">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="settingsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#818CF8"/>
+                                <stop offset="100%" style="stop-color:#C4B5FD"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="12" cy="12" r="3" stroke="url(#settingsGrad)"/>
+                        <path d="M12 1v6m0 6v6m-5-7H1m6 0h6m6 0h6m-6 0H13" stroke="url(#settingsGrad)"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Profile Modal -->
+        <div class="hidden fixed inset-0 z-50 items-center justify-center p-4" id="profileModal" style="background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(20px);">
+            <div class="nexus-glass relative" style="border-radius: var(--radius-2xl); padding: 2rem; max-width: 28rem; width: 100%; box-shadow: var(--shadow-xl); background: linear-gradient(135deg, rgba(45, 212, 191, 0.08), rgba(129, 140, 248, 0.08)); animation: slideUp 0.4s ease-out;">
+                <button
+                    class="absolute nexus-glass"
+                    id="modalClose"
+                    style="top: 1rem; right: 1rem; width: 2.5rem; height: 2.5rem; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); transition: all var(--transition-base); cursor: pointer;"
+                    aria-label="Close">
+                    &times;
+                </button>
+                
+                <div class="text-center mb-6">
+                    <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center nexus-icon--pulse" style="border-radius: var(--radius-full); background: linear-gradient(135deg, #2DD4BF, #818CF8); border: 2px solid rgba(255, 255, 255, 0.3); box-shadow: var(--shadow-lg);">
+                        <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h2 id="profile-modal-name" class="text-2xl font-bold" style="font-family: var(--font-display); background: linear-gradient(90deg, #2DD4BF, #818CF8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Player</h2> <!-- ID ADDED -->
+                </div>
+                
+                <div class="nexus-glass mb-6" style="background: rgba(0, 0, 0, 0.3); padding: 1rem; border-radius: var(--radius-lg);">
+                    <div class="text-sm mb-2 font-semibold" style="color: var(--text-tertiary);">Game ID (UID)</div>
+                    <div id="profile-modal-uid" class="text-sm font-bold break-all" style="color: var(--color-primary); font-family: var(--font-display);">...</div> <!-- ID ADDED -->
+                </div>
+                
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="nexus-glass text-center" style="background: rgba(255, 255, 255, 0.04); padding: 1rem; border-radius: var(--radius-lg);">
+                        <div id="profile-modal-wins" class="text-2xl font-bold mb-1" style="font-family: var(--font-display); background: linear-gradient(90deg, #FCD34D, #F59E0B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">0</div> <!-- ID ADDED -->
+                        <div class="text-sm font-semibold" style="color: var(--text-tertiary);">Wins</div>
+                    </div>
+                    <div class="nexus-glass text-center" style="background: rgba(255, 255, 255, 0.04); padding: 1rem; border-radius: var(--radius-lg);">
+                        <div id="profile-modal-games" class="text-2xl font-bold mb-1" style="font-family: var(--font-display); background: linear-gradient(90deg, #FCD34D, #F59E0B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">0</div> <!-- ID ADDED -->
+                        <div class="text-sm font-semibold" style="color: var(--text-tertiary);">Games</div>
+                    </div>
+                    <div class="nexus-glass text-center" style="background: rgba(255, 255, 255, 0.04); padding: 1rem; border-radius: var(--radius-lg);">
+                        <div id="profile-modal-winrate" class="text-2xl font-bold mb-1" style="font-family: var(--font-display); background: linear-gradient(90deg, #FCD34D, #F59E0B); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">0%</div> <!-- ID ADDED -->
+                        <div class="text-sm font-semibold" style="color: var(--text-tertiary);">Win Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rewards Section -->
+        <div class="nexus-rewards">
+            <!-- Free Reward -->
+            <div id="collect-reward-btn-new" class="nexus-reward nexus-reward--teal nexus-glass backdrop-blur-xl"> <!-- ID ADDED -->
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 0.625rem; border-radius: var(--radius-md);">
+                    <svg class="w-6 h-6 nexus-icon--float" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="giftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2DD4BF"/>
+                                <stop offset="100%" style="stop-color:#14B8A6"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="3" y="8" width="18" height="4" rx="1" stroke="url(#giftGrad)"/>
+                        <path d="M12 8v13m-9-9h18" stroke="url(#giftGrad)"/>
+                    </svg>
+                </div>
+                <div class="text-center">
+                    <div class="text-sm font-bold" style="color: var(--text-primary);">FREE</div>
+                    <div id="collect-reward-text-new" class="text-sm font-semibold" style="color: var(--text-secondary);">Available</div> <!-- ID ADDED -->
+                </div>
+            </div>
+
+            <!-- Lucky Spin -->
+            <div class="nexus-reward nexus-reward--indigo nexus-glass backdrop-blur-xl relative">
+                <span class="nexus-badge nexus-badge--hot absolute" style="top: 0.5rem; right: 0.5rem;">HOT</span>
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 0.625rem; border-radius: var(--radius-md);">
+                    <svg class="w-6 h-6 nexus-icon--pulse" viewBox="0 0 24 24" fill="currentColor">
+                        <defs>
+                            <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#818CF8"/>
+                                <stop offset="100%" style="stop-color:#C4B5FD"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="url(#starGrad)"/>
+                    </svg>
+                </div>
+                <div class="text-center">
+                    <div class="text-sm font-bold" style="color: var(--text-primary);">LUCKY SPIN</div>
+                    <div class="text-sm font-semibold" style="color: var(--text-secondary);">Spin Now!</div>
+                </div>
+            </div>
+
+            <!-- Top Rewards -->
+            <div class="nexus-reward nexus-reward--rose nexus-glass backdrop-blur-xl">
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 0.625rem; border-radius: var(--radius-md);">
+                    <svg class="w-6 h-6 nexus-icon--float" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="trophyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FB7185"/>
+                                <stop offset="100%" style="stop-color:#F43F5E"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6m12 5H19.5a2.5 2.5 0 0 0 0-5H18m-6 4v10m-3-10v10m6-10v10M12 12v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="url(#trophyGrad)"/>
+                        <circle cx="12" cy="12" r="3" stroke="url(#trophyGrad)"/>
+                    </svg>
+                </div>
+                <div class="text-center">
+                    <div class="text-sm font-bold" style="color: var(--text-primary);">TOP</div>
+                    <div class="text-sm font-semibold" style="color: var(--text-secondary);">Rewards</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Modes -->
+        <div class="nexus-cards">
+            <!-- PVP Mode -->
+            <div class="nexus-card nexus-card--teal nexus-glass backdrop-blur-xl">
+                <div class="nexus-card__glow"></div>
+                <div class="nexus-glass flex-shrink-0" style="padding: 0.875rem; border-radius: var(--radius-lg);">
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="pvpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2DD4BF"/>
+                                <stop offset="100%" style="stop-color:#14B8A6"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="7" width="20" height="14" rx="2" stroke="url(#pvpGrad)"/>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" stroke="url(#pvpGrad)"/>
+                    </svg>
+                </div>
+                <div class="flex-1 z-10">
+                    <div class="text-lg font-bold mb-1" style="font-family: var(--font-display); color: var(--text-primary);">PLAYER VS PLAYER</div>
+                    <div class="text-sm" style="color: var(--text-secondary);">1v1 Battle Mode</div>
+                </div>
+                <button class="nexus-btn nexus-btn--teal z-10 play-btn" data-mode="PVP">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    PLAY
+                </button>
+            </div>
+
+            <!-- AI Mode -->
+            <div class="nexus-card nexus-card--indigo nexus-glass backdrop-blur-xl">
+                <div class="nexus-card__glow"></div>
+                <div class="nexus-glass flex-shrink-0" style="padding: 0.875rem; border-radius: var(--radius-lg);">
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#818CF8"/>
+                                <stop offset="100%" style="stop-color:#6366F1"/>
+                            </linearGradient>
+                        </defs>
+                        <rect x="2" y="3" width="20" height="14" rx="2" stroke="url(#aiGrad)"/>
+                        <path d="M8 21h8m-4-4v4" stroke="url(#aiGrad)"/>
+                    </svg>
+                </div>
+                <div class="flex-1 z-10">
+                    <div class="text-lg font-bold mb-1" style="font-family: var(--font-display); color: var(--text-primary);">PLAY WITH AI</div>
+                    <div class="text-sm" style="color: var(--text-secondary);">Smart AI Challenge</div>
+                </div>
+                <button class="nexus-btn nexus-btn--indigo z-10 play-btn" data-mode="AI">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    PLAY
+                </button>
+            </div>
+
+            <!-- Friends Mode -->
+            <div class="nexus-card nexus-card--rose nexus-glass backdrop-blur-xl relative">
+                <span class="nexus-badge nexus-badge--new absolute z-20" style="top: 0.75rem; right: 0.75rem;">MULTIPLAYER</span>
+                <div class="nexus-card__glow"></div>
+                <div class="nexus-glass flex-shrink-0" style="padding: 0.875rem; border-radius: var(--radius-lg);">
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="friendsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FB7185"/>
+                                <stop offset="100%" style="stop-color:#F43F5E"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="url(#friendsGrad)"/>
+                        <circle cx="9" cy="7" r="4" stroke="url(#friendsGrad)"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="url(#friendsGrad)"/>
+                        <circle cx="16" cy="7" r="4" stroke="url(#friendsGrad)"/>
+                    </svg>
+                </div>
+                <div class="flex-1 z-10">
+                    <div class="text-lg font-bold mb-1" style="font-family: var(--font-display); color: var(--text-primary);">PLAY WITH FRIENDS</div>
+                    <div class="text-sm" style="color: var(--text-secondary);">Online Matchmaking</div>
+                </div>
+                <button class="nexus-btn nexus-btn--rose z-10 play-btn" data-mode="Friends">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                    SELECT
+                </button>
+            </div>
+
+            <!-- Grandmaster AI -->
+            <div class="nexus-card nexus-card--emerald nexus-glass backdrop-blur-xl relative">
+                <span class="nexus-badge nexus-badge--pro absolute z-20" style="top: 0.75rem; right: 0.75rem;">EXPERT</span>
+                <div class="nexus-card__glow"></div>
+                <div class="nexus-glass flex-shrink-0" style="padding: 0.875rem; border-radius: var(--radius-lg);">
+                    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <defs>
+                            <linearGradient id="expertGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#34D399"/>
+                                <stop offset="100%" style="stop-color:#10B981"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="url(#expertGrad)"/>
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="url(#expertGrad)"/>
+                    </svg>
+                </div>
+                <div class="flex-1 z-10">
+                    <div class="text-lg font-bold mb-1" style="font-family: var(--font-display); color: var(--text-primary);">GRANDMASTER AI</div>
+                    <div class="text-sm" style="color: var(--text-secondary);">Ultimate Challenge</div>
+                </div>
+                <button class="nexus-btn nexus-btn--emerald z-10 play-btn" data-mode="Grandmaster">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    PLAY
+                </button>
+            </div>
+        </div>
+
+        <!-- Developer Credit -->
+        <div class="text-center nexus-glass" style="border-radius: var(--radius-xl); padding: 1.5rem; border: 1px solid rgba(45, 212, 191, 0.2); box-shadow: var(--shadow-md);">
+            <span class="block text-sm font-semibold mb-2" style="color: var(--text-tertiary);">Developed & Designed by</span>
+            <a href="mailto:danyorllc@gmail.com" class="text-lg font-bold inline-block transition-transform duration-300 hover:scale-105" style="font-family: var(--font-display); background: linear-gradient(90deg, #2DD4BF, #818CF8, #FB7185); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none;">danyorllc@gmail.com</a>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="nexus-footer nexus-glass fixed bottom-0 left-0 right-0 z-40" style="border-top: 1px solid rgba(255, 255, 255, 0.1); box-shadow: var(--shadow-xl); backdrop-filter: blur(24px);">
+        <div class="flex justify-around items-center max-w-7xl mx-auto px-4">
+            <!-- Home -->
+            <button class="nexus-nav__item active" data-nav="home" aria-label="Home">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                </svg>
+                <span class="text-sm font-bold">Home</span>
+                <div class="nexus-nav__indicator"></div>
+            </button>
+            
+            <!-- History -->
+            <button class="nexus-nav__item" data-nav="history" aria-label="History">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v6l4 2"/>
+                </svg>
+                <span class="text-sm font-bold">History</span>
+                <div class="nexus-nav__indicator"></div>
+            </button>
+            
+            <!-- Leaderboard -->
+            <button class="nexus-nav__item" data-nav="leaderboard" aria-label="Leaderboard">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <circle cx="16" cy="7" r="4"/>
+                </svg>
+                <span class="text-sm font-bold">Leaders</span>
+                <div class="nexus-nav__indicator"></div>
+            </button>
+            
+            <!-- Shop -->
+            <button class="nexus-nav__item" data-nav="shop" aria-label="Shop">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="9" cy="21" r="1"/>
+                    <circle cx="20" cy="21" r="1"/>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                </svg>
+                <span class="text-sm font-bold">Shop</span>
+                <div class="nexus-nav__indicator"></div>
+            </button>
+        </div>
+    </nav>
+</div>
+
+ <div id="ftf-modal" class="modal-backdrop hidden">
+    <div id="ftf-content" class="modal-content text-center">
+        <button id="ftf-close-btn" class="absolute top-4 right-5 text-gray-500 hover:text-amber-500 transition-colors">
+            <i data-lucide="x" class="w-7 h-7"></i>
+        </button>
+        <h2 id="ftf-title" class="text-3xl font-bold mb-6" style="font-family: 'Oxanium', monospace; color: var(--text-title);">
+            PLAY WITH FRIENDS
+        </h2>
+        <div id="ftf-selection-view">
+            <div class="flex flex-col space-y-4">
+                <button id="ftf-create-room-select-btn" class="play-button w-full py-3 rounded-xl font-bold text-lg shadow-lg">
+                    <i data-lucide="plus-square" class="w-5 h-5"></i>
+                    <span>CREATE ROOM (-1 Heart)</span>
+                </button>
+                <button id="ftf-join-room-select-btn" class="control-btn w-full justify-center py-3 text-lg">
+                    <i data-lucide="log-in" class="w-5 h-5"></i>
+                    <span>JOIN ROOM (-1 Heart)</span>
+                </button>
+            </div>
+        </div>
+        <div id="ftf-create-view" class="hidden space-y-6">
+            <p class="text-sm text-gray-400">Share this code with your friend to start the match.</p>
+            <div class="bg-gray-800 p-4 rounded-xl flex justify-between items-center shadow-inner border border-amber-600">
+                <span id="room-code-display" class="text-2xl font-mono text-amber-400 font-bold tracking-widest">LOADING...</span>
+                <button id="copy-room-code-btn" class="text-amber-400 hover:text-amber-300 transition-colors p-2" title="Copy Code">
+                     <i data-lucide="copy" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div id="waiting-status" class="flex flex-col items-center justify-center space-y-2 mt-4">
+                <div class="animate-spin rounded-full h-8 w-8 border-t-4 border-b-4 border-amber-500"></div>
+                <p class="text-amber-400 font-semibold">WAITING FOR PLAYER 2...</p>
+            </div>
+             <button id="cancel-room-btn" class="control-btn justify-center py-2 text-md mt-4 text-red-400">
+                CANCEL
+            </button>
+        </div>
+         <div id="ftf-join-view" class="hidden space-y-4">
+            <input type="text" id="join-room-input" class="name-input text-center uppercase tracking-widest" placeholder="ENTER ROOM CODE">
+            <button id="join-room-submit-btn" class="play-button w-full py-3 rounded-xl font-bold text-lg shadow-lg" disabled>
+                SUBMIT
+            </button>
+            <button id="back-to-selection-btn" class="control-btn w-full justify-center py-2 text-md mt-4">
+                BACK
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="main-menu-screen" class="min-h-screen max-h-screen overflow-y-auto p-6 flex flex-col items-center pt-24 hidden animate-fade-in-scale-up relative">
+     <button id="main-menu-close-btn" class="absolute top-4 left-5 text-gray-500 transition-colors z-10 p-2">
+        <i data-lucide="arrow-left" class="w-8 h-8"></i>
+    </button>
+    <div class="glass-panel p-6 sm:p-8 rounded-2xl w-full max-w-md max-h-\[95vh\] overflow-y-auto">
+        <h2 class="text-3xl font-bold text-center mb-6 mt-8" style="font-family: 'Oxanium', monospace; color: var(--text-title);">
+            NEW GAME
+        </h2>
+        <div class="space-y-4">
+            <div>
+                <h3 class="text-lg font-semibold text-gray-400 mb-2">Board Size</h3>
+                <div class="option-group grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <div><input type="radio" id="size-3x3" name="board-size" value="3" checked><label for="size-3x3">3 x 3</label></div>
+                    <div><input type="radio" id="size-4x4" name="board-size" value="4"><label for="size-4x4">4 x 4</label></div>
+                    <div><input type="radio" id="size-5x5" name="board-size" value="5"><label for="size-5x5">5 x 5</label></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-gray-400 mb-2">Game Mode</h3>
+                <div class="option-group grid grid-cols-2 gap-3">
+                    <div><input type="radio" id="mode-pvp" name="game-mode" value="pvp" checked><label for="mode-pvp">Player vs Player</label></div>
+                    <div><input type="radio" id="mode-pva" name="game-mode" value="pva"><label for="mode-pva">Player vs AI (-1 Heart)</label></div>
+                </div>
+            </div>
+            <div id="ai-difficulty-section" class="hidden">
+                <h3 class="text-lg font-semibold text-gray-400 mb-2">AI Difficulty</h3>
+                <div class="option-group grid grid-cols-2 gap-3">
+                    <div><input type="radio" id="ai-easy" name="ai-difficulty" value="easy"><label for="ai-easy">Easy</label></div>
+                    <div><input type="radio" id="ai-medium" name="ai-difficulty" value="medium" checked><label for="ai-medium">Medium</label></div>
+                    <div><input type="radio" id="ai-hard" name="ai-difficulty" value="hard"><label for="ai-hard">Hard</label></div>
+                    <div><input type="radio" id="ai-grandmaster" name="ai-difficulty" value="grandmaster"><label for="ai-grandmaster">Grandmaster</label></div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-gray-400 mb-2">Game Variant</h3>
+                <div class="option-group grid grid-cols-2 gap-3">
+                    <div><input type="radio" id="variant-classic" name="game-variant" value="classic" checked><label for="variant-classic">Classic</label></div>
+                    <div><input type="radio" id="variant-blocker" name="game-variant" value="blocker"><label for="variant-blocker">Blocker</label></div>
+                </div>
+            </div>
+            <div id="icon-customization-section">
+                <h3 id="customization-player-title" class="text-lg font-semibold text-gray-400 mb-2">Icon Customization (Player X)</h3>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="space-y-2">
+                         <h4 class="text-sm font-medium text-gray-500">Icon</h4>
+                         <div id="icon-select-container" class="flex gap-3 flex-wrap">
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <button id="start-game-btn" class="play-button w-full py-3 rounded-xl font-bold text-lg shadow-lg mt-5">
+                START GAME
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="game-screen" class="game-screen hidden">
+    <div id="game-content-area">
+        <div class="game-header-new">
+            
+            <div id="player-x-profile" class="player-profile player-x active-turn">
+                <div class="icon" style="color: var(--player-x-color); text-shadow: var(--player-x-shadow);">
+                    <i data-lucide="x" class="w-6 h-6 md:w-7 md:h-7"></i>
+                </div>
+                <div class="profile-info">
+                    <h3 id="player-x-name" class="name">DANIYAL</h3>
+                    <p id="player-x-score" class="score">0</p>
+                </div>
+            </div>
+            <div id="game-status-display">
+                Your Turn
+            </div>
+            <div id="player-o-profile" class="player-profile player-o">
+                <div class="icon" style="color: var(--player-o-color); text-shadow: var(--player-o-shadow);">
+                    <i data-lucide="sparkles" class="w-6 h-6 md:w-7 md:h-7"></i>
+                </div>
+                <div class="profile-info">
+                    <h3 id="player-o-name" class="name">AI</h3>
+                    <p id="player-o-score" class="score">0</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="game-board-wrapper">
+            <div id="game-board-container" class="board-size-3"></div>
+        </div>
+
+        <div id="chat-panel-area">
+            
+             <div id="multiplayer-chat-panel" class="hidden">
+                 <h3 class="text-xl font-bold mb-3" style="color: var(--text-title);">ROOM CHAT</h3>
+                 <div id="chat-messages" class="flex-grow overflow-y-auto mb-4">
+                     <div class="text-sm text-gray-500 text-center py-2">Start chatting when the game begins</div>
+                 </div>
+                 <div id="chat-input-container">
+                     <input type="text" id="chat-input-field" placeholder="Write a message..." maxlength="150">
+                     <button id="chat-send-btn" disabled>
+                         <i data-lucide="send" class="w-5 h-5"></i>
+                     </button>
+                 </div>
+             </div>
+
+             <div id="desktop-game-controls" class="hidden lg:flex justify-center items-center gap-4 mt-2">
+                <button id="ai-tip-btn-desktop" class="nav-btn relative" title="Get AI Hint (-5 Hearts)">
+                    <i data-lucide="lightbulb" class="w-6 h-6"></i>
+                </button>
+                <button id="blocker-powerup-btn-desktop" class="nav-btn text-red-400 hover:text-red-300 hidden">
+                    <i data-lucide="shield-ban"></i>
+                </button>
+             </div>
+        </div>
+        
+    </div>
+
+    <div id="fixed-controls-bar" class="p-4">
+        
+        <div class="flex gap-4">
+            <button id="chat-toggle-btn" class="bottom-nav-btn">
+                <i data-lucide="message-square" class="w-6 h-6"></i>
+            </button>
+            
+            <button id="ai-tip-btn" class="bottom-nav-btn relative hidden" title="Get AI Hint (-5 Hearts)">
+                <i data-lucide="lightbulb" class="w-6 h-6"></i>
+            </button>
+            <button id="blocker-powerup-btn-mobile" class="bottom-nav-btn relative hidden">
+                 <i data-lucide="shield-ban" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <button id="settings-btn" class="bottom-nav-btn ml-auto">
+            <i data-lucide="settings" class="w-6 h-6"></i>
+        </button>
+    </div>
+    
+    <div id="confetti-container"></div>
+</div>
+
+<div id="settings-modal" class="modal-backdrop hidden">
+    <div class="modal-content text-center">
+        <button id="settings-close-btn" class="absolute top-4 right-5 text-gray-500 hover:text-amber-500 transition-colors">
+            <i data-lucide="x" class="w-7 h-7"></i>
+        </button>
+        <h2 class="text-3xl font-bold mb-6" style="font-family: 'Oxanium', monospace; color: var(--text-title);">
+            SETTINGS
+        </h2>
+        <div class="grid grid-cols-1 gap-4">
+            <button id="restart-game-btn" class="control-btn py-3 text-lg"><i data-lucide="refresh-cw" class="w-5 h-5"></i>Restart</button>
+            <button id="in-game-sound-toggle-btn" class="sound-toggle-btn py-3 text-lg">
+                 <i data-lucide="volume-2" class="w-5 h-5"></i>
+                <span>Sound On</span>
+            </button>
+        </div>
+        <button id="back-to-main-menu-btn" class="control-btn w-full justify-center py-3 text-lg mt-6">
+            <i data-lucide="arrow-left" class="w-5 h-5"></i>Back to Main Menu
+        </button>
+    </div>
+</div>
+
+ <div id="global-settings-modal" class="modal-backdrop hidden">
+    <div class="modal-content text-center">
+        <button id="global-settings-close-btn" class="absolute top-4 right-5 text-gray-500 hover:text-amber-500 transition-colors">
+            <i data-lucide="x" class="w-7 h-7"></i>
+        </button>
+        <h2 class="text-3xl font-bold mb-6" style="font-family: 'Oxanium', monospace; color: var(--text-title);">
+            OPTIONS
+        </h2>
+        <div class="grid grid-cols-1 gap-4">
+             <div>
+                <h3 class="text-lg font-semibold text-gray-400 mb-2">Your Name</h3>
+                <input type="text" id="player-name-input" class="name-input" placeholder="Player 1" maxlength="10">
+             </div>
+            
+            <button id="sound-toggle-btn" class="sound-toggle-btn py-3 text-lg">
+                <i data-lucide="volume-2" class="w-5 h-5"></i>
+                <span>Sound On</span>
+            </button>
+            
+            <a target="\_blank" rel="noopener noreferrer" id="purchase-license-btn" 
+               class="control-btn w-full justify-center py-3 text-lg text-amber-400 opacity-50 cursor-not-allowed"
+               title="Link Disabled"
+            >
+                <i data-lucide="briefcase" class="w-5 h-5"></i>
+                <span>Purchase License</span>
+            </a>
+            
+            <button id="logout-btn" class="control-btn w-full justify-center py-3 text-lg text-red-400 hover:text-red-300">
+                <i data-lucide="log-out" class="w-5 h-5"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div id="game-over-modal" class="modal-backdrop hidden">
+    <div class="modal-content text-center">
+         <h2 id="game-over-message" class="text-3xl font-bold mb-4" style="font-family: 'Oxanium', monospace; color: var(--text-title);">
+             PLAYER X WINS!
+         </h2>
+         <div class="text-left mb-6 space-y-2">
+             <div class="stat-item"><span class="stat-label">Time Taken:</span> <span id="stat-time" class="stat-value">0s</span></div>
+             <div class="stat-item"><span class="stat-label">Total Moves:</span> <span id="stat-moves" class="stat-value">0</span></div>
+             <div class="stat-item"><span class="stat-label">Hearts Change:</span> <span id="stat-hearts" class="stat-value negative">-1 Heart</span></div>
+             <div class="stat-item"><span class="stat-label">Win Streak:</span> <span id="stat-win-streak" class="stat-value positive">0 Wins</span></div>
+         </div>
+         <div class="flex flex-col space-y-4">
+             <button id="play-again-btn" class="play-button w-full py-3 rounded-xl font-bold text-lg shadow-lg">
+                 Next Round
+             </button>
+             <button id="back-to-menu-btn" class="control-btn w-full justify-center py-3 text-lg">
+                 Back to Menu
+             </button>
+         </div>
+     </div>
+</div>
+
+<div id="multiplayer-result-modal" class="modal-backdrop hidden">
+    <div class="modal-content text-center">
+        <button id="multiplayer-result-close-btn" class="absolute top-4 right-5 text-gray-500 hover:text-amber-500 transition-colors">
+            <i data-lucide="x" class="w-7 h-7"></i>
+        </button>
+         <h2 id="multiplayer-result-title" class="text-3xl font-bold mb-4" style="font-family: 'Oxanium', monospace; color: var(--text-title);">
+            MATCH FINISHED
+        </h2>
+        <div id="multiplayer-score-display" class="flex justify-around items-center mb-6">
+             <div class="player-result-card player-x">
+                 <span class="text-xs text-gray-400">PLAYER X</span>
+                 <div class="result-icon"> <i id="result-icon-x" data-lucide="x"></i> </div>
+                 <p id="result-name-x" class="result-name">Name X</p>
+                 <p id="result-score-x" class="text-3xl font-bold text-amber-400">0</p>
+             </div>
+             <span class="text-4xl font-extrabold text-gray-500 mx-4">VS</span>
+             <div class="player-result-card player-o">
+                 <span class="text-xs text-gray-400">PLAYER O</span>
+                 <div class="result-icon"> <i id="result-icon-o" data-lucide="circle"></i> </div>
+                 <p id="result-name-o" class="result-name">Name O</p>
+                 <p id="result-score-o" class="text-3xl font-bold text-red-400">0</p>
+                 </div>
+             </div>
+             <div class="text-left mb-4 space-y-1 text-sm">
+                  <div class="stat-item"><span class="stat-label">Hearts Change:</span> <span id="mp-stat-hearts" class="stat-value negative">0 Hearts</span></div>
+                  <div class="stat-item"><span class="stat-label">Win Streak:</span> <span id="mp-stat-win-streak" class="stat-value positive">0 Wins</span></div>
+             </div>
+            <p id="rematch-status" class="text-sm font-semibold mb-4">Awaiting opponent's request...</p>
+            <div class="flex flex-col space-y-4">
+                <button id="rematch-btn" class="play-button w-full py-3 rounded-xl font-bold text-lg shadow-lg">
+                    REQUEST REMATCH
+                </button>
+                <button id="multiplayer-back-to-menu-btn" class="control-btn w-full justify-center py-3 text-lg">
+                    LEAVE ROOM
+                </button>
+            </div>
+        </div>
+    </div>
+    
+<script>
+
+    
+</script>
+</body>
+</html>
