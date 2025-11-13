@@ -10,18 +10,26 @@
         /* Custom Fonts for a High-Tech look */
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@400;600&display=swap');
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Space Grotesk', sans-serif;
             overflow-x: hidden;
-            /* Deeper Purple Background */
             background-color: #0d0a1b;
+            position: relative;
         }
 
-        /* Animated Gradient Background - Shifted to Deep Purple/Blue */
+        /* Optimized Animated Gradient Background - GPU Accelerated */
         .animated-gradient {
-            background: linear-gradient(135deg, #2b1f40 0%, #080315 25%, #2b1f40 75%, #080315 100%);
+            background: linear-gradient(135deg, #2b1f40 0%, #080315 25%, #2b1f40 50%, #080315 75%, #2b1f40 100%);
             background-size: 400% 400%;
             animation: gradientShift 20s ease infinite;
+            will-change: background-position;
+            transform: translateZ(0);
         }
 
         @keyframes gradientShift {
@@ -30,176 +38,296 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Enhanced Glass Effect */
+        /* Enhanced Glass Effect with Better Contrast */
         .glass-effect {
-            /* Deeper background with more blur for better contrast */
             background: rgba(255, 255, 255, 0.08); 
-            backdrop-filter: blur(25px);
-            /* Fuchsia Border */
-            border: 1px solid rgba(236, 72, 153, 0.2); 
+            backdrop-filter: blur(30px) saturate(180%);
+            -webkit-backdrop-filter: blur(30px) saturate(180%);
+            border: 1.5px solid rgba(236, 72, 153, 0.25); 
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            transition: all 0.3s ease;
         }
 
-        /* Neon Glow Text (Using Fuchsia/Violet combo) */
+        .glass-effect:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(236, 72, 153, 0.4);
+            transform: translateY(-5px);
+        }
+
+        /* Improved Neon Glow with Better Performance */
         .neon-glow {
-            text-shadow: 0 0 15px rgba(236, 72, 153, 0.9), /* Fuchsia */
-                         0 0 30px rgba(168, 85, 247, 0.7),  /* Violet */
-                         0 0 50px rgba(168, 85, 247, 0.5);
+            text-shadow: 
+                0 0 10px rgba(236, 72, 153, 0.8),
+                0 0 20px rgba(236, 72, 153, 0.6),
+                0 0 30px rgba(168, 85, 247, 0.6),
+                0 0 40px rgba(168, 85, 247, 0.4);
+            filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.5));
         }
 
-        /* Pulsating Card Shadow */
+        /* Smoother Pulsating Card Shadow */
         .pulse-glow {
             animation: pulseGlow 4s ease-in-out infinite;
         }
 
         @keyframes pulseGlow {
             0%, 100% {
-                box-shadow: 0 0 30px rgba(236, 72, 153, 0.3), /* Subtle Fuchsia */
-                           0 0 60px rgba(168, 85, 247, 0.1);  /* Subtle Violet */
+                box-shadow: 
+                    0 0 25px rgba(236, 72, 153, 0.3),
+                    0 0 50px rgba(168, 85, 247, 0.15),
+                    0 8px 32px 0 rgba(0, 0, 0, 0.37);
             }
             50% {
-                box-shadow: 0 0 40px rgba(236, 72, 153, 0.5),
-                           0 0 80px rgba(168, 85, 247, 0.2);
+                box-shadow: 
+                    0 0 40px rgba(236, 72, 153, 0.5),
+                    0 0 80px rgba(168, 85, 247, 0.25),
+                    0 12px 48px 0 rgba(0, 0, 0, 0.5);
             }
         }
 
-        /* Icon Float and Spin */
+        /* Optimized Icon Animation */
         .float-animation {
-            animation: float 6s ease-in-out infinite, spin 8s linear infinite;
+            animation: float 6s ease-in-out infinite;
+            will-change: transform;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-        
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(180deg); }
         }
 
-        /* Progress Bar Animation */
+        /* Improved Progress Bar with Gradient */
         .progress-bar-fill {
             animation: progressLoad 4s ease-in-out infinite;
+            background: linear-gradient(90deg, #ec4899 0%, #a855f7 50%, #ec4899 100%);
+            background-size: 200% 100%;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.6);
         }
 
         @keyframes progressLoad {
-            0%, 100% { width: 25%; }
-            50% { width: 85%; }
+            0% { width: 25%; background-position: 0% 50%; }
+            50% { width: 85%; background-position: 100% 50%; }
+            100% { width: 25%; background-position: 0% 50%; }
         }
         
-        /* Particle Effects */
+        /* Optimized Particle Effects */
         .particle {
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
+            will-change: transform, opacity;
         }
 
         @keyframes particleFloat {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.5; }
-            100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+            0% { 
+                transform: translateY(100vh) translateX(0) scale(0); 
+                opacity: 0; 
+            }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.4; }
+            100% { 
+                transform: translateY(-100vh) translateX(var(--drift)) scale(1.5); 
+                opacity: 0; 
+            }
         }
 
-        /* Ensure Mobile Responsiveness for all elements */
+        /* Loading Spinner for Additional Visual Interest */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(236, 72, 153, 0.2);
+            border-top-color: #ec4899;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Text Sizing */
         @media (max-width: 640px) {
             .neon-glow {
-                font-size: 3rem; /* 48px */
+                font-size: 2.5rem;
             }
             .glass-effect {
-                padding: 2rem;
+                padding: 1.5rem;
             }
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .neon-glow {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Accessibility Improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Enhanced Status Indicators */
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ec4899;
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.8);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
         }
     </style>
 </head>
 <body class="animated-gradient min-h-screen flex items-center justify-center p-4 relative">
     
-    <!-- Floating Particles Background (z-0) -->
+    <!-- Floating Particles Background -->
     <div id="particles-container" class="fixed inset-0 pointer-events-none z-0"></div>
 
-    <!-- Main Content Container (z-10) -->
+    <!-- Main Content Container -->
     <div class="relative z-10 max-w-2xl w-full">
         
-        <!-- Glass Card (Improved Aesthetics) -->
+        <!-- Glass Card -->
         <div class="glass-effect rounded-3xl p-6 sm:p-10 lg:p-12 pulse-glow transition duration-500">
             
-            <!-- Animated Gear Icon (Represents work in progress) -->
-            <div class="flex justify-center mb-10">
-                <!-- Icon color changed to Fuchsia-400 -->
+            <!-- Animated Gear Icon with Spinner -->
+            <div class="flex justify-center mb-8 relative">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 sm:w-28 sm:h-28 text-fuchsia-400 float-animation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.49 1.49 0 0 0 1.05-1.49v-3.02a1.49 1.49 0 0 0-1.05-1.49L17.7 7.35l-.26-1.57a1.49 1.49 0 0 0-1.56-1.56l-1.57-.26L12 2v0l-1.57.26a1.49 1.49 0 0 0-1.56 1.56l-.26 1.57L4.6 9a1.49 1.49 0 0 0-1.05 1.49v3.02c0 .59.35 1.13.88 1.37l2.42 1.47 1.57.26a1.49 1.49 0 0 0 1.56-1.56l.26-1.57L12 17.5v0l1.57-.26a1.49 1.49 0 0 0 1.56 1.56l.26 1.57L19.4 15z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.49 1.49 0 0 0 1.05-1.49v-3.02a1.49 1.49 0 0 0-1.05-1.49L17.7 7.35l-.26-1.57a1.49 1.49 0 0 0-1.56-1.56l-1.57-.26L12 2v0l-1.57.26a1.49 1.49 0 0 0-1.56 1.56l-.26 1.57L4.6 9a1.49 1.49 0 0 0-1.05 1.49v3.02c0 .59.35 1.13.88 1.37l2.42 1.47 1.57.26a1.49 1.49 0 0 0 1.56-1.56l.26-1.57L12 17.5v0l1.57-.26a1.49 1.49 0 0 0 1.56 1.56l.26 1.57L19.4 15z"/>
                 </svg>
             </div>
 
-            <!-- Main Title with Neon Effect (Updated to simpler words) -->
-            <h1 class="text-4xl sm:text-6xl font-black text-center mb-4 neon-glow text-white leading-tight" style="font-family: 'Orbitron', sans-serif;">
+            <!-- Main Title with Enhanced Neon Effect -->
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-center mb-4 neon-glow text-white leading-tight" style="font-family: 'Orbitron', sans-serif;">
                 MAINTENANCE<br/>IN PROGRESS
             </h1>
 
-            <!-- Subtitle (Updated to simpler message) -->
-            <p class="text-xl sm:text-2xl text-center mb-12 text-white/90 font-medium">
+            <!-- Subtitle -->
+            <p class="text-lg sm:text-xl lg:text-2xl text-center mb-8 text-white/90 font-medium">
                 We're preparing the game for a massive update.
             </p>
 
-            <!-- Progress Bar Section -->
-            <div class="max-w-lg mx-auto mb-12">
-                <div class="flex justify-between text-sm mb-2 text-white/70 font-mono">
-                    <span>Loading Core Modules...</span>
-                    <span>[ETA: 48:00]</span>
-                </div>
-                <div class="h-4 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm shadow-inner shadow-black/20">
-                    <!-- Gradient changed to Fuchsia/Violet -->
-                    <div class="h-full bg-gradient-to-r from-fuchsia-500 to-violet-500 progress-bar-fill rounded-full shadow-lg shadow-fuchsia-500/30"></div>
-                </div>
-                <p class="text-center mt-3 text-white/70 text-sm">Deployment Phase: In Progress</p>
+            <!-- Status Indicator -->
+            <div class="flex items-center justify-center gap-3 mb-10">
+                <div class="status-dot"></div>
+                <span class="text-white/70 text-sm font-mono uppercase tracking-wider">System Active</span>
             </div>
 
-            <!-- Footer Text (User's preferred line) -->
+            <!-- Progress Bar Section -->
+            <div class="max-w-lg mx-auto mb-12">
+                <div class="flex justify-between text-sm mb-3 text-white/70 font-mono">
+                    <span>⚡ Loading Core Modules...</span>
+                    <span>[ETA: 48:00]</span>
+                </div>
+                <div class="h-4 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm shadow-inner shadow-black/30 border border-white/5">
+                    <div class="h-full progress-bar-fill rounded-full"></div>
+                </div>
+                <div class="flex items-center justify-center gap-2 mt-4">
+                    <div class="w-2 h-2 bg-fuchsia-500 rounded-full animate-pulse"></div>
+                    <p class="text-center text-white/70 text-sm font-mono">Deployment Phase: In Progress</p>
+                </div>
+            </div>
+
+            <!-- Feature Updates Preview -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+                <div class="glass-effect p-4 rounded-xl text-center border-fuchsia-500/20">
+                    <div class="text-2xl mb-2">🎮</div>
+                    <p class="text-white/80 text-sm font-medium">New Game Modes</p>
+                </div>
+                <div class="glass-effect p-4 rounded-xl text-center border-violet-500/20">
+                    <div class="text-2xl mb-2">⚡</div>
+                    <p class="text-white/80 text-sm font-medium">Performance Boost</p>
+                </div>
+                <div class="glass-effect p-4 rounded-xl text-center border-fuchsia-500/20">
+                    <div class="text-2xl mb-2">✨</div>
+                    <p class="text-white/80 text-sm font-medium">Fresh UI Design</p>
+                </div>
+            </div>
+
+            <!-- Footer Text -->
             <div class="text-center mt-10">
-                <p class="text-2xl sm:text-3xl font-extrabold text-white/90 tracking-wider scale-pulse">
+                <p class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white/90 tracking-wider mb-3">
                     We'll be back online with an awesome update.
                 </p>
-                <p class="mt-4 text-white/50 text-xs uppercase tracking-widest">
+                <p class="mt-4 text-white/50 text-xs uppercase tracking-widest font-mono">
                     Thank you for your patience, Gamer.
                 </p>
+                
+                <!-- Social Links (Optional) -->
+                <div class="flex justify-center gap-6 mt-6">
+                    <a href="#" class="text-white/50 hover:text-fuchsia-400 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="#" class="text-white/50 hover:text-violet-400 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                    </a>
+                    <a href="#" class="text-white/50 hover:text-fuchsia-400 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Create floating particles for the background
+        // Optimized Particle System
         const particlesContainer = document.getElementById('particles-container');
-        // Particle colors updated to match the new Fuchsia/Violet theme
-        const colors = ['#ec4899', '#a855f7', '#ffffff', '#000000']; 
+        const colors = ['#ec4899', '#a855f7', '#ffffff', '#d946ef']; 
+        let particleCount = 0;
+        const MAX_PARTICLES = 100;
         
         function createParticle() {
+            if (particleCount >= MAX_PARTICLES) return;
+            
             const particle = document.createElement('div');
             particle.className = 'particle';
             
-            const size = Math.random() * 5 + 1; // Size 1px to 6px
+            const size = Math.random() * 4 + 2;
+            const drift = (Math.random() - 0.5) * 100;
+            
             particle.style.width = size + 'px';
             particle.style.height = size + 'px';
             particle.style.left = Math.random() * 100 + '%';
             particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.setProperty('--drift', drift + 'px');
             
-            // Randomize animation duration and delay for a scattered look
-            particle.style.animation = `particleFloat ${Math.random() * 15 + 15}s linear infinite`;
-            particle.style.animationDelay = Math.random() * 10 + 's';
+            const duration = Math.random() * 10 + 15;
+            const delay = Math.random() * 5;
+            
+            particle.style.animation = `particleFloat ${duration}s linear ${delay}s infinite`;
             
             particlesContainer.appendChild(particle);
+            particleCount++;
             
-            // Remove particle after its animation cycle to prevent memory overload
             setTimeout(() => {
                 particle.remove();
-            }, 30000);
+                particleCount--;
+            }, (duration + delay) * 1000);
         }
 
-        // Generate particles continuously (one every 200ms)
-        setInterval(createParticle, 200);
+        // Throttled particle creation
+        setInterval(createParticle, 300);
         
-        // Initial burst for immediate effect
-        for (let i = 0; i < 50; i++) {
-            setTimeout(createParticle, i * 50);
+        // Initial burst
+        for (let i = 0; i < 40; i++) {
+            setTimeout(createParticle, i * 100);
+        }
+
+        // Performance monitoring
+        if (window.performance && window.performance.memory) {
+            setInterval(() => {
+                const memory = window.performance.memory;
+                if (memory.usedJSHeapSize / memory.jsHeapSizeLimit > 0.9) {
+                    console.warn('High memory usage detected');
+                }
+            }, 5000);
         }
     </script>
 </body>
