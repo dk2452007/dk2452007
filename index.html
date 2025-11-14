@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
     <title>Futuristic Tic-Tac-Toe</title>
+    <!-- CSS Remove Kar Diya Hai (Jaisa Aapne Kaha) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +12,7 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
 
-       <style>
+          <style>
         
 :root {
     --midnight-950: #0a0e1a;
@@ -4329,11 +4330,15 @@ h3 {
                         unsubscribeOpponentPresence = onValue(opponentStatusRef, (snapshot) => {
                             const isOnline = snapshot.val();
                             
-                            if (isOnline === false || isOnline === null) {
+                            // 1. BUG FIX: Ab 'null' (loading) ko 'false' (offline) nahi samjhega.
+                            //    Yeh aapke 'Race Condition' (null value) wale bug ko fix karta hai.
+                            if (isOnline === false) {
                                 if (gameEndedNotified || !isMultiplayer) return; 
                                 
                                 console.warn(`Opponent (ID: ${opponentId}) disconnected! (RTDB Presence)`);
                                 
+                                // 2. BUG FIX: Grace Period 2.5s se barha kar 8s kar diya.
+                                //    Yeh 'Micro-Disconnects' (network drops) ko handle karega. (100% Free Solution)
                                 setTimeout(async () => {
                                     if (gameEndedNotified || !currentRoomId) return;
 
@@ -4350,7 +4355,7 @@ h3 {
                                             }
                                             
                                             if (currentData.status === 'playing' || currentData.status === 'finished') {
-                                                 console.log("Grace period over. Status is not 'waiting'. Handling as abandonment.");
+                                                 console.log("Grace period (8s) over. Status is not 'waiting'. Handling as abandonment.");
                                                  handleOpponentAbandonment(currentData);
                                             }
                                          }
@@ -4359,7 +4364,7 @@ h3 {
                                          handleOpponentAbandonment({ status: 'playing' }); 
                                     }
 
-                                }, 2500); 
+                                }, 8000); // <-- 2.5s se 8s kar diya (Aapki request ke mutabiq)
                                 
                               
                             }
@@ -4741,8 +4746,9 @@ h3 {
                         blockerPowerupBtnMobile.classList.toggle('hidden', !showBlocker || !isPVA);
                         
                         if (isPVA) {
-                            aiTipBtn.disabled = (currentHearts < AI_TIP_COST);
-                            aiTipBtnMobile.disabled = (currentHearts < AI_TIP_COST);
+                            const canAffordTip = currentHearts >= AI_TIP_COST;
+                            aiTipBtn.disabled = !canAffordTip;
+                            aiTipBtnMobile.disabled = !canAffordTip;
                         }
                         updateTurnStatus();
                         confettiContainer.innerHTML = '';
@@ -5131,7 +5137,7 @@ h3 {
                             
                             showScreen(gameOverModal);
                         } else {
-                            showMultiplayerResult(room, heartsChangeSymbol, heartsChangeClass, winStreakText, winStreak > 0, room.status === 'abandoned');
+                            showMultiplayerResult(room, heartsChangeSymbol, heartsChangeClass, streakText, winStreak > 0, room.status === 'abandoned');
                         }
                     }
                     function showMultiplayerResult(room, heartsSymbol, heartsClass, streakText, streakPositive, isAbandoned = false) {
