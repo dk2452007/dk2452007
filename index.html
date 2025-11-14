@@ -11,7 +11,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
-          <style>
+
+       <style>
         
 :root {
     --midnight-950: #0a0e1a;
@@ -2571,8 +2572,6 @@ h3 {
 }
 
     </style>
-
- 
 </head>
 <body class="overflow-hidden">
     <div id="loading-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-95 flex flex-col items-center justify-center z-50">
@@ -5138,7 +5137,7 @@ h3 {
                             
                             showScreen(gameOverModal);
                         } else {
-                            showMultiplayerResult(room, heartsChangeSymbol, heartsChangeClass, streakText, winStreak > 0, room.status === 'abandoned');
+                            showMultiplayerResult(room, heartsChangeSymbol, heartsChangeClass, winStreakText, winStreak > 0, room.status === 'abandoned');
                         }
                     }
                     function showMultiplayerResult(room, heartsSymbol, heartsClass, streakText, streakPositive, isAbandoned = false) {
@@ -5325,7 +5324,7 @@ h3 {
                         btn.addEventListener('click', () => {
                             if (!isGameActive || btn.disabled) return;
                             isBlockerActive = !isBlockerActive;
-                            gameBoardContainer.classList.toggle('blocker-active', isBlockLActive);
+                            gameBoardContainer.classList.toggle('blocker-active', isBlockerActive);
                             
                             blockerPowerupBtn.classList.toggle('active', isBlockerActive);
                             blockerPowerupBtnMobile.classList.toggle('active', isBlockerActive);
@@ -5720,14 +5719,14 @@ h3 {
                     
                     
                     [backToMenuBtn, mpBackToMenuBtn, backToMainMenuBtn].forEach(btn => { 
-                        btn.addEventListener('click', () => {
+                        btn.addEventListener('click', async () => {
                              
                          
-                             const actionAfterHiding = () => {
+                             const actionAfterHiding = async () => {
                                  if (isMultiplayer) {
                                  
-                                      cancelRoom(); 
-                                      goBackFromMultiplayer(); 
+                                      await cancelRoom(); 
+                                      await goBackFromMultiplayer(); 
                                  } else {
                                       showScreen(arcadeNexusScreen); 
                                  }
