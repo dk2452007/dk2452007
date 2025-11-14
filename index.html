@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
     <title>Futuristic Tic-Tac-Toe</title>
-    <!-- CSS Remove Kar Diya Hai (Jaisa Aapne Kaha) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
- <style>
+
+       <style>
         
 :root {
     --midnight-950: #0a0e1a;
@@ -4329,15 +4329,11 @@ h3 {
                         unsubscribeOpponentPresence = onValue(opponentStatusRef, (snapshot) => {
                             const isOnline = snapshot.val();
                             
-                            // 1. BUG FIX: Ab 'null' (loading) ko 'false' (offline) nahi samjhega.
-                            //    Yeh aapke 'Race Condition' (null value) wale bug ko fix karta hai.
-                            if (isOnline === false) {
+                            if (isOnline === false || isOnline === null) {
                                 if (gameEndedNotified || !isMultiplayer) return; 
                                 
                                 console.warn(`Opponent (ID: ${opponentId}) disconnected! (RTDB Presence)`);
                                 
-                                // 2. BUG FIX: Grace Period 2.5s se barha kar 8s kar diya.
-                                //    Yeh 'Micro-Disconnects' (network drops) ko handle karega. (100% Free Solution)
                                 setTimeout(async () => {
                                     if (gameEndedNotified || !currentRoomId) return;
 
@@ -4354,7 +4350,7 @@ h3 {
                                             }
                                             
                                             if (currentData.status === 'playing' || currentData.status === 'finished') {
-                                                 console.log("Grace period (8s) over. Status is not 'waiting'. Handling as abandonment.");
+                                                 console.log("Grace period over. Status is not 'waiting'. Handling as abandonment.");
                                                  handleOpponentAbandonment(currentData);
                                             }
                                          }
@@ -4363,7 +4359,7 @@ h3 {
                                          handleOpponentAbandonment({ status: 'playing' }); 
                                     }
 
-                                }, 8000); // <-- 2.5s se 8s kar diya (Aapki request ke mutabiq)
+                                }, 2500); 
                                 
                               
                             }
@@ -4745,9 +4741,8 @@ h3 {
                         blockerPowerupBtnMobile.classList.toggle('hidden', !showBlocker || !isPVA);
                         
                         if (isPVA) {
-                            const canAffordTip = currentHearts >= AI_TIP_COST;
-                            aiTipBtn.disabled = !canAffordTip;
-                            aiTipBtnMobile.disabled = !canAffordTip;
+                            aiTipBtn.disabled = (currentHearts < AI_TIP_COST);
+                            aiTipBtnMobile.disabled = (currentHearts < AI_TIP_COST);
                         }
                         updateTurnStatus();
                         confettiContainer.innerHTML = '';
@@ -5111,7 +5106,7 @@ h3 {
                         
                         await new Promise(res => setTimeout(res, 1000));
 
-                        if (room === null) { 
+                        if (!isMultiplayer) {
                             if (winner === 'X' || (winner === 'O' && gameSettings.gameMode === 'pva')) {
                                 runConfetti();
                             }
@@ -5718,18 +5713,20 @@ h3 {
                     
                     
                     [backToMenuBtn, mpBackToMenuBtn, backToMainMenuBtn].forEach(btn => { 
-                        btn.addEventListener('click', async () => {
+                        btn.addEventListener('click', () => {
                              
-                            const actionAfterHiding = async () => {
-                                if (isMultiplayer) {
-                                     await cancelRoom(); 
-                                     await goBackFromMultiplayer(); 
-                                } else {
-                                     showScreen(arcadeNexusScreen); 
-                                }
-                            };
+                         
+                             const actionAfterHiding = () => {
+                                 if (isMultiplayer) {
+                                 
+                                      cancelRoom(); 
+                                      goBackFromMultiplayer(); 
+                                 } else {
+                                      showScreen(arcadeNexusScreen); 
+                                 }
+                             };
                              
-                            let visibleModal = null;
+                             let visibleModal = null;
                              if (!settingsModal.classList.contains('hidden')) visibleModal = settingsModal;
                              else if (!gameOverModal.classList.contains('hidden')) visibleModal = gameOverModal;
                              else if (!multiplayerResultModal.classList.contains('hidden')) visibleModal = multiplayerResultModal;
