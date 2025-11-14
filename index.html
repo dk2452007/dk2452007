@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
 
-       <style>
+  <style>
         
 :root {
     --midnight-950: #0a0e1a;
@@ -5722,11 +5722,44 @@ h3 {
                         btn.addEventListener('click', async () => {
                              
                          
-                             const actionAfterHiding = async () => {
+                             const actionAfterHiding = () => {
                                  if (isMultiplayer) {
                                  
-                                      await cancelRoom(); 
-                                      await goBackFromMultiplayer(); 
+                                      // 1. BUG FIX: User ko foran main menu dikhao. Intezaar mat karwao.
+                                      showScreen(arcadeNexusScreen); 
+                                      
+                                      // 2. Ab saara Firebase cleanup background mein karo.
+                                      (async () => {
+                                           await cancelRoom();
+                                           
+                                           // 3. Local state ko manually reset karo (bina screen change kiye)
+                                           if (unsubscribeRoomListener) unsubscribeRoomListener();
+                                           if (unsubscribeChatListener) unsubscribeChatListener(); 
+                                           if (unsubscribeOpponentPresence) { 
+                                              unsubscribeOpponentPresence();
+                                              unsubscribeOpponentPresence = null;
+                                           }
+                                           
+                                           if (rtdb && userProfile.uid) {
+                                               const appId = typeof __app_id !== 'undefined' ? __app_id : FIREBASE_FALLBACK_CONFIG.projectId;
+                                               const rtdbAppId = appId.replace(/[.#$\[\]]/g, '_'); 
+                                               const userStatusRef = ref(rtdb, `artifacts/${rtdbAppId}/public/data/presence/${userProfile.uid}`);
+                                               
+                                               await set(userStatusRef, false); 
+                                               setupPresence(userProfile.uid);
+                                           }
+                                           
+                                           clearInterval(rematchCountdownInterval); 
+                                           clearInterval(rewardTimerInterval); 
+                                           isMultiplayer = false;
+                                           playerXRematch = false;
+                                           playerORematch = false;
+                                           gameStartedNotified = false; 
+                                           lastKnownStateFingerprint = null; 
+                                           isChatPanelOpen = false; 
+                                           multiplayerChatPanel.classList.add('hidden'); 
+                                      })();
+                                      
                                  } else {
                                       showScreen(arcadeNexusScreen); 
                                  }
