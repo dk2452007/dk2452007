@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
 
-  <style>
+       <style>
         
 :root {
     --midnight-950: #0a0e1a;
@@ -4353,18 +4353,12 @@ h3 {
                                                 console.log("Opponent disconnected, but status is 'waiting'. Graceful exit confirmed.");
                                                 return;
                                             }
-                                            
-                                            if (currentData.status === 'playing' || currentData.status === 'finished') {
-                                                 console.log("Grace period (8s) over. Status is not 'waiting'. Handling as abandonment.");
-                                                 handleOpponentAbandonment(currentData);
-                                            }
-                                         }
-                                    } catch (e) {
-                                         console.error("Error during grace period check:", e);
-                                         handleOpponentAbandonment({ status: 'playing' }); 
                                     }
-
-                                }, 8000); // <-- 2.5s se 8s kar diya (Aapki request ke mutabiq)
+                                } catch (e) { // <-- YEH HAI BUG FIX
+                                    console.error("Error checking room status during grace period:", e);
+                                }
+ 
+                                }, 20000); // <-- 8s se 20s kar diya (Mobile disconnect fix)
                                 
                               
                             }
